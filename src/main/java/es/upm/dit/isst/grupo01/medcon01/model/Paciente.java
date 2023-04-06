@@ -2,16 +2,16 @@ package es.upm.dit.isst.grupo01.medcon01.model;
 
 public class Paciente {
     
-    private String DNI;
+    private String dni;
     private int n_tarjeta;
     private int cita; 
     
     public String getDNI() {
-        return DNI;
+        return dni;
     }
 
-    public void set(String DNI) {
-        this.DNI = DNI;
+    public void set(String dni) {
+        this.dni = dni;
     }
 
     public int getn_tarjeta() {
@@ -29,10 +29,5 @@ public class Paciente {
     public void cita(int cita) {
         this.cita = cita;
     }
-
-
-
-
-
 
 }

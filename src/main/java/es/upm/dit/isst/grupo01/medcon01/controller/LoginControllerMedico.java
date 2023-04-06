@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.*;
 
 @Controller
-public class LoginController {
+public class LoginControllerMedico {
   
     @GetMapping("/")
     public String showIndexPage() {
