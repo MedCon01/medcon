@@ -12,7 +12,7 @@ import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
 
 
 @Controller
-public class ControllerKiosko {
+public class PacienteController {
 
     @GetMapping("/inicio_kiosko")
     public String showInicioKiosko() {
