@@ -3,8 +3,11 @@ package es.upm.dit.isst.grupo01.medcon01.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
 
 
 
@@ -40,6 +43,9 @@ public class ControllerKiosko {
 public String registrarPacienteDNI(@RequestParam("dni") String dni, Model model) {
     // Aquí va el código para validar el DNI
     if (dni.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
+        Paciente paciente = new Paciente();
+        paciente.setPresente(true);
+        model.addAttribute("paciente", paciente);
         return "redirect:/informacion_cita";
     } else {
         return "redirect:/error_cita";
@@ -47,9 +53,12 @@ public String registrarPacienteDNI(@RequestParam("dni") String dni, Model model)
 }
 
     @PostMapping("/login_tarjeta")
-    public String validarNumero(@RequestParam("n_tarjeta") String n_tarjeta) {
+    public String validarNumero(@RequestParam("n_tarjeta") String n_tarjeta, Model model ) {
         // Aquí va el código para validar el número
         if (n_tarjeta.length() == 10 && n_tarjeta.matches("[0-9]+")) {
+            Paciente paciente = new Paciente();
+            paciente.setPresente(true);
+            model.addAttribute("paciente", paciente);
             return "redirect:/informacion_cita";
         } else {
             return "redirect:/error_cita";
