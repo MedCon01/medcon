@@ -1,5 +1,6 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
+import java.util.Date;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,6 +9,11 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+
+import java.time.Duration;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.Temporal;
 
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -86,4 +92,58 @@ public class PacienteController {
             return "redirect:/error_cita";
         }
     }
+    @PostMapping("/comparar_hora_llegada")
+    public String compararHoraLlegada(@RequestParam("id") String id, @RequestParam("horaLlegada") String horaLlegada, Model model) {
+        // Obtener el paciente de la base de datos por su ID
+        Paciente paciente = PacienteRepository.findById(id).orElse(null);
+    
+        if (paciente != null) {
+            // Obtener la hora de la cita del paciente
+            Date horaCita = paciente.getHoraCita();
+    
+            // Obtener la hora de llegada del paciente
+            LocalDateTime horaLlegadaParsed = LocalDateTime.parse(horaLlegada, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));
+    
+            // Calcular la diferencia de tiempo entre la hora de llegada y la hora de la cita
+            Duration diferenciaTiempo = Duration.between((Temporal) horaCita, horaLlegadaParsed);
+            long minutosDiferencia = diferenciaTiempo.toMinutes();
+    
+            if (minutosDiferencia <= 0) {
+                // Si la hora de llegada es anterior o igual a la hora de la cita, se coloca en la cola como el paciente inmediatamente siguiente al último que esté en la cola
+                Paciente ultimoPaciente = PacienteRepository.findTopByOrderByOrdenDesc();
+                int orden = ultimoPaciente != null ? ultimoPaciente.getOrden() + 1 : 1;
+                paciente.setOrden(orden);
+
+            } else if (minutosDiferencia <= 14) {
+                // Si la hora de llegada del paciente es entre 1 y 14 minutos (inclusive) después de la hora de la cita,
+                // el paciente se coloca inmediatamente después del paciente que se encuentre en la cola con hora de cita más próxima a la del paciente que acaba de llegar.
+                Paciente pacienteMasProximo = PacienteRepository.findTop1ByCita_HoraAfterOrderByCita_HoraAsc(horaLlegadaParsed);
+                int orden = pacienteMasProximo != null ? pacienteMasProximo.getOrden() + 1 : 1;
+                paciente.setOrden(orden);
+
+            } else {
+                // Si la hora de llegada es 15 minutos posterior a la hora de la cita, se coloca al paciente en el último lugar de la lista aunque su hora de cita sea anterior.
+                Paciente ultimoPaciente = PacienteRepository.findTopByOrderByOrdenDesc();
+                int orden = ultimoPaciente != null ? ultimoPaciente.getOrden() + 1 : 1;
+                paciente.setOrden(orden);
+            }
+    
+            // Guardar los cambios en la base de datos
+            PacienteRepository.save(paciente);
+    
+            // Redirigir a la página de información de la cita
+            model.addAttribute("paciente", paciente);
+            return "redirect:/informacion_cita";
+            
+        } else {
+            // Si no se encuentra el paciente, redirigir a la página de error de cita
+            return "redirect:/error_cita";
+        }
+    }
 }
+
+  
+
+
+
+
