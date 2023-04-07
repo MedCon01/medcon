@@ -96,4 +96,17 @@ public class Medico {
     public void setCola(List<Paciente> cola){
         this.cola = cola;
     }
+    @Override
+    public String toString() {
+        return "Medico{" +
+            "dni='" + dni + '\'' +
+            ", nombre='" + nombre + '\'' +
+            ", n_colegiado='" + n_colegiado + '\'' +
+            ", salaConsulta=" + salaConsulta +
+            ", especialidad='" + especialidad + '\'' +
+            ", tiempoGlobal=" + tiempoGlobal +
+            ", tiempoConsulta_avg=" + tiempoConsulta_avg +
+            ", cola=" + cola +
+            '}';
+    }
 }

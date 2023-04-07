@@ -17,8 +17,9 @@ import org.hibernate.annotations.GenericGenerator;
 public class Paciente {
     
     @Id
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    // Creo que esto en teoría no es necesario, ya que nosotros introducimos a mano el identificador.
+    // @GeneratedValue(generator = "uuid")
+    // @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
     private String dni;
     private String nombre;
@@ -103,5 +104,19 @@ public class Paciente {
         return 0;
     }
     public void setOrden(int orden) {
+    }
+    @Override
+    public String toString() {
+        return "Paciente{" +
+            "id='" + id + '\'' +
+            ", dni='" + dni + '\'' +
+            ", nombre='" + nombre + '\'' +
+            ", fecha_nacimiento=" + fecha_nacimiento +
+            ", nTarjeta='" + nTarjeta + '\'' +
+            ", cita=" + cita +
+            ", presente=" + presente +
+            ", fechaCita=" + fechaCita +
+            ", horaLlegada=" + horaLlegada +
+            '}';
     }
 }
