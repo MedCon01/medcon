@@ -21,9 +21,10 @@ public class MedicoController {
     public MedicoController(MedicoController medicoController) {
         this.medicoController = medicoController;
     }
-    private String tiempoConsulta= "00:00:00";
-    private List <Paciente> pacientes = new ArrayList<>();
-    
+
+    private String tiempoConsulta= "00:00:00"; //esto va en el modelo
+    private List <Paciente> pacientes = new ArrayList<>(); //esto va en el modelo
+     
     public void addPaciente(Paciente paciente) {
         pacientes.add(paciente);
     }
@@ -42,6 +43,7 @@ public String showErrorPage() {
     public String showLoginPage() {
         return "medico/login";
     }
+    // esto se tiene que emplear la base de datos
     List<String> items = Arrays.asList("Raúl Cervantes Nuñez", "María Rodriguez Ruíz", "Ana López Bilbao");
 
     @GetMapping("/welcome")

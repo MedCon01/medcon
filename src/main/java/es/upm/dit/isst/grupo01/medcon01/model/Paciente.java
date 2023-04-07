@@ -16,20 +16,20 @@ import org.hibernate.annotations.GenericGenerator;
 @Table(name = "Paciente")
 public class Paciente {
     
-   @GeneratedValue(generator = "uuid")
-   @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @Id
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
     private String dni;
     private String nombre;
     private LocalDate fecha_nacimiento;
-    private Long nTarjeta;
+    private String nTarjeta;
     private int cita; 
     private boolean presente;
     private LocalDate fechaCita;
     private LocalTime horaLlegada;
     
-    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, Long nTarjeta, int cita, Boolean presente){
+    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, String nTarjeta, int cita, Boolean presente){
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -48,11 +48,11 @@ public class Paciente {
         this.dni = dni;
     }
 
-    public Long getnTarjeta() {
+    public String getnTarjeta() {
         return nTarjeta;
     }
 
-    public void setnTarjeta(Long nTarjeta) {
+    public void setnTarjeta(String nTarjeta) {
         this.nTarjeta = nTarjeta;
     }
 

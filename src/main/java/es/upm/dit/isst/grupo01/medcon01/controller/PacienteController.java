@@ -1,6 +1,6 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
-import java.time.*;
+import java.time.LocalDate;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,7 +58,6 @@ public class PacienteController {
     public String showInformacionCita() {
         return "informacion_cita";
     }
-
     /*sin consulta a la base de datos */
     @PostMapping("/login_DNI")
     public String registrarPacienteDNI(@RequestParam("dni") String dni, Model model) {
@@ -82,10 +81,10 @@ public class PacienteController {
      } 
 }
 /* sin consulta a la base de datos  */
-@PostMapping("/login_tarjeta")
-public String registratPacienteTarjeta(@RequestParam("numTarjeta") String numTarjeta, Model model ) {
+    @PostMapping("/login_tarjeta")
+    public String registrarPacienteTarjeta(@RequestParam("nTarjeta") String nTarjeta, Model model ) {
     // Aquí va el código para validar el numero
-    if (numTarjeta.length() == 10 && numTarjeta.matches("[0-9]+")) {
+    if (nTarjeta.length() == 10 && nTarjeta.matches("[0-9]+")) {
         Paciente paciente = new Paciente();
         // Marcamos al paciente como presente
     paciente.setPresente(true);
@@ -99,7 +98,6 @@ public String registratPacienteTarjeta(@RequestParam("numTarjeta") String numTar
     }
 }
    
-
     /* buscando en la base de datos 
     @PostMapping("/login_DNI")
    public String registrarPacienteDNI(@RequestParam("dni") String dni, Model model) {
@@ -133,14 +131,14 @@ public String registratPacienteTarjeta(@RequestParam("numTarjeta") String numTar
 
 /* consultando a la base de datos  
     @PostMapping("/login_tarjeta")
-    public String registrarPacienteTarjeta(@RequestParam("nTarjeta") Long numTarjeta, Model model ) {
-        Paciente paciente = PacienteRepository.findByNTarjeta(numTarjeta);
+    public String registrarPacienteTarjeta(@RequestParam("nTarjeta") String nTarjeta, Model model ) {
+        Paciente paciente = PacienteRepository.findByNTarjeta(nTarjeta);
         if (paciente == null) {
             model.addAttribute("error", "El paciente ya está registrado.");
             return "redirect:/error_registro";
         }
         // Aquí va el código para validar el numero
-        if (nTarjeta.toString().length() == 12 && nTarjeta.toString().matches("[0-9]+")) {
+        if (nTarjeta.length() == 12 && nTarjeta.matches("[0-9]+")) {
            // Marcamos al paciente como presente
         paciente.setPresente(true);
         paciente = PacienteRepository.save(paciente);
@@ -153,8 +151,6 @@ public String registratPacienteTarjeta(@RequestParam("numTarjeta") String numTar
         }
     }
     */
-
-
 
     @PostMapping("/comparar_hora_llegada")
     public String compararHoraLlegada(@RequestParam("id") String id, @RequestParam("horaLlegada") String horaLlegada, Model model) {
