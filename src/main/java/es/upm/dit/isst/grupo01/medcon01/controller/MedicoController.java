@@ -15,17 +15,17 @@ public class LoginController {
 
     @GetMapping("/")
     public String showIndexPage() {
-        return "index";
+        return "medico/index";
     }
     
     @GetMapping("/error")
 public String showErrorPage() {
-    return "error";
+    return "medico/error";
 }
 
     @GetMapping("/login")
     public String showLoginPage() {
-        return "login";
+        return "medico/login";
     }
     List<String> items = Arrays.asList("Raúl Cervantes Nuñez", "María Rodriguez Ruíz", "Ana López Bilbao");
 
@@ -35,7 +35,7 @@ public String showErrorPage() {
         model.addAttribute("items", items);
         // Agregar el atributo "username" al modelo
         model.addAttribute("username", "Arturo Pérez Sevilla");
-        return "welcome";
+        return "medico/welcome";
     }
 
     @PostMapping("/login")
@@ -45,10 +45,10 @@ public String showErrorPage() {
         // De lo contrario, se volvería a mostrar la página de inicio de sesión con un mensaje de error
         if (username.equals("12345678A") && password.equals("contraseña")) {
             model.addAttribute("username", username); // AQUÍ
-            return "redirect:/welcome";
+            return "redirect:/medico/welcome";
         } else {
             model.addAttribute("error", "Nombre de usuario o contraseña incorrectos");
-            return "loginerror";
+            return "medico/loginerror";
         }
     }
 
@@ -59,17 +59,17 @@ public String showErrorPage() {
         // De lo contrario, se volvería a mostrar la página de inicio de sesión con un mensaje de error
         if (username.equals("12345678A") && password.equals("contraseña")) {
             model.addAttribute("username", username);
-            return "welcome";
+            return "medico/welcome";
         } else {
             model.addAttribute("error", "Nombre de usuario o contraseña incorrectos");
-            return "loginerror";
+            return "medico/loginerror";
         }
     }
 
     
     @GetMapping("/paciente")
     public String mostrarPaciente(Model model) {
-        return "paciente";
+        return "medico/paciente";
     }
 
 
