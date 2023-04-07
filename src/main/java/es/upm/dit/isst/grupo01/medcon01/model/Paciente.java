@@ -20,7 +20,7 @@ public class Paciente {
     private boolean presente;
     private String nombre;
     
-    public String getDNI() {
+    public String getDni() {
         return dni;
     }
 
@@ -36,7 +36,7 @@ public class Paciente {
         this.numTarjeta = numTarjeta;
     }
 
-    public int getcita() {
+    public int getCita() {
         return cita;
     }
 
