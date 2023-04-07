@@ -1,6 +1,6 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
-import java.util.Date;
+import java.time.*;
 import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +27,9 @@ public class PacienteController {
 
     @Autowired
     private PacienteRepository PacienteRepository;
+    public PacienteController(PacienteRepository pacienteRepository){
+        this.PacienteRepository = pacienteRepository;
+    }
 
     @Autowired 
     private MedicoController medicoController;
@@ -130,30 +133,20 @@ public String registratPacienteTarjeta(@RequestParam("numTarjeta") String numTar
 
 /* consultando a la base de datos  
     @PostMapping("/login_tarjeta")
-<<<<<<< HEAD
-    public String registrarPacienteTarjeta(@RequestParam("nTarjeta") Long nTarjeta, Model model ) {
-        // Aquí va el código para validar el numero
-        if (nTarjeta.toString().length() == 12 && nTarjeta.toString().matches("[0-9]+")) {
-            Paciente paciente = new Paciente();
-            paciente.setPresente(true);
-            paciente = PacienteRepository.save(paciente);
-            model.addAttribute("paciente", paciente);
-=======
-    public String registratPacienteTarjeta(@RequestParam("numTarjeta") String numTarjeta, Model model ) {
-        Paciente paciente = PacienteRepository.findByNumTarjeta(numTarjeta);
+    public String registrarPacienteTarjeta(@RequestParam("nTarjeta") Long numTarjeta, Model model ) {
+        Paciente paciente = PacienteRepository.findByNTarjeta(numTarjeta);
         if (paciente == null) {
             model.addAttribute("error", "El paciente ya está registrado.");
             return "redirect:/error_registro";
         }
         // Aquí va el código para validar el numero
-        if (numTarjeta.length() == 10 && numTarjeta.matches("[0-9]+")) {
+        if (nTarjeta.toString().length() == 12 && nTarjeta.toString().matches("[0-9]+")) {
            // Marcamos al paciente como presente
         paciente.setPresente(true);
         paciente = PacienteRepository.save(paciente);
         // Agregamos al paciente a la lista del médico
         medicoController.addPaciente(paciente);
         model.addAttribute("paciente", paciente);
->>>>>>> c42f1bf6227b40e1856612068f8b0d0986560f78
             return "redirect:/informacion_cita";
         } else {
             return "redirect:/error_cita";
@@ -170,7 +163,7 @@ public String registratPacienteTarjeta(@RequestParam("numTarjeta") String numTar
     
         if (paciente != null) {
             // Obtener la hora de la cita del paciente
-            Date horaCita = paciente.getHoraCita();
+            LocalDate horaCita = paciente.getHoraCita();
     
             // Obtener la hora de llegada del paciente
             LocalDateTime horaLlegadaParsed = LocalDateTime.parse(horaLlegada, DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm"));

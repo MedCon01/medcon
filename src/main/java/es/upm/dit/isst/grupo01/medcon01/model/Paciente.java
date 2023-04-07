@@ -4,31 +4,32 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-//import javax.persistence.GenerationType;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.OneToOne;
-import java.sql.Date;
-
+import java.time.LocalDate;
+import java.time.LocalTime;
 import org.hibernate.annotations.GenericGenerator;
-import org.hibernate.annotations.Table;
 
 @Entity
-// @Table(name = "Paciente")
+@Table(name = "Paciente")
 public class Paciente {
     
-   // @GeneratedValue(generator = "uuid")
-   // @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+   @GeneratedValue(generator = "uuid")
+   @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @Id
     private String id;
     private String dni;
     private String nombre;
-    private Date fecha_nacimiento;
+    private LocalDate fecha_nacimiento;
     private Long nTarjeta;
     private int cita; 
     private boolean presente;
+    private LocalDate fechaCita;
+    private LocalTime horaLlegada;
     
-<<<<<<< HEAD
-    public Paciente(String id, String dni, String nombre, Date fecha_nacimiento, Long nTarjeta, int cita, Boolean presente){
+    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, Long nTarjeta, int cita, Boolean presente){
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -40,11 +41,6 @@ public class Paciente {
     public Paciente(){}
 
     public String getDNI() {
-=======
-   
-    private Date fechaCita;
-    public String getDni() {
->>>>>>> c42f1bf6227b40e1856612068f8b0d0986560f78
         return dni;
     }
 
@@ -59,75 +55,53 @@ public class Paciente {
     public void setnTarjeta(Long nTarjeta) {
         this.nTarjeta = nTarjeta;
     }
-<<<<<<< HEAD
-    @OneToOne
-    public int getcita() {
-=======
 
+    @OneToOne
     public int getCita() {
->>>>>>> c42f1bf6227b40e1856612068f8b0d0986560f78
         return cita;
     }
-
     public void setCita(int cita) {
         this.cita = cita;
-    }
-     
+    } 
     public boolean getPresente(){
         return presente;
     }
-
     public void setPresente(boolean presente){
         this.presente = presente;
     }
-
     public String getNombre(){
         return nombre;
     }
-
     public void setNombre(String nombre){
         this.nombre = nombre;
     }
-
     public void setId(String id){
         this.id = id;
 
     }
-
     public String getId(){
         return id;
     }
-
-<<<<<<< HEAD
-=======
-    public Date getFechaCita() {
+    public LocalDate getFechaCita() {
         return fechaCita;
     }
-
-    public void setFechaCita(Date fechaCita) {
+    public void setFechaCita(LocalDate fechaCita) {
         this.fechaCita = fechaCita;
     }
-
-    public Date getHoraCita() {
+    public LocalDate getHoraCita() {
         return getHoraCita();
     }
-
-    public void setHoraCita(Date horaCita) {
+    public void setHoraCita(LocalTime horaCita) {
     }
-
     public Date getHoraLlegada() {
         return getHoraLlegada();
     }
-
-    public void setHoraLlegada(Date horaLlegada) {
+    public void setHoraLlegada(LocalTime horaLlegada) {
+        this.horaLlegada = horaLlegada;
     }
-
     public int getOrden() {
         return 0;
     }
-
     public void setOrden(int orden) {
     }
-   
->>>>>>> c42f1bf6227b40e1856612068f8b0d0986560f78
 }

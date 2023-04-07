@@ -1,5 +1,6 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.upm.dit.isst.grupo01.medcon01.model.Medico;
 import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
 
 import java.util.List;
@@ -14,7 +16,12 @@ import java.util.*;
 
 @Controller
 public class MedicoController {
-    String tiempoConsulta= "00:00:00";
+    @Autowired
+    private MedicoController medicoController;
+    public MedicoController(MedicoController medicoController) {
+        this.medicoController = medicoController;
+    }
+    private String tiempoConsulta= "00:00:00";
     private List <Paciente> pacientes = new ArrayList<>();
     
     public void addPaciente(Paciente paciente) {
@@ -84,19 +91,10 @@ public String showErrorPage() {
 
     }
 
-    
-<<<<<<< HEAD
-    public void addPaciente(Paciente paciente) {
-        pacientes.add(paciente);
-    }
     // esto esta dos veces, da problemas
  //   @GetMapping("/paciente")
  //   public String mostrarListaPacientes(Model model) {
  //       model.addAttribute("pacientes", pacientes);
  //       return "medico/paciente";
  //   }
-=======
->>>>>>> c42f1bf6227b40e1856612068f8b0d0986560f78
-
-
 }
