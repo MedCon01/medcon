@@ -33,6 +33,7 @@ public class Medico {
         this.nombre = nombre;
         this.n_colegiado = n_colegiado;
         this.salaConsulta = salaConsulta;
+        
         this.especialidad = especialidad;
         this.tiempoGlobal = tiempoGlobal;
         this.tiempoConsulta_avg = tiempoConsulta_avg;
