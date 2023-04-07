@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.*;
 
 @Controller
-public class LoginController {
+public class MedicoController {
     String tiempoConsulta= "00:00:00";
 
     @GetMapping("/")
