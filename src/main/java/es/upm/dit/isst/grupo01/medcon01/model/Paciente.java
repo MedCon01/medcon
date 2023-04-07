@@ -1,7 +1,12 @@
 package es.upm.dit.isst.grupo01.medcon01.model;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
 public class Paciente {
-    
+    @Id
+    private String id;
     private String dni;
     private int n_tarjeta;
     private int cita; 
