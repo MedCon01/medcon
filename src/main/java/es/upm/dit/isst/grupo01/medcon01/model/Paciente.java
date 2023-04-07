@@ -1,8 +1,10 @@
 package es.upm.dit.isst.grupo01.medcon01.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+//import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
 import java.sql.Date;
@@ -25,6 +27,7 @@ public class Paciente {
     private int cita; 
     private boolean presente;
     
+<<<<<<< HEAD
     public Paciente(String id, String dni, String nombre, Date fecha_nacimiento, Long nTarjeta, int cita, Boolean presente){
         this.id = id;
         this.dni = dni;
@@ -37,6 +40,11 @@ public class Paciente {
     public Paciente(){}
 
     public String getDNI() {
+=======
+   
+    private Date fechaCita;
+    public String getDni() {
+>>>>>>> c42f1bf6227b40e1856612068f8b0d0986560f78
         return dni;
     }
 
@@ -51,8 +59,13 @@ public class Paciente {
     public void setnTarjeta(Long nTarjeta) {
         this.nTarjeta = nTarjeta;
     }
+<<<<<<< HEAD
     @OneToOne
     public int getcita() {
+=======
+
+    public int getCita() {
+>>>>>>> c42f1bf6227b40e1856612068f8b0d0986560f78
         return cita;
     }
 
@@ -85,4 +98,36 @@ public class Paciente {
         return id;
     }
 
+<<<<<<< HEAD
+=======
+    public Date getFechaCita() {
+        return fechaCita;
+    }
+
+    public void setFechaCita(Date fechaCita) {
+        this.fechaCita = fechaCita;
+    }
+
+    public Date getHoraCita() {
+        return getHoraCita();
+    }
+
+    public void setHoraCita(Date horaCita) {
+    }
+
+    public Date getHoraLlegada() {
+        return getHoraLlegada();
+    }
+
+    public void setHoraLlegada(Date horaLlegada) {
+    }
+
+    public int getOrden() {
+        return 0;
+    }
+
+    public void setOrden(int orden) {
+    }
+   
+>>>>>>> c42f1bf6227b40e1856612068f8b0d0986560f78
 }

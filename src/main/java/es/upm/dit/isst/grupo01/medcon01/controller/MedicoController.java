@@ -15,6 +15,11 @@ import java.util.*;
 @Controller
 public class MedicoController {
     String tiempoConsulta= "00:00:00";
+    private List <Paciente> pacientes = new ArrayList<>();
+    
+    public void addPaciente(Paciente paciente) {
+        pacientes.add(paciente);
+    }
 
     @GetMapping("/")
     public String showIndexPage() {
@@ -38,6 +43,9 @@ public String showErrorPage() {
         model.addAttribute("items", items);
         // Agregar el atributo "username" al modelo
         model.addAttribute("username", "Arturo Pérez Sevilla");
+        // para mostrar la lista de pacientes
+        model.addAttribute("pacientes", pacientes);
+
         return "medico/welcome";
     }
 
@@ -48,7 +56,7 @@ public String showErrorPage() {
         // De lo contrario, se volvería a mostrar la página de inicio de sesión con un mensaje de error
         if (username.equals("12345678A") && password.equals("contraseña")) {
             model.addAttribute("username", username); // AQUÍ
-            return "redirect:/medico/welcome";
+            return "medico/welcome";
         } else {
             model.addAttribute("error", "Nombre de usuario o contraseña incorrectos");
             return "medico/loginerror";
@@ -73,10 +81,11 @@ public String showErrorPage() {
     @GetMapping("/paciente")
     public String mostrarPaciente(Model model) {
         return "medico/paciente";
+
     }
 
-    private List<Paciente> pacientes = new ArrayList<>();
     
+<<<<<<< HEAD
     public void addPaciente(Paciente paciente) {
         pacientes.add(paciente);
     }
@@ -86,6 +95,8 @@ public String showErrorPage() {
  //       model.addAttribute("pacientes", pacientes);
  //       return "medico/paciente";
  //   }
+=======
+>>>>>>> c42f1bf6227b40e1856612068f8b0d0986560f78
 
 
 }
