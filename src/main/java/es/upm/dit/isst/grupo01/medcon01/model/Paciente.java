@@ -1,8 +1,10 @@
 package es.upm.dit.isst.grupo01.medcon01.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
+//import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 import org.hibernate.annotations.GenericGenerator;
@@ -19,7 +21,7 @@ public class Paciente {
     private int cita; 
     private boolean presente;
     private String nombre;
-    
+    private Date fechaCita;
     public String getDNI() {
         return dni;
     }
@@ -69,5 +71,33 @@ public class Paciente {
         return id;
     }
 
+    public Date getFechaCita() {
+        return fechaCita;
+    }
+
+    public void setFechaCita(Date fechaCita) {
+        this.fechaCita = fechaCita;
+    }
+
+    public Date getHoraCita() {
+        return getHoraCita();
+    }
+
+    public void setHoraCita(Date horaCita) {
+    }
+
+    public Date getHoraLlegada() {
+        return getHoraLlegada();
+    }
+
+    public void setHoraLlegada(Date horaLlegada) {
+    }
+
+    public int getOrden() {
+        return 0;
+    }
+
+    public void setOrden(int orden) {
+    }
    
 }
