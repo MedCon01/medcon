@@ -80,12 +80,12 @@ public String showErrorPage() {
     public void addPaciente(Paciente paciente) {
         pacientes.add(paciente);
     }
-    
-    @GetMapping("/paciente")
-    public String mostrarListaPacientes(Model model) {
-        model.addAttribute("pacientes", pacientes);
-        return "medico/paciente";
-    }
+    // esto esta dos veces, da problemas
+ //   @GetMapping("/paciente")
+ //   public String mostrarListaPacientes(Model model) {
+ //       model.addAttribute("pacientes", pacientes);
+ //       return "medico/paciente";
+ //   }
 
 
 }

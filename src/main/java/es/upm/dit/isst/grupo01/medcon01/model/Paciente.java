@@ -4,22 +4,38 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import java.sql.Date;
 
 import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Table;
 
 @Entity
+// @Table(name = "Paciente")
 public class Paciente {
-    // para no generar manualmente un id para cada instancia. Si no creo un id para cada instancia el programa no va. 
-    @GeneratedValue(generator = "uuid")
-    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
+    
+   // @GeneratedValue(generator = "uuid")
+   // @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @Id
     private String id;
     private String dni;
-    private String numTarjeta;
+    private String nombre;
+    private Date fecha_nacimiento;
+    private Long nTarjeta;
     private int cita; 
     private boolean presente;
-    private String nombre;
     
+    public Paciente(String id, String dni, String nombre, Date fecha_nacimiento, Long nTarjeta, int cita, Boolean presente){
+        this.id = id;
+        this.dni = dni;
+        this.nombre = nombre;
+        this.fecha_nacimiento = fecha_nacimiento;
+        this.nTarjeta = nTarjeta;
+        this.cita = cita;
+        this.presente = presente;
+    }
+    public Paciente(){}
+
     public String getDNI() {
         return dni;
     }
@@ -28,14 +44,14 @@ public class Paciente {
         this.dni = dni;
     }
 
-    public String getNTarjeta() {
-        return numTarjeta;
+    public Long getnTarjeta() {
+        return nTarjeta;
     }
 
-    public void setNTarjeta(String numTarjeta) {
-        this.numTarjeta = numTarjeta;
+    public void setnTarjeta(Long nTarjeta) {
+        this.nTarjeta = nTarjeta;
     }
-
+    @OneToOne
     public int getcita() {
         return cita;
     }
@@ -69,5 +85,4 @@ public class Paciente {
         return id;
     }
 
-   
 }

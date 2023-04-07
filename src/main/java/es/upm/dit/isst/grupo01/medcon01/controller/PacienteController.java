@@ -74,9 +74,9 @@ public class PacienteController {
 }
 
     @PostMapping("/login_tarjeta")
-    public String registratPacienteTarjeta(@RequestParam("numTarjeta") String numTarjeta, Model model ) {
+    public String registrarPacienteTarjeta(@RequestParam("nTarjeta") Long nTarjeta, Model model ) {
         // Aquí va el código para validar el numero
-        if (numTarjeta.length() == 10 && numTarjeta.matches("[0-9]+")) {
+        if (nTarjeta.toString().length() == 12 && nTarjeta.toString().matches("[0-9]+")) {
             Paciente paciente = new Paciente();
             paciente.setPresente(true);
             paciente = PacienteRepository.save(paciente);
