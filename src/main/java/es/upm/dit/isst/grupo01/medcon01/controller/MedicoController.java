@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
+
 import java.util.List;
 import java.util.*;
 
@@ -69,6 +72,18 @@ public String showErrorPage() {
     
     @GetMapping("/paciente")
     public String mostrarPaciente(Model model) {
+        return "medico/paciente";
+    }
+
+    private List<Paciente> pacientes = new ArrayList<>();
+    
+    public void addPaciente(Paciente paciente) {
+        pacientes.add(paciente);
+    }
+    
+    @GetMapping("/paciente")
+    public String mostrarListaPacientes(Model model) {
+        model.addAttribute("pacientes", pacientes);
         return "medico/paciente";
     }
 

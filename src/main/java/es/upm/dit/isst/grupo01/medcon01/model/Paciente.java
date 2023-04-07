@@ -1,14 +1,21 @@
 package es.upm.dit.isst.grupo01.medcon01.model;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.GenericGenerator;
 
 @Entity
 public class Paciente {
+    // para no generar manualmente un id para cada instancia. Si no creo un id para cada instancia el programa no va. 
+    @GeneratedValue(generator = "uuid")
+    @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     @Id
     private String id;
     private String dni;
-    private int n_tarjeta;
+    private String numTarjeta;
     private int cita; 
     private boolean presente;
     private String nombre;
@@ -21,12 +28,12 @@ public class Paciente {
         this.dni = dni;
     }
 
-    public int getn_tarjeta() {
-        return n_tarjeta;
+    public String getNTarjeta() {
+        return numTarjeta;
     }
 
-    public void setN_tarjeta(int n_tarjeta) {
-        this.n_tarjeta = n_tarjeta;
+    public void setNTarjeta(String numTarjeta) {
+        this.numTarjeta = numTarjeta;
     }
 
     public int getcita() {
@@ -53,4 +60,14 @@ public class Paciente {
         this.nombre = nombre;
     }
 
+    public void setId(String id){
+        this.id = id;
+
+    }
+
+    public String getId(){
+        return id;
+    }
+
+   
 }

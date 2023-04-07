@@ -1,5 +1,7 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
+import java.util.UUID;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,6 +21,9 @@ public class PacienteController {
 
     @Autowired
     private PacienteRepository PacienteRepository;
+
+    @Autowired 
+    private MedicoController medicoController;
     
     @GetMapping("/inicio_kiosko")
     public String showInicioKiosko() {
@@ -49,11 +54,18 @@ public class PacienteController {
     
     @PostMapping("/login_DNI")
    public String registrarPacienteDNI(@RequestParam("dni") String dni, Model model) {
+    // Buscamos el paciente en la base de datos
+    Paciente paciente = PacienteRepository.findByDni(dni);
+    if (paciente != null) {
+        model.addAttribute("error", "El paciente ya está registrado.");
+        return "redirect:/error_registro";
+    }
     // Aquí va el código para validar el DNI
     if (dni.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
-        Paciente paciente = new Paciente();
+       // Paciente paciente = new Paciente();
         paciente.setPresente(true);
-        PacienteRepository.save(paciente);
+        paciente = PacienteRepository.save(paciente);
+        medicoController.addPaciente(paciente);
         model.addAttribute("paciente", paciente);
         return "redirect:/informacion_cita";
     } else {
@@ -62,9 +74,9 @@ public class PacienteController {
 }
 
     @PostMapping("/login_tarjeta")
-    public String registratPacienteTarjeta(@RequestParam("n_tarjeta") String n_tarjeta, Model model ) {
-        // Aquí va el código para validar el número
-        if (n_tarjeta.length() == 10 && n_tarjeta.matches("[0-9]+")) {
+    public String registratPacienteTarjeta(@RequestParam("numTarjeta") String numTarjeta, Model model ) {
+        // Aquí va el código para validar el numero
+        if (numTarjeta.length() == 10 && numTarjeta.matches("[0-9]+")) {
             Paciente paciente = new Paciente();
             paciente.setPresente(true);
             paciente = PacienteRepository.save(paciente);
