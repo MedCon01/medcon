@@ -1,6 +1,8 @@
 package es.upm.dit.isst.grupo01.medcon01.model;
 
 import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +25,11 @@ public class Medico {
     private String n_colegiado;
     private int salaConsulta;
     private String especialidad;
+    @Column
     private Duration tiempoGlobal;
+    @Column
     private Duration tiempoConsulta_avg;
+    @Column
     private List<Paciente> cola;
 
     public Medico (String dni, String nombre, String n_colegiado, int salaConsulta, String especialidad, Duration tiempoGlobal, 
