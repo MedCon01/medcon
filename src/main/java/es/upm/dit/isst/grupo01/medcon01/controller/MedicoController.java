@@ -109,10 +109,5 @@ public String showErrorPage() {
 
     }
 
-    // esto esta dos veces, da problemas
- //   @GetMapping("/paciente")
- //   public String mostrarListaPacientes(Model model) {
- //       model.addAttribute("pacientes", pacientes);
- //       return "medico/paciente";
- //   }
+    
 }

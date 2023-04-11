@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.OneToOne;
 
@@ -29,8 +30,8 @@ public class Medico {
     private Duration tiempoGlobal;
     @Column
     private Duration tiempoConsulta_avg;
-    @Column
-    private List<Paciente> cola;
+    @OneToMany(mappedBy = "medico")
+    private List<Cita> citas;
 
     public Medico (String dni, String nombre, String n_colegiado, int salaConsulta, String especialidad, Duration tiempoGlobal, 
                    Duration tiempoConsulta_avg, List<Paciente> cola){
@@ -42,7 +43,7 @@ public class Medico {
         this.especialidad = especialidad;
         this.tiempoGlobal = tiempoGlobal;
         this.tiempoConsulta_avg = tiempoConsulta_avg;
-        this.cola = cola;
+        this.citas = citas;
     }
     public Medico(){}
 
@@ -96,11 +97,11 @@ public class Medico {
         this.tiempoConsulta_avg = tiempoConsulta_avg;
     }
     // getter, setter cola
-    public List<Paciente> getCola() {
-        return this.cola;
+    public List<Cita> getCita() {
+        return this.citas;
     }
-    public void setCola(List<Paciente> cola){
-        this.cola = cola;
+    public void setCola(List<Cita> cola){
+        this.citas = citas;
     }
     @Override
     public String toString() {
@@ -112,7 +113,7 @@ public class Medico {
             ", especialidad='" + especialidad + '\'' +
             ", tiempoGlobal=" + tiempoGlobal +
             ", tiempoConsulta_avg=" + tiempoConsulta_avg +
-            ", cola=" + cola +
+            ", citas=" + citas +
             '}';
     }
 }
