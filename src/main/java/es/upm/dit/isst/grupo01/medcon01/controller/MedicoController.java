@@ -6,6 +6,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -109,10 +110,4 @@ public String showErrorPage() {
 
     }
 
-    // esto esta dos veces, da problemas
- //   @GetMapping("/paciente")
- //   public String mostrarListaPacientes(Model model) {
- //       model.addAttribute("pacientes", pacientes);
- //       return "medico/paciente";
- //   }
 }

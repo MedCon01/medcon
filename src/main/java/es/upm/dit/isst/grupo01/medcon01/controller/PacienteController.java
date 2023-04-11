@@ -9,8 +9,9 @@ import java.util.Map;
 import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.temporal.Temporal;  
+import java.time.temporal.Temporal;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -36,6 +37,7 @@ import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
 @RestController
 public class PacienteController {
+    @Autowired
     private PacienteRepository PacienteRepository;
     public PacienteController(PacienteRepository pacienteRepository){
         this.PacienteRepository = pacienteRepository;
