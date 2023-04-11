@@ -26,9 +26,7 @@ public class Medico {
     private String n_colegiado;
     private int salaConsulta;
     private String especialidad;
-    @Column
     private Duration tiempoGlobal;
-    @Column
     private Duration tiempoConsulta_avg;
     @OneToMany(mappedBy = "medico")
     public List <Cita> citasPend;

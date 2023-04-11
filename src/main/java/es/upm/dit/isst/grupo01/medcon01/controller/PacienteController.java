@@ -47,6 +47,8 @@ public class PacienteController {
     }
     private MedicoController medicoController;
     private Medico medico;
+    
+    public PacienteController(){}
 
     @Autowired
     private CitaRepository CitaRepository;
@@ -171,7 +173,8 @@ private void addCita(Cita cita){
         }
     }
     */
-
+/*
+ 
     @PostMapping("/comparar_hora_llegada")
     public String compararHoraLlegada(@RequestParam("id") String id, @RequestParam("horaLlegada") String horaLlegada, Model model) {
         // Obtener el paciente de la base de datos por su ID
@@ -220,6 +223,8 @@ private void addCita(Cita cita){
             return "redirect:/error_cita";
         }
     }
+    * 
+ */
 }
 
   

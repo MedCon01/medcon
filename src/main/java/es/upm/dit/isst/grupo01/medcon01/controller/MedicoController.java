@@ -34,21 +34,16 @@ import es.upm.dit.isst.grupo01.medcon01.repository.MedicoRepository;
 
 @RestController
 public class MedicoController {
-    private MedicoController medicoController;
-    public MedicoController(MedicoController medicoController) {
-        this.medicoController = medicoController;
-    }
-
-
+   private MedicoRepository medicoRepository;
+   public MedicoController(MedicoRepository medicoRepository) {
+     this.medicoRepository = medicoRepository;
+     }
+    public MedicoController(){}
     private String tiempoConsulta= "00:00:00"; //esto va en el modelo
      
-   
-
-
-
     @GetMapping("/")
     public String showIndexPage() {
-        return "medico/index";
+        return "/medico/index";
     }
     
     @GetMapping("/error")

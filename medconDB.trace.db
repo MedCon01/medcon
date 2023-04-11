@@ -1,6 +1,0 @@
-2023-04-07 21:16:01 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PACIENTE" not found (this database is empty); SQL statement:
-select paciente0_.id as id1_0_, paciente0_.cita as cita2_0_, paciente0_.dni as dni3_0_, paciente0_.n_tarjeta as n_tarjet4_0_, paciente0_.nombre as nombre5_0_, paciente0_.presente as presente6_0_ from paciente paciente0_ where paciente0_.dni=? [42104-214]
-2023-04-07 21:16:28 jdbc[3]: exception
-org.h2.jdbc.JdbcSQLSyntaxErrorException: Table "PACIENTE" not found (this database is empty); SQL statement:
-select paciente0_.id as id1_0_, paciente0_.cita as cita2_0_, paciente0_.dni as dni3_0_, paciente0_.n_tarjeta as n_tarjet4_0_, paciente0_.nombre as nombre5_0_, paciente0_.presente as presente6_0_ from paciente paciente0_ where paciente0_.dni=? [42104-214]
