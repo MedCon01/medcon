@@ -1,0 +1,30 @@
+<!--aqui ira la vista de la información de la cita del paciente-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Identificador cita</title>
+	<link rel="stylesheet" href="identificador_kiosko.css">
+</head>
+<body>
+	<div id="barra">
+		<a href="#" onclick="goBack()">Volver</a>
+		<!--<p id="reloj">00:00:00</p>-->
+	</div>
+	<div id="marco">
+		<div id="datos_paciente">
+		<img src="logo_Medcon.png" alt="logo_Medcon">
+		<div id="datos">
+			<h3>Nombre: Raúl Cervantes Nuñez </h3>
+			<h3>Hora cita: 11:45</h3>
+		</div>
+		</div>
+		<div id="info_cita">
+			<h1>Su Identificador es <u>RCN123</u></h1>
+			<h1>Acuda a la sala de espera <u>01</u></h1>
+			<button id="imprimir" onclick="window.location.href = 'inicio_kiosko';">Imprimir</button>
+		</div>
+	</div>
+   
+</body>
+</html>
