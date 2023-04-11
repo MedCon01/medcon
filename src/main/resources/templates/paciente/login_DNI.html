@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Inicio de sesión</title>
-	<link rel="stylesheet" href="login.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/login_DNI.css}s">
 	<!--<script>
                 function mostrarHoraActual() {
             var fecha = new Date();
@@ -26,7 +26,7 @@
 		<!--<p id="reloj">00:00:00</p>-->
 	</div>
 	<div id=marco>
-		<img src="logo_Medcon.png" alt="logo_Medcon">
+		<img src="../../static/css/logo_Medcon.png" alt="logo_Medcon">
 		<h2>Introduzca su DNI </h2>
 		<form action="/login_DNI" method="post">
 			<input type="text" id="dni" name="dni"  maxlength="9"><br>

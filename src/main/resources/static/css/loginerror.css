@@ -1,0 +1,86 @@
+@font-face {
+    font-family: 'Abel';
+    src: url('./fonts/Abel.ttf') format('truetype');
+}
+
+body{
+    background-color: #92abc8;
+    font-family: 'abel', sans-serif;
+}
+#barra{
+    width: 100%; 
+    height: 50px; 
+    background-color:  #295c93; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    margin-bottom: 10px;
+}
+
+#barra a{
+    color: #ffff;
+    background-color:  #295c93; 
+    display: block;
+    margin-left: 2%;
+    margin-top: 0.75%;
+    font-size: 150%;
+    text-decoration: none;
+    font-family: 'abel', sans-serif;
+}
+
+
+#marco{
+    background-color: #ecf5ff;
+    width: 60%; 
+    height: 60%; 
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    border-radius: 10px;
+
+}
+#marco img {
+    display: block;
+    margin: 0 auto;
+    width: 15%;
+    margin-bottom: 5px; 
+    margin-top: 5px; 
+  }
+
+#marco h2{
+    text-align: center; 
+    color: #295c93; 
+    font-size: 15px; 
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-family: 'abel', sans-serif;
+}
+#marco input[type="text"]#Usuario, #marco input[type="text"]#Contraseña{
+    width: 70%; 
+    height: 10%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: block;
+    margin: auto auto;
+    background-color: #92abc8;
+    border-color: #92abc8;
+    font-size: 150%;
+    font-family: 'abel', sans-serif;
+    color: #ffff;
+    text-align: center;
+}
+#marco input[type="submit"] {
+    width: 20%; 
+    height: 10%;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    display: block;
+    margin: auto auto;
+    background-color: #ff9148;
+    border-color: #ff9148;
+    font-size: 150%;
+    font-family: 'abel', sans-serif;
+}
+
+
