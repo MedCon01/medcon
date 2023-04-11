@@ -38,7 +38,7 @@ import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
 import es.upm.dit.isst.grupo01.medcon01.repository.CitaRepository;
 import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
-@RestController
+@Controller
 public class PacienteController {
     @Autowired
     private PacienteRepository PacienteRepository;
@@ -58,73 +58,34 @@ public class PacienteController {
     
     @GetMapping("/inicio_kiosko")
     public String showInicioKiosko() {
-        return "inicio_kiosko";
+        return "paciente/inicio_kiosko";
     }
   
     @GetMapping("/login_DNI")
     public String showLoginDNI() {
-        return "login_DNI";
+        return "paciente/login_DNI";
     }
 
     @GetMapping("/login_tarjeta")
     public String showLoginTarjeta() {
-        return "login_tarjeta";
+        return "paciente/login_tarjeta";
     }
 
     @GetMapping("/error_cita")
     public String showErrorCita() {
-        return "error_cita";
+        return "paciente/error_cita";
     }
 
     @GetMapping("/informacion_cita")
     public String showInformacionCita() {
-        return "informacion_cita";
+        return "paciente/informacion_cita";
     }
-    /*sin consulta a la base de datos 
-    @PostMapping("/login_DNI")
-    public String registrarPacienteDNI(@RequestParam("dni") String dni, Model model) {
-     if ( dni.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
-        Paciente paciente = new Paciente();
-        // marcamos el paciente como presente
-           paciente.setPresente(true);
-           paciente = PacienteRepository.save(paciente);
-           // Agregamos al paciente a la lista del médico
-           medicoController.addPaciente(paciente);
-           // Agregamos los datos del paciente a la vista
-         model.addAttribute("dni", dni);
-         model.addAttribute("nombre", paciente.getNombre());
-         model.addAttribute("cita", paciente.getCita());
-         model.addAttribute("paciente", paciente);
-        
-          return "redirect:/informacion_cita";     
-     } else {  
-        return "redirect:/error_cita";
-         
-     } 
-} */
 
 
 private void addCita(Cita cita){
      medico.citasPend.add(cita);
 }
-/* sin consulta a la base de datos  
-    @PostMapping("/login_tarjeta")
-    public String registrarPacienteTarjeta(@RequestParam("nTarjeta") String nTarjeta, Model model ) {
-    // Aquí va el código para validar el numero
-    if (nTarjeta.length() == 10 && nTarjeta.matches("[0-9]+")) {
-        Paciente paciente = new Paciente();
-        // Marcamos al paciente como presente
-    paciente.setPresente(true);
-    paciente = PacienteRepository.save(paciente);
-    // Agregamos al paciente a la lista del médico
-    medicoController.addPaciente(paciente);
-    model.addAttribute("paciente", paciente);
-        return "redirect:/informacion_cita";
-    } else {
-        return "redirect:/error_cita";
-    }
-}
-*/
+
    
     /* buscando en la base de datos */
     @PostMapping("/login_DNI")
@@ -138,14 +99,14 @@ private void addCita(Cita cita){
         return "redirect:/error_cita";
     } else */
     if (!dni.matches("\\d{8}[A-HJ-NP-TV-Z]") || !paciente.getDni().equals(dni)) {
-        return "redirect:/error_cita";
+        return "redirect:/paciente/error_cita";
     } else {
         // Marcamos al paciente como presente
         paciente.setPresente(true);
         paciente = PacienteRepository.save(paciente);
         addCita(cita_paciente);
         
-       return "redirect:/informacion_cita";
+       return "redirect:/paciente/informacion_cita";
         
     } 
 }
