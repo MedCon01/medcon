@@ -42,20 +42,18 @@ import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 public class PacienteController {
     @Autowired
     private PacienteRepository PacienteRepository;
-    public PacienteController(PacienteRepository pacienteRepository){
+    @Autowired
+    private CitaRepository CitaRepository;
+    public PacienteController(PacienteRepository pacienteRepository, CitaRepository citaRepository){
         this.PacienteRepository = pacienteRepository;
+        this.CitaRepository = citaRepository;
     }
+
     private MedicoController medicoController;
     private Medico medico;
     
     public PacienteController(){}
 
-    @Autowired
-    private CitaRepository CitaRepository;
-    public PacienteController(CitaRepository CitaRepository){
-        this.CitaRepository = CitaRepository;
-    }
-    
     @GetMapping("/inicio_kiosko")
     public String showInicioKiosko() {
         return "paciente/inicio_kiosko";
@@ -81,10 +79,11 @@ public class PacienteController {
         return "paciente/informacion_cita";
     }
 
-
+/* 
 private void addCita(Cita cita){
      medico.citasPend.add(cita);
 }
+*/
 
    
     /* buscando en la base de datos */
@@ -93,23 +92,29 @@ private void addCita(Cita cita){
     // Buscamos el paciente en la base de datos
     Paciente paciente = PacienteRepository.findByDni(dni);
     Cita cita_paciente = CitaRepository.findByPaciente(paciente.getId());
+    Medico medico = findByDni(cita_paciente.getMedico());
 
    /* if (paciente == null) {
         model.addAttribute("error", "El paciente no está registrado.");
         return "redirect:/error_cita";
     } else */
     if (!dni.matches("\\d{8}[A-HJ-NP-TV-Z]") || !paciente.getDni().equals(dni)) {
-        return "redirect:/paciente/error_cita";
+        return "paciente/error_cita";
     } else {
         // Marcamos al paciente como presente
         paciente.setPresente(true);
         paciente = PacienteRepository.save(paciente);
-        addCita(cita_paciente);
+        // addCita(cita_paciente);
+        medico.citasPend.add(cita_paciente);
         
        return "redirect:/paciente/informacion_cita";
         
     } 
 }
+
+    private Medico findByDni(Medico medico2) {
+        return null;
+    }
     
 
 /* consultando a la base de datos  
