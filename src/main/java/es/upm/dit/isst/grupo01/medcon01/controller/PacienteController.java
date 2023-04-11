@@ -38,7 +38,7 @@ import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
 import es.upm.dit.isst.grupo01.medcon01.repository.CitaRepository;
 import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
-@RestController
+@Controller
 public class PacienteController {
     @Autowired
     private PacienteRepository PacienteRepository;

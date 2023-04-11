@@ -32,7 +32,7 @@ import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
 import es.upm.dit.isst.grupo01.medcon01.repository.MedicoRepository;
 
 
-@RestController
+@Controller
 public class MedicoController {
    private MedicoRepository medicoRepository;
    public MedicoController(MedicoRepository medicoRepository) {
@@ -43,7 +43,7 @@ public class MedicoController {
      
     @GetMapping("/")
     public String showIndexPage() {
-        return "/medico/index";
+        return "index";
     }
     
     @GetMapping("/error")
