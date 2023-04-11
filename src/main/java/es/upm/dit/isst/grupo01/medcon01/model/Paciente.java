@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.OneToOne;
 import java.time.LocalDate;
@@ -25,12 +26,13 @@ public class Paciente {
     private String nombre;
     private LocalDate fecha_nacimiento;
     private String nTarjeta;
-    private int cita; 
+    @OneToMany (mappedBy = "paciente")
+    private Cita cita; 
     private boolean presente;
     private LocalDate fechaCita;
     private LocalTime horaLlegada;
     
-    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, String nTarjeta, int cita, Boolean presente){
+    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, String nTarjeta, Cita cita, Boolean presente){
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -58,10 +60,10 @@ public class Paciente {
     }
 
     @OneToOne
-    public int getCita() {
+    public Cita getCita() {
         return cita;
     }
-    public void setCita(int cita) {
+    public void setCita(Cita cita) {
         this.cita = cita;
     } 
     public boolean getPresente(){

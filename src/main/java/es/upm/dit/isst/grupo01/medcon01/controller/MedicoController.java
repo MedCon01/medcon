@@ -52,9 +52,9 @@ public class MedicoController {
     }
     
     @GetMapping("/error")
-public String showErrorPage() {
-    return "medico/error";
-}
+    public String showErrorPage() {
+        return "medico/error";
+    }
 
     @GetMapping("/login")
     public String showLoginPage() {

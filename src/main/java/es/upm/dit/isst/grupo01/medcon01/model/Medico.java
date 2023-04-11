@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.OneToOne;
 
@@ -29,11 +30,11 @@ public class Medico {
     private Duration tiempoGlobal;
     @Column
     private Duration tiempoConsulta_avg;
-    @Column
-    private List<Paciente> cola;
+    @OneToMany(mappedBy = "medico")
+    private Cita citasPend;
 
     public Medico (String dni, String nombre, String n_colegiado, int salaConsulta, String especialidad, Duration tiempoGlobal, 
-                   Duration tiempoConsulta_avg, List<Paciente> cola){
+                   Duration tiempoConsulta_avg, Cita citasPend){
         this.dni = dni;
         this.nombre = nombre;
         this.n_colegiado = n_colegiado;
@@ -42,7 +43,7 @@ public class Medico {
         this.especialidad = especialidad;
         this.tiempoGlobal = tiempoGlobal;
         this.tiempoConsulta_avg = tiempoConsulta_avg;
-        this.cola = cola;
+        this.citasPend = citasPend;
     }
     public Medico(){}
 
@@ -95,12 +96,13 @@ public class Medico {
     public void setTiempoConsulta_Avg(Duration tiempoConsulta_avg){
         this.tiempoConsulta_avg = tiempoConsulta_avg;
     }
-    // getter, setter cola
-    public List<Paciente> getCola() {
-        return this.cola;
+    // getter, setter citasPend
+    public Cita getCitasPend() {
+        return this.citasPend;
     }
-    public void setCola(List<Paciente> cola){
-        this.cola = cola;
+    // Setter citasPend
+    public void setCitasPend(Cita citasPend) {
+        this.citasPend = citasPend;
     }
     @Override
     public String toString() {
@@ -112,7 +114,7 @@ public class Medico {
             ", especialidad='" + especialidad + '\'' +
             ", tiempoGlobal=" + tiempoGlobal +
             ", tiempoConsulta_avg=" + tiempoConsulta_avg +
-            ", cola=" + cola +
+            ", citasPend=" + citasPend +
             '}';
     }
 }
