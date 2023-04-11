@@ -47,6 +47,12 @@ public class PacienteController {
     }
     private MedicoController medicoController;
     private Medico medico;
+
+    @Autowired
+    private CitaRepository CitaRepository;
+    public PacienteController(CitaRepository CitaRepository){
+        this.CitaRepository = CitaRepository;
+    }
     
     @GetMapping("/inicio_kiosko")
     public String showInicioKiosko() {
@@ -96,9 +102,8 @@ public class PacienteController {
 } */
 
 
-private void addPaciente(Cita cita){
+private void addCita(Cita cita){
      medico.citasPend.add(cita);
-
 }
 /* sin consulta a la base de datos  
     @PostMapping("/login_tarjeta")
@@ -125,22 +130,20 @@ private void addPaciente(Cita cita){
     // Buscamos el paciente en la base de datos
     Paciente paciente = PacienteRepository.findByDni(dni);
     Cita cita_paciente = CitaRepository.findByPaciente(paciente.getId());
-    
-    if (paciente == null) {
+
+   /* if (paciente == null) {
         model.addAttribute("error", "El paciente no está registrado.");
         return "redirect:/error_cita";
-    } else if (!dni.matches("\\d{8}[A-HJ-NP-TV-Z]") || !paciente.getDni().equals(dni)) {
+    } else */
+    if (!dni.matches("\\d{8}[A-HJ-NP-TV-Z]") || !paciente.getDni().equals(dni)) {
         return "redirect:/error_cita";
     } else {
         // Marcamos al paciente como presente
         paciente.setPresente(true);
         paciente = PacienteRepository.save(paciente);
-        // Agregamos al paciente a la lista del médico
-        medicoController.addPaciente(paciente);
-         
+        addCita(cita_paciente);
         
        return "redirect:/informacion_cita";
-       // return "redirect:/medico/welcome";
         
     } 
 }

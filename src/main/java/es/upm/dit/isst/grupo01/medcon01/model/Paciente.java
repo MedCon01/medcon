@@ -42,7 +42,7 @@ public class Paciente {
     }
     public Paciente(){}
 
-    public String getDNI() {
+    public String getDni() {
         return dni;
     }
 

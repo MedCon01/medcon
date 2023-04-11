@@ -39,19 +39,13 @@ public class MedicoController {
         this.medicoController = medicoController;
     }
 
-<<<<<<< HEAD
+
     private String tiempoConsulta= "00:00:00"; //esto va en el modelo
      
    
 
-=======
-    /*
-     public void addPaciente(Paciente paciente) {
-        pacientes.add(paciente);
-    }
-     */ 
-   
->>>>>>> 50e45267e334236355bb4423147495c18ef06daa
+
+
     @GetMapping("/")
     public String showIndexPage() {
         return "medico/index";
