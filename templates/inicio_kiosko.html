@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html>
+<head>
+	<title>MedCon</title>
+	<link rel="stylesheet" href="inicio_kiosko.css">
+	<script>
+                function mostrarHoraActual() {
+            var fecha = new Date();
+            var horas = fecha.getHours();
+            var minutos = fecha.getMinutes();
+            var tiempo = horas + ":" + minutos;
+            document.getElementById("reloj").innerText = tiempo;
+        }
+
+        window.onload = function() {
+            mostrarHoraActual(); // Mostrar la hora actual al cargar la página
+            setInterval(mostrarHoraActual, 1000); // Actualizar la hora cada segundo
+        };
+
+    </script>
+</head>
+<body>
+	<div id="barra">
+		<p id="reloj">00:00:00</p>
+	</div>
+	<div id="marco">
+		<img src="logo_Medcon.png" alt="logo_Medcon">
+		<h2>Seleccione una opción</h2>
+		<div id="botones_contenedor">
+			<button id="boton_dni" onclick="window.location.href = 'login_DNI';">Introducir DNI</button>
+			<button id="boton_tarjeta" onclick="window.location.href = 'login_tarjeta';">Introducir Nº tarjeta</button>
+		</div>
+	</div>
+</body>
+</html>
+
