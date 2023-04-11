@@ -39,8 +39,6 @@ public class MedicoController {
         this.medicoController = medicoController;
     }
 
-    private String tiempoConsulta= "00:00:00"; //esto va en el modelo
-    private List <Paciente> pacientes = new ArrayList<>(); //esto va en el modelo
      
     public void addPaciente(Paciente paciente) {
         pacientes.add(paciente);
