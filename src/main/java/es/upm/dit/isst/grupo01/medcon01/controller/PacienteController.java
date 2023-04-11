@@ -32,7 +32,10 @@ import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
 
+import es.upm.dit.isst.grupo01.medcon01.model.Cita;
+import es.upm.dit.isst.grupo01.medcon01.model.Medico;
 import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
+import es.upm.dit.isst.grupo01.medcon01.repository.CitaRepository;
 import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
 @RestController
@@ -43,6 +46,7 @@ public class PacienteController {
         this.PacienteRepository = pacienteRepository;
     }
     private MedicoController medicoController;
+    private Medico medico;
     
     @GetMapping("/inicio_kiosko")
     public String showInicioKiosko() {
@@ -68,7 +72,7 @@ public class PacienteController {
     public String showInformacionCita() {
         return "informacion_cita";
     }
-    /*sin consulta a la base de datos */
+    /*sin consulta a la base de datos 
     @PostMapping("/login_DNI")
     public String registrarPacienteDNI(@RequestParam("dni") String dni, Model model) {
      if ( dni.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
@@ -89,8 +93,14 @@ public class PacienteController {
         return "redirect:/error_cita";
          
      } 
+} */
+
+
+private void addPaciente(Cita cita){
+     medico.citasPend.add(cita);
+
 }
-/* sin consulta a la base de datos  */
+/* sin consulta a la base de datos  
     @PostMapping("/login_tarjeta")
     public String registrarPacienteTarjeta(@RequestParam("nTarjeta") String nTarjeta, Model model ) {
     // Aquí va el código para validar el numero
@@ -107,12 +117,14 @@ public class PacienteController {
         return "redirect:/error_cita";
     }
 }
+*/
    
-    /* buscando en la base de datos 
+    /* buscando en la base de datos */
     @PostMapping("/login_DNI")
    public String registrarPacienteDNI(@RequestParam("dni") String dni, Model model) {
     // Buscamos el paciente en la base de datos
     Paciente paciente = PacienteRepository.findByDni(dni);
+    Cita cita_paciente = CitaRepository.findByPaciente(paciente.getId());
     
     if (paciente == null) {
         model.addAttribute("error", "El paciente no está registrado.");
@@ -126,18 +138,13 @@ public class PacienteController {
         // Agregamos al paciente a la lista del médico
         medicoController.addPaciente(paciente);
          
-         // Agregamos los datos del paciente a la vista
-         model.addAttribute("dni", dni);
-         model.addAttribute("nombre", paciente.getNombre());
-         model.addAttribute("cita", paciente.getCita());
-         model.addAttribute("paciente", paciente);
         
        return "redirect:/informacion_cita";
        // return "redirect:/medico/welcome";
         
     } 
 }
-    */
+    
 
 /* consultando a la base de datos  
     @PostMapping("/login_tarjeta")

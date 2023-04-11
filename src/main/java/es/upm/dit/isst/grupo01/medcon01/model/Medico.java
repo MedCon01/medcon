@@ -31,10 +31,10 @@ public class Medico {
     @Column
     private Duration tiempoConsulta_avg;
     @OneToMany(mappedBy = "medico")
-    private Cita citasPend;
+    public List <Cita> citasPend;
 
     public Medico (String dni, String nombre, String n_colegiado, int salaConsulta, String especialidad, Duration tiempoGlobal, 
-                   Duration tiempoConsulta_avg, Cita citasPend){
+                   Duration tiempoConsulta_avg, List<Cita>  citasPend){
         this.dni = dni;
         this.nombre = nombre;
         this.n_colegiado = n_colegiado;
@@ -93,15 +93,15 @@ public class Medico {
     public Duration getTiempoConsulta_avg() {
         return this.tiempoConsulta_avg;
     }
-    public void setTiempoConsulta_Avg(Duration tiempoConsulta_avg){
+    public void setTiempoConsulta_avg(Duration tiempoConsulta_avg){
         this.tiempoConsulta_avg = tiempoConsulta_avg;
     }
     // getter, setter citasPend
-    public Cita getCitasPend() {
+    public List <Cita> getCitasPend() {
         return this.citasPend;
     }
     // Setter citasPend
-    public void setCitasPend(Cita citasPend) {
+    public void setCitasPend(List<Cita> citasPend) {
         this.citasPend = citasPend;
     }
     @Override
