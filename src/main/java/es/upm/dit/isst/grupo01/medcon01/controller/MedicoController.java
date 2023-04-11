@@ -39,11 +39,12 @@ public class MedicoController {
         this.medicoController = medicoController;
     }
 
-     
-    public void addPaciente(Paciente paciente) {
+    /*
+     public void addPaciente(Paciente paciente) {
         pacientes.add(paciente);
     }
-
+     */ 
+   
     @GetMapping("/")
     public String showIndexPage() {
         return "medico/index";
