@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'Abel';
+    src: url('./fonts/Abel.ttf') format('truetype');
+}
+
+body{
+    background-color: #92abc8;
+    font-family: 'abel', sans-serif;
+}
+#barra{
+    width: 100%; 
+    height: 50px; 
+    background-color:  #295c93; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    margin-bottom: 10px;
+}
+
+#barra p{
+    color: #ffff;
+    background-color:  #295c93; 
+    display: block;
+    margin-left: 2%;
+    margin-top: 0.75%;
+    font-size: 150%;
+    text-decoration: none;
+    font-family: 'abel', sans-serif;
+}
+
+
+#marco{
+    background-color: #ecf5ff;
+    width: 60%; /* Ancho del recuadro */
+    height: 60%; /* Altura del recuadro */
+    position: fixed; /* Fijar la posición del recuadro */
+    top: 50%; /* Colocar el recuadro en el centro verticalmente */
+    left: 50%; /* Colocar el recuadro en el centro horizontalmente */
+    transform: translate(-50%, -50%); 
+    border-radius: 10px;
+
+}
+#marco img {
+    display: block;
+    margin: 0 auto;
+    width: 20%; /* Ancho de la imagen */
+    margin-bottom: 20px; /* Espaciado inferior de la imagen */
+   
+  }
+
+#marco h2{
+    text-align: center; /* Centrar el texto dentro del recuadro */
+    color: #295c93; /* Color del texto */
+    font-size: 30px; 
+    margin-top: 0; /* Eliminar margen superior del título */
+    margin-bottom: 20px;
+    font-family: 'abel', sans-serif;
+}#marco button {
+   
+}
+#botones_contenedor {
+	display: flex; /* Utilizamos flexbox para colocar los botones en una fila */
+}
+
+#botones_contenedor button {
+	display: inline-block; 
+	margin-right: 10px; 
+    width: 25%; 
+    height: 80px;
+    border-radius: 10px;
+    margin-bottom: 10px; /* Espaciado inferior de los inputs */
+    display: block;
+    margin: auto auto;
+    background-color: #ff9148;
+    border-color: #ff9148;
+    font-size: 20px;
+    font-family: 'abel', sans-serif;
+    margin-top: 50px;
+}
