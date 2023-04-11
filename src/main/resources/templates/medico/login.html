@@ -15,9 +15,11 @@
 			<img src="logo_Medcon.png" alt="logo_Medcon">
 			<h2>Por favor inicie sesión</h2>
 			<form action="/login" method="post">
-				<input type ="text" value="Usuario" id="Usuario" placeholder="Usuario"><br>
-				<input type ="text" value="Contraseña" id="Contraseña"><br>
-				<input type ="submit" value="Iniciar Sesión" id="Confirmar"><br>
+				<input type="text" value="Usuario" id="Usuario" placeholder="Usuario" onfocus="this.value=''"><br>
+				<input type="text" value="Contraseña" id="Contraseña" placeholder="Contraseña" onfocus="this.value=''"><br>
+                <div class="boton-container">
+                    <input type="submit" value="Iniciar Sesión" id="Confirmar">
+                </div>
 			</form>
 		</div>
 	</form>
