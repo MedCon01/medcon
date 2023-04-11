@@ -29,6 +29,7 @@ public class Cita {
         this.paciente = paciente;
         this.medico = medico;
     }
+    public Cita(){}
 
     // Getters y Setters
     public int getId() {
