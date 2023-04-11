@@ -39,12 +39,12 @@ public class MedicoController {
         this.medicoController = medicoController;
     }
 
+
     private String tiempoConsulta= "00:00:00"; //esto va en el modelo
-    private List <Paciente> pacientes = new ArrayList<>(); //esto va en el modelo
      
-    public void addPaciente(Paciente paciente) {
-        pacientes.add(paciente);
-    }
+   
+
+
 
     @GetMapping("/")
     public String showIndexPage() {
@@ -69,8 +69,6 @@ public class MedicoController {
         model.addAttribute("items", items);
         // Agregar el atributo "username" al modelo
         model.addAttribute("username", "Arturo Pérez Sevilla");
-        // para mostrar la lista de pacientes
-        model.addAttribute("pacientes", pacientes);
 
         return "medico/welcome";
     }

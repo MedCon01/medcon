@@ -26,13 +26,12 @@ public class Paciente {
     private String nombre;
     private LocalDate fecha_nacimiento;
     private String nTarjeta;
-    @OneToMany (mappedBy = "paciente")
-    private Cita cita; 
+    private int cita; 
     private boolean presente;
     private LocalDate fechaCita;
     private LocalTime horaLlegada;
     
-    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, String nTarjeta, Cita cita, Boolean presente){
+    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, String nTarjeta, int cita, Boolean presente){
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
@@ -43,7 +42,7 @@ public class Paciente {
     }
     public Paciente(){}
 
-    public String getDNI() {
+    public String getDni() {
         return dni;
     }
 
@@ -59,11 +58,10 @@ public class Paciente {
         this.nTarjeta = nTarjeta;
     }
 
-    @OneToOne
-    public Cita getCita() {
+    public int getCita() {
         return cita;
     }
-    public void setCita(Cita cita) {
+    public void setCita(int cita) {
         this.cita = cita;
     } 
     public boolean getPresente(){
