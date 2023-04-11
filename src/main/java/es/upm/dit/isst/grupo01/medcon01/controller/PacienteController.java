@@ -36,6 +36,7 @@ import es.upm.dit.isst.grupo01.medcon01.model.Cita;
 import es.upm.dit.isst.grupo01.medcon01.model.Medico;
 import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
 import es.upm.dit.isst.grupo01.medcon01.repository.CitaRepository;
+import es.upm.dit.isst.grupo01.medcon01.repository.MedicoRepository;
 import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
 @Controller
@@ -44,9 +45,11 @@ public class PacienteController {
     private PacienteRepository PacienteRepository;
     @Autowired
     private CitaRepository CitaRepository;
-    public PacienteController(PacienteRepository pacienteRepository, CitaRepository citaRepository){
+    private MedicoRepository MedicoRepository;
+    public PacienteController(PacienteRepository pacienteRepository, CitaRepository citaRepository, MedicoRepository medicoRepository){
         this.PacienteRepository = pacienteRepository;
         this.CitaRepository = citaRepository;
+        this.MedicoRepository = medicoRepository;
     }
 
     private MedicoController medicoController;
@@ -92,7 +95,7 @@ private void addCita(Cita cita){
     // Buscamos el paciente en la base de datos
     Paciente paciente = PacienteRepository.findByDni(dni);
     Cita cita_paciente = CitaRepository.findByPaciente(paciente.getId());
-    Medico medico = findByDni(cita_paciente.getMedico());
+    Medico medico = MedicoRepository.findByDni(cita_paciente.getMedico().getDNI());
 
    /* if (paciente == null) {
         model.addAttribute("error", "El paciente no está registrado.");
@@ -112,9 +115,6 @@ private void addCita(Cita cita){
     } 
 }
 
-    private Medico findByDni(Medico medico2) {
-        return null;
-    }
     
 
 /* consultando a la base de datos  
