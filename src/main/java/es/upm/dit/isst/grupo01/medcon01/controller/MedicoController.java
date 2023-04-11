@@ -53,7 +53,7 @@ public class MedicoController {
 
     @GetMapping("/login")
     public String showLoginPage() {
-        return "medico/login";
+        return "medico/login_medico";
     }
     // esto se tiene que emplear la base de datos
     List<String> items = Arrays.asList("Raúl Cervantes Nuñez", "María Rodriguez Ruíz", "Ana López Bilbao");
