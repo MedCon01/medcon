@@ -3,8 +3,8 @@
 <head>
 	<title>Inicio de sesión</title>
 	<meta charset="utf-8">
-	<!--<link rel="stylesheet" type="text/css" th:href="@{/css/loginmedicoerror.css}">-->
-	<link rel="stylesheet" type="text/css" href="../../static/css/loginmedicoerror.css">
+	<link rel="stylesheet" type="text/css" th:href="@{/css/loginmedicoerror.css}">
+	<!--<link rel="stylesheet" type="text/css" href="../../static/css/loginmedicoerror.css">-->
 </head>
 <body>
 	<form method="post">
@@ -17,8 +17,8 @@
 			<h2>Por favor inicie sesión</h2>
 			<h3 style="color: red; font-size: small; text-align: center;">Error de usuario o contraseña</h3>
 			<form action="/login" method="post">
-				<input type="text" value="Usuario" id="Usuario" placeholder="Usuario" onfocus="this.value=''"><br>
-				<input type="text" value="Contraseña" id="Contraseña" placeholder="Contraseña" onfocus="this.value=''"><br>
+				<input type="text" value="Usuario" id="Usuario" name ="usuario" placeholder="Usuario" onfocus="this.value=''"><br>
+				<input type="text" value="Contraseña" id="Contraseña" name ="password" placeholder="Contraseña" onfocus="this.value=''"><br>
                 <div class="boton-container">
                     <input type="submit" value="Iniciar Sesión" id="Confirmar">
                 </div>

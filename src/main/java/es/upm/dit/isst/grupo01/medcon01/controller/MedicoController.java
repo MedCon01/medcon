@@ -70,7 +70,7 @@ public class MedicoController {
         if (usuario.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
             // Validar DNI del medico
             this.medico = medicoRepository.findByDni(usuario);
-            if (medico.getPassword() == password){
+            if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
                 return "medico/iniciomedico";
             } else{
@@ -78,7 +78,7 @@ public class MedicoController {
             }
         } else if (usuario.matches("\\d{12}")){
             this.medico = medicoRepository.findByNcolegiado(usuario);
-            if (medico.getPassword() == password){
+            if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
                 return "medico/iniciomedico";
             } else {
@@ -88,10 +88,37 @@ public class MedicoController {
             return "medico/loginmedicoerror";
         }
     }
-
+    // Loginmedicoerror
+    @PostMapping("/loginmedicoerror")
+    public String processLoginFormAgain(@RequestParam("usuario") String usuario, @RequestParam("password") String password,Model model){
+        if (usuario.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
+            // Validar DNI del medico
+            this.medico = medicoRepository.findByDni(usuario);
+            if (medico.getPassword().equals(password)){
+                model.addAttribute("medico", medico);
+                return "medico/iniciomedico";
+            } else{
+                return "medico/loginmedicoerror";
+            }
+        } else if (usuario.matches("\\d{12}")){
+            this.medico = medicoRepository.findByNcolegiado(usuario);
+            if (medico.getPassword().equals(password)){
+                model.addAttribute("medico", medico);
+                return "medico/iniciomedico";
+            } else {
+                return "medico/loginmedicoerror";
+            }
+        } else {
+            return "medico/loginmedicoerror";
+        }
+    }
     // Iniciomedico
     @GetMapping("iniciomedico")
     public String showInicioPage(){
+        
         return "medico/iniciomedico";
     }
+
+
+
 }
