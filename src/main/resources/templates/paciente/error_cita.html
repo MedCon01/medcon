@@ -21,9 +21,22 @@
 </script>
 </head>
 <body>
-	<p> Dni o Nº de tarjeta incorrecto </p> 
-    <p> Por favor vuelva a introducirlo </p> 	
-	<button onclick="window.location.href = 'login_DNI';">Introducir DNI</button>
-	<button onclick="window.location.href = 'login_tarjeta';">Introducir Nº tarjeta</button>
+	<div id="barra">
+		<p id="reloj">00:00</p>
+	</div>
+	<div id="marco">
+		<p> Dni o Nº de tarjeta incorrecto </p> 
+    	<p> Por favor vuelva a introducirlo </p> 
+			<div id="botones_contenedor">
+				<form method="get" action="/login_DNI">
+					<button type="submit" id="boton_dni">Introducir DNI</button>
+				</form>
+				<form method="get" action="/login_tarjeta">
+					<button type="submit" id="boton_tarjeta">Introducir Nº tarjeta</button>
+		</form>
+	</div>
 </body>
 </html>
+</div>
+
+</div>
