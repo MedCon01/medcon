@@ -1,47 +1,57 @@
 package es.upm.dit.isst.grupo01.medcon01.model;
-
-import java.util.Date;
-
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 import java.time.LocalDate;
 import java.time.LocalTime;
-import org.hibernate.annotations.GenericGenerator;
 
 @Entity
-@Table(name = "Paciente")
 public class Paciente {
     
     @Id
-    // Creo que esto en teoría no es necesario, ya que nosotros introducimos a mano el identificador.
-    // @GeneratedValue(generator = "uuid")
-    // @GenericGenerator(name = "uuid", strategy = "org.hibernate.id.UUIDGenerator")
     private String id;
     private String dni;
     private String nombre;
     private LocalDate fecha_nacimiento;
-    private String nTarjeta;
-    private int cita; 
-    private boolean presente;
-    private LocalDate fechaCita;
-    private LocalTime horaLlegada;
+    private String ntarjeta;
     
-    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, String nTarjeta, int cita, Boolean presente){
+    @Transient // poner siempre que se cree un atributo que no vaya a la BBDD
+    private LocalTime horaLlegada;
+    @Transient // poner siempre que se cree un atributo que no vaya a la BBDD
+    private Boolean presente;
+    
+    // Constructor sin argumentos
+    public Paciente() {
+    }
+    
+    // Constructor con argumentos
+    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, String ntarjeta, LocalTime horaLlegada,
+                    Boolean presente) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
         this.fecha_nacimiento = fecha_nacimiento;
-        this.nTarjeta = nTarjeta;
-        this.cita = cita;
+        this.ntarjeta = ntarjeta;
+        this.horaLlegada = horaLlegada;
         this.presente = presente;
     }
-    public Paciente(){}
+    
+    // Getter y setter Id
+    public String getId() {
+        return id;
+    }
 
+    public void setId(String id) {
+        this.id = id;
+    }
+    // Getter y setter dni
     public String getDni() {
         return dni;
     }
@@ -49,74 +59,56 @@ public class Paciente {
     public void setDni(String dni) {
         this.dni = dni;
     }
-
-    public String getnTarjeta() {
-        return nTarjeta;
+    // Getter y setter nombre
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setnTarjeta(String nTarjeta) {
-        this.nTarjeta = nTarjeta;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+    // Getter y setter fecha_nacimiento
+    public LocalDate getFecha_nacimiento() {
+        return fecha_nacimiento;
+    }
+    
+    public void setFecha_nacimiento(LocalDate fecha_nacimiento) {
+        this.fecha_nacimiento = fecha_nacimiento;
+    }
+    // Getter y setter ntarjeta
+    public String getNtarjeta() {
+        return ntarjeta;
     }
 
-    public int getCita() {
-        return cita;
+    public void setNtarjeta(String ntarjeta) {
+        this.ntarjeta = ntarjeta;
     }
-    public void setCita(int cita) {
-        this.cita = cita;
-    } 
-    public boolean getPresente(){
-        return presente;
+    // Getter y setter horaLlegada
+    public LocalTime getHoraLlegada() {
+        return this.horaLlegada;
+    }
+
+    public void setHoraLlegada(LocalTime horaLlegada) {
+        this.horaLlegada = horaLlegada;
+    }
+    // Getter y setter presente
+    public Boolean getPresente(){
+        return this.presente;
     }
     public void setPresente(boolean presente){
         this.presente = presente;
     }
-    public String getNombre(){
-        return nombre;
-    }
-    public void setNombre(String nombre){
-        this.nombre = nombre;
-    }
-    public void setId(String id){
-        this.id = id;
-
-    }
-    public String getId(){
-        return id;
-    }
-    public LocalDate getFechaCita() {
-        return fechaCita;
-    }
-    public void setFechaCita(LocalDate fechaCita) {
-        this.fechaCita = fechaCita;
-    }
-    public LocalDate getHoraCita() {
-        return getHoraCita();
-    }
-    public void setHoraCita(LocalTime horaCita) {
-    }
-    public Date getHoraLlegada() {
-        return getHoraLlegada();
-    }
-    public void setHoraLlegada(LocalTime horaLlegada) {
-        this.horaLlegada = horaLlegada;
-    }
-    public int getOrden() {
-        return 0;
-    }
-    public void setOrden(int orden) {
-    }
+    // Método toString
     @Override
     public String toString() {
         return "Paciente{" +
-            "id='" + id + '\'' +
-            ", dni='" + dni + '\'' +
-            ", nombre='" + nombre + '\'' +
-            ", fecha_nacimiento=" + fecha_nacimiento +
-            ", nTarjeta='" + nTarjeta + '\'' +
-            ", cita=" + cita +
-            ", presente=" + presente +
-            ", fechaCita=" + fechaCita +
-            ", horaLlegada=" + horaLlegada +
-            '}';
+                "id='" + id + '\'' +
+                ", dni='" + dni + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", fecha_nacimiento=" + fecha_nacimiento +
+                ", ntarjeta='" + ntarjeta + '\'' +
+                ", horaLlegada=" + horaLlegada +
+                ", presente=" + presente +
+                '}';
     }
 }

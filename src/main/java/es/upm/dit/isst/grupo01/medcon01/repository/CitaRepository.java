@@ -6,8 +6,7 @@ import es.upm.dit.isst.grupo01.medcon01.model.Medico;
 import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
 
 public interface CitaRepository extends CrudRepository<Cita,Integer> {
-    Cita findByPaciente (String id);
-    Cita findByMedico (Medico medico);
-
+    Cita findByPacienteId(String pacienteId);
+    Cita findByMedicoDni(String medicoDni);
 
 }

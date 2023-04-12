@@ -1,118 +1,89 @@
 package es.upm.dit.isst.grupo01.medcon01.model;
-
-import java.util.List;
-
-import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.OneToOne;
-
-import java.time.Duration;
+import javax.persistence.Transient;
 import java.time.LocalDate;
-import java.time.LocalTime;
-import org.hibernate.annotations.GenericGenerator;
-import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
+import java.time.LocalTime; 
 
 @Entity
-@Table(name= "Medico")
 public class Medico {
     @Id
     private String dni;
     private String nombre;
     private String n_colegiado;
-    private int salaConsulta;
+    private int sala_consulta;
     private String especialidad;
-    private Duration tiempoGlobal;
-    private Duration tiempoConsulta_avg;
-    @OneToMany(mappedBy = "medico")
-    public List <Cita> citasPend;
-
-    public Medico (String dni, String nombre, String n_colegiado, int salaConsulta, String especialidad, Duration tiempoGlobal, 
-                   Duration tiempoConsulta_avg, List<Cita>  citasPend){
+    
+    // Constructor vacío
+    public Medico() {}
+    
+    public Medico(String dni, String nombre, String n_colegiado, int sala_consulta, String especialidad) {
         this.dni = dni;
         this.nombre = nombre;
         this.n_colegiado = n_colegiado;
-        this.salaConsulta = salaConsulta;
-        
+        this.sala_consulta = sala_consulta;
         this.especialidad = especialidad;
-        this.tiempoGlobal = tiempoGlobal;
-        this.tiempoConsulta_avg = tiempoConsulta_avg;
-        this.citasPend = citasPend;
     }
-    public Medico(){}
 
-    // getter, setter DNI
-    public String getDNI() {
-        return this.dni;
+    // Getter y setter de 'dni'
+    public String getDni() {
+        return dni;
     }
-    public void setDNI(String dni){
+    
+    public void setDni(String dni) {
         this.dni = dni;
     }
-    // getter, setter nombre
+    
+    // Getter y setter de 'nombre'
     public String getNombre() {
-        return this.nombre;
+        return nombre;
     }
-    public void setNombre(String nombre){
+    
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    // getter, setter n_colegiado
-    public String getN_colegiado() {
-        return this.n_colegiado;
+    
+    // Getter y setter de 'n_colegiado'
+    public String getNColegiado() {
+        return n_colegiado;
     }
-    public void setN_colegiado(String n_colegiado){
+    
+    public void setNColegiado(String n_colegiado) {
         this.n_colegiado = n_colegiado;
     }
-    // getter, setter salaConsulta
-    public int getSalaConsulta() {
-        return this.salaConsulta;
+    
+    // Getter y setter de 'sala_consulta'
+    public int getSala_consulta() {
+        return sala_consulta;
     }
-    public void setSalaConsulta(Integer salaConsulta){
-        this.salaConsulta = salaConsulta;
+    
+    public void setSala_consulta(int sala_consulta) {
+        this.sala_consulta = sala_consulta;
     }
-    // getter, setter especialidad
+    
+    // Getter y setter de 'especialidad'
     public String getEspecialidad() {
-        return this.especialidad;
+        return especialidad;
     }
-    public void setEspecialidad(String especialidad){
+    
+    public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
-    }
-    // getter, setter tiempoGlobal
-    public Duration getTiempoGlobal() {
-        return this.tiempoGlobal;
-    }
-    public void setTiempoGlobal(Duration tiempoGlobal){
-        this.tiempoGlobal = tiempoGlobal;
-    }
-    // getter, setter tiempoConsulta_avg
-    public Duration getTiempoConsulta_avg() {
-        return this.tiempoConsulta_avg;
-    }
-    public void setTiempoConsulta_avg(Duration tiempoConsulta_avg){
-        this.tiempoConsulta_avg = tiempoConsulta_avg;
-    }
-    // getter, setter citasPend
-    public List <Cita> getCitasPend() {
-        return this.citasPend;
-    }
-    // Setter citasPend
-    public void setCitasPend(List<Cita> citasPend) {
-        this.citasPend = citasPend;
     }
     @Override
     public String toString() {
         return "Medico{" +
-            "dni='" + dni + '\'' +
-            ", nombre='" + nombre + '\'' +
-            ", n_colegiado='" + n_colegiado + '\'' +
-            ", salaConsulta=" + salaConsulta +
-            ", especialidad='" + especialidad + '\'' +
-            ", tiempoGlobal=" + tiempoGlobal +
-            ", tiempoConsulta_avg=" + tiempoConsulta_avg +
-            ", citasPend=" + citasPend +
-            '}';
+                "dni='" + dni + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", n_colegiado='" + n_colegiado + '\'' +
+                ", sala_consulta=" + sala_consulta +
+                ", especialidad='" + especialidad + '\'' +
+                '}';
     }
 }

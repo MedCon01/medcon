@@ -2,36 +2,42 @@ package es.upm.dit.isst.grupo01.medcon01.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
+import org.hibernate.annotations.GenericGenerator;
+import javax.persistence.Column;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 
 @Entity
 @Table (name = "Cita")
 public class Cita {
     @Id
-    private int id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+    @Column(nullable = false)
     private LocalDate fecha;
+    @Column(nullable = false)
     private LocalTime hora;
-    @ManyToOne
-    private Paciente paciente;
-    @ManyToOne
-    private Medico medico;
+    @Column(name = "paciente_id", nullable = false)
+    private String pacienteId;
+    @Column(name = "medico_dni", nullable = false)
+    private String medicoDni;
 
     // Constructor
-    public Cita(int id, LocalDate fecha, LocalTime hora, Paciente paciente, Medico medico) {
+    public Cita(int id, LocalDate fecha, LocalTime hora, String pacienteId, String medicoDni) {
         this.id = id;
         this.fecha = fecha;
         this.hora = hora;
-        this.paciente = paciente;
-        this.medico = medico;
+        this.pacienteId = pacienteId;
+        this.medicoDni = medicoDni;
     }
     public Cita(){}
 
-    // Getters y Setters
+    // Getter y Setter id
     public int getId() {
         return id;
     }
@@ -39,7 +45,7 @@ public class Cita {
     public void setId(int id) {
         this.id = id;
     }
-
+    // Getter y Setter fecha
     public LocalDate getFecha() {
         return fecha;
     }
@@ -47,7 +53,7 @@ public class Cita {
     public void setFecha(LocalDate fecha) {
         this.fecha = fecha;
     }
-
+    // Getter y Setter hora
     public LocalTime getHora() {
         return hora;
     }
@@ -55,27 +61,27 @@ public class Cita {
     public void setHora(LocalTime hora) {
         this.hora = hora;
     }
-
-    public Paciente getPaciente() {
-        return paciente;
+    // Getter y Setter pacienteId
+    public String getPacienteId() {
+        return pacienteId;
     }
 
-    public void setPaciente(Paciente paciente) {
-        this.paciente = paciente;
+    public void setPacienteId(String pacienteId) {
+        this.pacienteId = pacienteId;
+    }
+    // Getter y Setter medicoDni
+    public String getMedicoDni() {
+        return medicoDni;
     }
 
-    public Medico getMedico() {
-        return medico;
-    }
-
-    public void setMedico(Medico medico) {
-        this.medico = medico;
+    public void setMedicoDni(String medicoDni) {
+        this.medicoDni = medicoDni;
     }
     
-    // Método toString para imprimir los atributos de la clase
+    // Método toString
     @Override
     public String toString() {
-        return "Cita [id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", paciente=" + paciente + ", medico=" + medico
+        return "Cita [id=" + id + ", fecha=" + fecha + ", hora=" + hora + ", pacienteId=" + pacienteId + ", medicoDni=" + medicoDni
                 + "]";
     }
 }
