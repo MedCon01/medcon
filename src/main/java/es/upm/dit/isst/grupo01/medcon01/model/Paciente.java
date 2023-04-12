@@ -23,7 +23,7 @@ public class Paciente {
     private String ntarjeta;
     
     @Transient // poner siempre que se cree un atributo que no vaya a la BBDD
-    private LocalTime horaLlegada;
+    private LocalTime hora_llegada;
     @Transient // poner siempre que se cree un atributo que no vaya a la BBDD
     private Boolean presente;
     
@@ -32,14 +32,14 @@ public class Paciente {
     }
     
     // Constructor con argumentos
-    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, String ntarjeta, LocalTime horaLlegada,
+    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, String ntarjeta, LocalTime hora_llegada,
                     Boolean presente) {
         this.id = id;
         this.dni = dni;
         this.nombre = nombre;
         this.fecha_nacimiento = fecha_nacimiento;
         this.ntarjeta = ntarjeta;
-        this.horaLlegada = horaLlegada;
+        this.hora_llegada = hora_llegada;
         this.presente = presente;
     }
     
@@ -83,13 +83,13 @@ public class Paciente {
     public void setNtarjeta(String ntarjeta) {
         this.ntarjeta = ntarjeta;
     }
-    // Getter y setter horaLlegada
-    public LocalTime getHoraLlegada() {
-        return this.horaLlegada;
+    // Getter y setter hora_llegada
+    public LocalTime getHora_llegada() {
+        return this.hora_llegada;
     }
 
-    public void setHoraLlegada(LocalTime horaLlegada) {
-        this.horaLlegada = horaLlegada;
+    public void setHora_llegada(LocalTime hora_llegada) {
+        this.hora_llegada = hora_llegada;
     }
     // Getter y setter presente
     public Boolean getPresente(){
@@ -107,7 +107,7 @@ public class Paciente {
                 ", nombre='" + nombre + '\'' +
                 ", fecha_nacimiento=" + fecha_nacimiento +
                 ", ntarjeta='" + ntarjeta + '\'' +
-                ", horaLlegada=" + horaLlegada +
+                ", hora_llegada=" + hora_llegada +
                 ", presente=" + presente +
                 '}';
     }

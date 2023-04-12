@@ -96,7 +96,27 @@ public class PacienteController {
         return "paciente/login_tarjeta";
     }
     // Registro con tarjeta
-    @PostMapping()
+    @PostMapping("/login_tarjeta")
+    public String registrarPacienteTarjeta(@RequestParam("ntarjeta") String ntarjeta,Model model){
+        // Asigno paciente buscando por ntarjeta
+        Paciente paciente = pacienteRepository.findByNtarjeta(ntarjeta);
+        model.addAttribute("paciente",paciente);
+        if (paciente != null){ // Se comprueba que el paciente existe en la BBDD 
+         // Marcar paciente como presente
+         paciente.setPresente(true);
+         // Busco la cita del paciente
+         Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getId());
+         model.addAttribute("cita_pendiente",cita_pendiente);
+         // Busco el medico de la cita 
+         Medico medico = medicoRepository.findByDni(cita_pendiente.getMedicoDni());
+         model.addAttribute("medico",medico);
+         // this.addPacienteCola - desarrollar
+         // Presento la informacion del paciente
+         return ("/paciente/identificador_cita");
+        } else {
+            return ("/paciente/error_cita");
+        }
+    }
 
     @GetMapping("/informacion_cita")
     public String showInformacionCita() {
