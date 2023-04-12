@@ -45,16 +45,10 @@ public class PacienteController {
     private PacienteRepository pacienteRepository;
     @Autowired
     private CitaRepository citaRepository;
-    @Autowired
-    private MedicoRepository medicoRepository;
-    private MedicoController medicoController;
     public PacienteController(){}
-    public PacienteController(PacienteRepository pacienteRepository, CitaRepository citaRepository, MedicoRepository medicoRepository,
-                            Medico medico, MedicoController medicoController){
+    public PacienteController(PacienteRepository pacienteRepository, CitaRepository citaRepository){
         this.pacienteRepository = pacienteRepository;
         this.citaRepository = citaRepository;
-        this.medicoRepository = medicoRepository;
-        this.medicoController = medicoController;
     }
     // Inicio kiosko
     @GetMapping("inicio_kiosko")
@@ -73,15 +67,12 @@ public class PacienteController {
         Paciente paciente = pacienteRepository.findByDni(dni);
         model.addAttribute("paciente",paciente);
         if (paciente != null){ // Se comprueba que el paciente existe en la BBDD 
-         // Marcar paciente como presente
+         // Marcar paciente como presente y actualizar BBDD
          paciente.setPresente(true);
+         pacienteRepository.save(paciente);
          // Busco la cita del paciente
          Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getId());
          model.addAttribute("cita_pendiente",cita_pendiente);
-         // Busco el medico de la cita 
-         Medico medico = medicoRepository.findByDni(cita_pendiente.getMedicoDni());
-         model.addAttribute("medico",medico);
-         this.addPacienteCola(paciente,medico,cita_pendiente);
          // Presento la informacion del paciente
          return ("/paciente/identificador_cita");
         } else {
@@ -101,15 +92,12 @@ public class PacienteController {
         Paciente paciente = pacienteRepository.findByNtarjeta(ntarjeta);
         model.addAttribute("paciente",paciente);
         if (paciente != null){ // Se comprueba que el paciente existe en la BBDD 
-         // Marcar paciente como presente
+         // Marcar paciente como presente y actualizar BBDD
          paciente.setPresente(true);
+         pacienteRepository.save(paciente);
          // Busco la cita del paciente
          Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getId());
          model.addAttribute("cita_pendiente",cita_pendiente);
-         // Busco el medico de la cita 
-         Medico medico = medicoRepository.findByDni(cita_pendiente.getMedicoDni());
-         model.addAttribute("medico",medico);
-         this.addPacienteCola(paciente,medico,cita_pendiente);
          // Presento la informacion del paciente
          return ("/paciente/identificador_cita");
         } else {
@@ -117,13 +105,4 @@ public class PacienteController {
         }
     }
 
-    // Metodo que añade un paciente a la cola
-    public void addPacienteCola(Paciente paciente, Medico medico, Cita cita_pendiente){
-    // Compruebo que el paciente se ha registrado
-    if(paciente.getPresente() == true){
-        List<String> cola = medico.getCola();
-        cola.add(paciente.getId());
-        medico.setCola(cola);
-        }
-    }
 }
