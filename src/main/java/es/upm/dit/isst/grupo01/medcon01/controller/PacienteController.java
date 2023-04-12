@@ -48,7 +48,6 @@ public class PacienteController {
     @Autowired
     private MedicoRepository medicoRepository;
     private MedicoController medicoController;
-    private Cita cita_pendiente;
     public PacienteController(){}
     public PacienteController(PacienteRepository pacienteRepository, CitaRepository citaRepository, MedicoRepository medicoRepository,
                             Medico medico, MedicoController medicoController){
@@ -82,7 +81,7 @@ public class PacienteController {
          // Busco el medico de la cita 
          Medico medico = medicoRepository.findByDni(cita_pendiente.getMedicoDni());
          model.addAttribute("medico",medico);
-         // this.addPacienteCola - desarrollar
+         this.addPacienteCola(paciente,medico,cita_pendiente);
          // Presento la informacion del paciente
          return ("/paciente/identificador_cita");
         } else {
@@ -110,7 +109,7 @@ public class PacienteController {
          // Busco el medico de la cita 
          Medico medico = medicoRepository.findByDni(cita_pendiente.getMedicoDni());
          model.addAttribute("medico",medico);
-         // this.addPacienteCola - desarrollar
+         this.addPacienteCola(paciente,medico,cita_pendiente);
          // Presento la informacion del paciente
          return ("/paciente/identificador_cita");
         } else {
@@ -118,14 +117,13 @@ public class PacienteController {
         }
     }
 
-    @GetMapping("/informacion_cita")
-    public String showInformacionCita() {
-        return "paciente/informacion_cita";
+    // Metodo que añade un paciente a la cola
+    public void addPacienteCola(Paciente paciente, Medico medico, Cita cita_pendiente){
+    // Compruebo que el paciente se ha registrado
+    if(paciente.getPresente() == true){
+        List<String> cola = medico.getCola();
+        cola.add(paciente.getId());
+        medico.setCola(cola);
+        }
     }
-    @GetMapping("/error_cita")
-    public String showErrorCita() {
-        return "paciente/error_cita";
-    }
-    
-
 }
