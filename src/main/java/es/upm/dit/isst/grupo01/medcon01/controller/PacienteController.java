@@ -46,6 +46,8 @@ public class PacienteController {
     private MedicoRepository medicoRepository;
     private MedicoController medicoController;
     private Medico medico;
+    private Paciente paciente;
+    private Cita cita_pendiente;
     public PacienteController(){}
     public PacienteController(PacienteRepository pacienteRepository, CitaRepository citaRepository, MedicoRepository medicoRepository,
                             Medico medico, MedicoController medicoController){
@@ -55,19 +57,46 @@ public class PacienteController {
         this.medico = medico;
         this.medicoController = medicoController;
     }
-
+    // Inicio kiosko
     @GetMapping("inicio_kiosko")
     public String showInicioKiosko(){
         return "paciente/inicio_kiosko";
     }
+    // Si se selecciona DNI
     @GetMapping("/login_DNI")
     public String showLoginDNI() {
         return "paciente/login_DNI";
     }
+    // Registro con DNI
+    @PostMapping("/login_DNI")
+    public String registrarPacienteDni(@RequestParam("dni") String dni){
+        this.paciente = pacienteRepository.findByDni(dni);
+        if (this.paciente != null){ // Se comprueba que el paciente existe en la BBDD 
+         // Asigno paciente buscando por DNI
+         //this.paciente = pacienteRepository.findByDni(dni); 
+         // Marcar paciente como presente
+         this.paciente.setPresente(true);
+         // Busco la cita del paciente
+         this.cita_pendiente = citaRepository.findByPacienteId(paciente.getDni());
+         // Busco el medico de la cita 
+         this.medico = medicoRepository.findByDni(cita_pendiente.getMedicoDni());
+         // this.addPacienteCola
+         // Presento la informacion del paciente
+         return ("/paciente/identificador_cita");
+        } else {
+            return ("/paciente/error_cita");
+        }
+    }
+
+
+    // Si se selecciona tarjeta
     @GetMapping("/login_tarjeta")
     public String showLoginTarjeta() {
         return "paciente/login_tarjeta";
     }
+    // Registro con tarjeta
+    @PostMapping()
+
     @GetMapping("/informacion_cita")
     public String showInformacionCita() {
         return "paciente/informacion_cita";
@@ -76,5 +105,6 @@ public class PacienteController {
     public String showErrorCita() {
         return "paciente/error_cita";
     }
+    
 
 }
