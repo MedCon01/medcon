@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Bienvenido</title>
-    <link rel="stylesheet" type="text/css" href="../../static/css/iniciomedico.css">
+    <!--<link rel="stylesheet" type="text/css" href="../../static/css/iniciomedico.css">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/iniciomedico.css}" />
 </head>
 
 <body onload="iniciarCronometro()">
@@ -35,16 +36,18 @@
                 <h2>Dr. <span th:text="${medico.nombre}"></span></h2>
             </div>
             <div class="tiempo_medio">
-                <h3>Tiempo Medio de consulta</h3>
+                <h4><b>Tiempo Medio de consulta</b></h4>
                 <p id="timer-medio">00:00:00</p>
             </div>
             <div class="tiempo_total">
-                <h3>Tiempo Total de consulta</h3>
+                <h4><b>Tiempo Total de consulta</b></h4>
                 <p id="timer">00:00:00</p>
-            </div>
+            </div><br>
             <div class="siguiente">
                 <button th:href="@{/paciente}" onclick="siguientePaciente()">Siguiente</button>
                 </div>
+            <img th:src="@{/images/logo_Medcon_v2.png}" alt="logo_Medcon">
+            <!--<img src="../../static/images/logo_Medcon_v2.png" alt="logo_Medcon">-->
             </div>
 
     

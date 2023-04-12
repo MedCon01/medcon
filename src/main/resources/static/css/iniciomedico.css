@@ -63,37 +63,90 @@ body{
 
 .paciente1{
     margin-top: 2%;
-    border: 2px solid #ff9148;
+    border: 0.1em solid #ff9148;
     border-radius: 10px;
     background-color: #ff9148;
+    padding-left: 2%;
 }
 .paciente2{
     margin-top: 3%;
-    border: 2px solid #295c93;
+    border: 0.1em solid #295c93;
     border-radius: 10px;
+    padding-left: 2%;
 }
 
 .paciente3{
     margin-top: 3%;
-    border: 2px solid #295c93;
+    border: 0.1em solid #295c93;
     border-radius: 10px;
+    padding-left: 2%;
 }
 
 .paciente4{
     margin-top: 3%;
-    border: 2px dashed #295c93;
+    border: 0.1em dashed #295c93;
     border-radius: 10px;
+    padding-left: 2%;
 }
 
 
-p{
-    margin-left: 20px;
-}
+
 
 .doctor{
     background-color: #295c93;
+    border-radius: 10px;
+  
+    
 }
 
 .doctor h2{
     color: #ffff;
+    margin-left: 2%;
+}
+
+.tiempo_medio{
+    text-align: center;
+    margin-top: 3%;
+    border-radius: 10px;
+    border: 0.08em solid #295c93;
+}
+
+.tiempo_total{
+    text-align: center;
+    margin-top: 3%;
+    border-radius: 10px;
+    border: 0.08em solid #295c93;
+}
+
+button{
+    margin-top: 5%;
+    width: 30%; 
+    height: 8vh;
+    border-radius: 10px;
+    margin-bottom: 1%; /* Espaciado inferior de los inputs */
+    display: block;
+    margin: auto auto;
+    background-color: #ff9148;
+    border-color: #ff9148;
+    font-size: 150%;
+    font-family: 'abel', sans-serif;
+}
+
+.tiempo_medio p{
+    font-size: 1.5em;
+}
+.tiempo_total p{
+    font-size: 1.5em;
+}
+.tiempo_medio h4{
+    font-size: 1em;
+}
+.tiempo_total h4{
+    font-size: 1em;
+}
+
+img{
+    width: 12%;
+    margin-left: 44%;
+    margin-top: 5%;
 }
