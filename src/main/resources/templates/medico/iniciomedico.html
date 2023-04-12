@@ -13,21 +13,21 @@
             <div class="marco_izq">
                 <h2>Siguiente paciente:</h2>
                 <div class="paciente1">
-                    <p><b>Nombre: </b><span th:text="${paciente.nombre}"></span></p>
-                    <p><b>Hora cita: </b><span th:text="${cita_pendiente.hora}"></span></p>
+                    <p><b>Nombre: </b><span th:object="${pacientes[0].nombre}"></span></p>
+                 <!--   <p><b>Hora cita: </b><span th:text="${cita_pendiente.hora}"></span></p> -->
                 </div>
-                <div class="paciente2">
-                    <p><b>Nombre: </b><span th:text="${paciente.nombre}"></span></p>
+             <!--   <div class="paciente2">
+                    <p><b>Nombre: </b><span th:text="${pacientes(1).nombre}"></span></p>
                     <p><b>Hora cita: </b><span th:text="${cita_pendiente.hora}"></span></p>
                 </div>
                 <div class="paciente3">
-                    <p><b>Nombre: </b><span th:text="${paciente.nombre}"></span></p>
+                    <p><b>Nombre: </b><span th:text="${pacientes(2).nombre}"></span></p>
                     <p><b>Hora cita: </b><span th:text="${cita_pendiente.hora}"></span></p>
                 </div>
                 <div class="paciente4">
-                    <p><b>Nombre: </b><span th:text="${paciente.nombre}"></span></p>
+                    <p><b>Nombre: </b><span th:text="${paciente(3).nombre}"></span></p>
                     <p><b>Hora cita: </b><span th:text="${cita_pendiente.hora}"></span></p>
-                </div>
+                </div> -->
             </div>
     
             <div class="marco_dcha">

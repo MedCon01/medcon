@@ -71,7 +71,7 @@ public class PacienteController {
          paciente.setPresente(true);
          pacienteRepository.save(paciente);
          // Busco la cita del paciente
-         Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getId());
+         Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getIdpaciente());
          model.addAttribute("cita_pendiente",cita_pendiente);
          // Presento la informacion del paciente
          return ("/paciente/identificador_cita");
@@ -96,7 +96,7 @@ public class PacienteController {
          paciente.setPresente(true);
          pacienteRepository.save(paciente);
          // Busco la cita del paciente
-         Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getId());
+         Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getIdpaciente());
          model.addAttribute("cita_pendiente",cita_pendiente);
          // Presento la informacion del paciente
          return ("/paciente/identificador_cita");

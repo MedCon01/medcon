@@ -72,7 +72,7 @@ public class MedicoController {
             this.medico = medicoRepository.findByDni(usuario);
             if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
-                return "medico/iniciomedico";
+                return "redirect:/iniciomedico/" + medico.getDni();
             } else{
                 return "medico/loginmedicoerror";
             }
@@ -80,7 +80,7 @@ public class MedicoController {
             this.medico = medicoRepository.findByNcolegiado(usuario);
             if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
-                return "medico/iniciomedico";
+                return "redirect:/iniciomedico/" + medico.getDni();
             } else {
                 return "medico/loginmedicoerror";
             }
@@ -96,7 +96,7 @@ public class MedicoController {
             this.medico = medicoRepository.findByDni(usuario);
             if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
-                return "medico/iniciomedico";
+                return "redirect:/iniciomedico/" + medico.getDni();
             } else{
                 return "medico/loginmedicoerror";
             }
@@ -104,7 +104,7 @@ public class MedicoController {
             this.medico = medicoRepository.findByNcolegiado(usuario);
             if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
-                return "medico/iniciomedico";
+                return "redirect:/iniciomedico/" + medico.getDni();
             } else {
                 return "medico/loginmedicoerror";
             }
@@ -113,12 +113,20 @@ public class MedicoController {
         }
     }
     // Iniciomedico
-    @GetMapping("iniciomedico")
-    public String showInicioPage(){
-        
+    @GetMapping("/iniciomedico/{medico}")
+    public String getIniciomedico(Model model, @PathVariable(value = "medico") String medicoDni) {
+    medico = medicoRepository.findByDni(medicoDni);
+    model.addAttribute("medico", medico);
+    List<Cita> citas = citaRepository.findAllByMedicoDni(medico.getDni());
+    List<Paciente> pacientes_pendientes = new ArrayList<Paciente>(); 
+    for (Cita c : citas){
+            String pacienteId = c.getPacienteId();
+            Paciente paciente = pacienteRepository.findByIdpaciente(pacienteId);
+            if (paciente.getPresente().equals(true)){
+                pacientes_pendientes.add(paciente);
+            }
+    }
+    model.addAttribute("pacientes", pacientes_pendientes);   
         return "medico/iniciomedico";
     }
-
-
-
 }

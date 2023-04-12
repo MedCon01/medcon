@@ -16,25 +16,24 @@ import java.time.LocalTime;
 public class Paciente {
     
     @Id
-    private String id;
+    private String idpaciente;
     private String dni;
     private String nombre;
     private LocalDate fecha_nacimiento;
     private String ntarjeta;
-    
+    private Boolean presente;
     @Transient // poner siempre que se cree un atributo que no vaya a la BBDD
     private LocalTime hora_llegada;
-    @Transient // poner siempre que se cree un atributo que no vaya a la BBDD
-    private Boolean presente;
+    
     
     // Constructor sin argumentos
     public Paciente() {
     }
     
     // Constructor con argumentos
-    public Paciente(String id, String dni, String nombre, LocalDate fecha_nacimiento, String ntarjeta, LocalTime hora_llegada,
+    public Paciente(String idpaciente, String dni, String nombre, LocalDate fecha_nacimiento, String ntarjeta, LocalTime hora_llegada,
                     Boolean presente) {
-        this.id = id;
+        this.idpaciente = idpaciente;
         this.dni = dni;
         this.nombre = nombre;
         this.fecha_nacimiento = fecha_nacimiento;
@@ -43,13 +42,13 @@ public class Paciente {
         this.presente = presente;
     }
     
-    // Getter y setter Id
-    public String getId() {
-        return id;
+    // Getter y setter idpaciente
+    public String getIdpaciente() {
+        return idpaciente;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdpaciente(String idpaciente) {
+        this.idpaciente = idpaciente;
     }
     // Getter y setter dni
     public String getDni() {
@@ -102,7 +101,7 @@ public class Paciente {
     @Override
     public String toString() {
         return "Paciente{" +
-                "id='" + id + '\'' +
+                "idpaciente='" + idpaciente + '\'' +
                 ", dni='" + dni + '\'' +
                 ", nombre='" + nombre + '\'' +
                 ", fecha_nacimiento=" + fecha_nacimiento +
