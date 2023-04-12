@@ -44,7 +44,7 @@ body{
     display: block;
     margin: 0 auto;
     width: 23%; /* Ancho de la imagen */
-    margin-bottom: 2vh; /* Espaciado inferior de la imagen */
+    margin-bottom: 0.5vh; /* Espaciado inferior de la imagen */
     justify-content: center;
    
   }
@@ -76,6 +76,6 @@ body{
     border-color: #ff9148;
     font-size: 2vw;
     font-family: 'abel', sans-serif;
-    margin-top: 5vh;
+    margin-top: 2.5vh;
     
 }
