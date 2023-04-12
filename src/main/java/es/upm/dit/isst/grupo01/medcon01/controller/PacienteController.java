@@ -41,11 +41,14 @@ import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
 @Controller
 public class PacienteController {
+    @Autowired
     private PacienteRepository pacienteRepository;
+    @Autowired
     private CitaRepository citaRepository;
+    @Autowired
     private MedicoRepository medicoRepository;
     private MedicoController medicoController;
-    private Medico medico;
+    private Medico medico = new Medico();
     private Paciente paciente;
     private Cita cita_pendiente;
     public PacienteController(){}
@@ -70,14 +73,13 @@ public class PacienteController {
     // Registro con DNI
     @PostMapping("/login_DNI")
     public String registrarPacienteDni(@RequestParam("dni") String dni){
+        // Asigno paciente buscando por DNI
         this.paciente = pacienteRepository.findByDni(dni);
         if (this.paciente != null){ // Se comprueba que el paciente existe en la BBDD 
-         // Asigno paciente buscando por DNI
-         //this.paciente = pacienteRepository.findByDni(dni); 
          // Marcar paciente como presente
          this.paciente.setPresente(true);
          // Busco la cita del paciente
-         this.cita_pendiente = citaRepository.findByPacienteId(paciente.getDni());
+         this.cita_pendiente = citaRepository.findByPacienteId(paciente.getId());
          // Busco el medico de la cita 
          this.medico = medicoRepository.findByDni(cita_pendiente.getMedicoDni());
          // this.addPacienteCola
@@ -87,7 +89,6 @@ public class PacienteController {
             return ("/paciente/error_cita");
         }
     }
-
 
     // Si se selecciona tarjeta
     @GetMapping("/login_tarjeta")

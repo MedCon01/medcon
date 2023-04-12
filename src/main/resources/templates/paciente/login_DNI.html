@@ -26,7 +26,7 @@
 		<!--<p id="reloj">00:00:00</p>-->
 	</div>
 	<div id=marco>
-		<img src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
+		<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
 		<h2>Introduzca su DNI </h2>
 		<form action="/login_DNI" method="post">
 			<input type="text" id="dni" name="dni"  maxlength="9"><br>
