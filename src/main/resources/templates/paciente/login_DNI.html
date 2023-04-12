@@ -2,16 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
 	<title>Inicio de sesión</title>
+	<!--<link rel="stylesheet" type="text/css" href="../../static/css/login_DNI.css">-->
 	<link rel="stylesheet" type="text/css" th:href="@{/css/login_DNI.css}">
-	<script>
-	function mostrarHoraActual() {
-		var fecha = new Date();
-		var horas = fecha.getHours().toString().padStart(2, "0");
-		var minutos = fecha.getMinutes().toString().padStart(2, "0");
-		var tiempo = horas + ":" + minutos;
-		document.getElementById("reloj").innerText = tiempo;
-	}
-    </script>
 </head>
 <body>
 	<form method="post">
@@ -20,6 +12,7 @@
 		<!--<p id="reloj">00:00:00</p>-->
 	</div>
 	<div id=marco>
+		<!--<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">-->
 		<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
 		<h2>Introduzca su DNI </h2>
 		<form action="/login_DNI" method="post">
