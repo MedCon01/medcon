@@ -22,6 +22,7 @@ public class Medico {
     private String n_colegiado;
     private int sala_consulta;
     private String especialidad;
+    // private String password;
     
     @Transient 
     // Cola de los identificadores de los pacientes en la lista 
