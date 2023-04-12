@@ -33,7 +33,7 @@ body{
     background-color: #ecf5ff;
     width: 60%; /* Ancho del recuadro */
     height: 60%; /* Altura del recuadro */
-    position: fixed; /* Fijar la posición del recuadro */
+    position: fixed; /* Fijar la posiciÃ³n del recuadro */
     top: 50%; /* Colocar el recuadro en el centro verticalmente */
     left: 50%; /* Colocar el recuadro en el centro horizontalmente */
     transform: translate(-50%, -50%); 
@@ -43,8 +43,9 @@ body{
 #marco img {
     display: block;
     margin: 0 auto;
-    width: 20%; /* Ancho de la imagen */
-    margin-bottom: 20px; /* Espaciado inferior de la imagen */
+    width: 23%; /* Ancho de la imagen */
+    margin-bottom: 10px; /* Espaciado inferior de la imagen */
+    justify-content: center;
    
   }
 
@@ -52,25 +53,25 @@ body{
     text-align: center; /* Centrar el texto dentro del recuadro */
     color: #295c93; /* Color del texto */
     font-size: 30px; 
-    margin-top: 0; /* Eliminar margen superior del título */
-    margin-bottom: 20px;
+    margin-top: 0; /* Eliminar margen superior del tÃ­tulo */
+    margin-bottom: 10px;
     font-family: 'abel', sans-serif;
-}#marco button {
-   
 }
-#botones_contenedor {
-	display: flex; /* Utilizamos flexbox para colocar los botones en una fila */
+#marco #botones_contenedor {
+	display: flex;
+    justify-content: center;
+    text-align: center;
+    
 }
 
 #botones_contenedor button {
-	display: inline-block; 
-	margin-right: 10px; 
-    width: 25%; 
+	display: inline-block;  
+    width: 90%; 
     height: 80px;
     border-radius: 10px;
     margin-bottom: 10px; /* Espaciado inferior de los inputs */
     display: block;
-    margin: auto auto;
+    margin: 0 auto;
     background-color: #ff9148;
     border-color: #ff9148;
     font-size: 20px;
