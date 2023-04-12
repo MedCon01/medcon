@@ -9,12 +9,12 @@ body{
 }
 #barra{
     width: 100%; 
-    height: 50px; 
+    height: 7%; 
     background-color:  #295c93; 
     position: fixed; 
     top: 0; 
     left: 0; 
-    margin-bottom: 10px;
+    margin-bottom: 1%;
 }
 
 #barra a{
@@ -46,15 +46,16 @@ body{
 }
 
 #marco img{
-    width: 200px;
+    width: 20%;
     margin-left: 20%;
 }
 
 #marco #datos{
     display: flex;
     flex-direction: column;
-    font-size: 20px;
+    font-size: 0.9rem;
     font-family: 'abel', sans-serif;
+    margin-left: 5%;
 }
 
 #info_cita{
@@ -63,13 +64,15 @@ body{
     align-items: center;
     justify-content: center;
     text-align: center;
+    font-size: 0.9rem;
+    
 }
 #imprimir{
-    margin-top: 10px;
+    margin-top: 1%;
     width: 20%; 
-    height: 50px;
+    height: 15%;
     border-radius: 10px;
-    margin-bottom: 10px; /* Espaciado inferior de los inputs */
+    margin-bottom: 1%; /* Espaciado inferior de los inputs */
     display: block;
     margin: auto auto;
     background-color: #ff9148;
