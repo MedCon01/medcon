@@ -10,7 +10,9 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Transient;
 import java.time.LocalDate;
-import java.time.LocalTime; 
+import java.time.LocalTime;
+import java.util.ArrayList;
+import java.util.List; 
 
 @Entity
 public class Medico {
@@ -21,15 +23,19 @@ public class Medico {
     private int sala_consulta;
     private String especialidad;
     
+    @Transient 
+    // Cola de los identificadores de los pacientes en la lista 
+    private List<String> cola = new ArrayList<String>() ;
     // Constructor vacío
     public Medico() {}
     
-    public Medico(String dni, String nombre, String n_colegiado, int sala_consulta, String especialidad) {
+    public Medico(String dni, String nombre, String n_colegiado, int sala_consulta, String especialidad, List<String> cola) {
         this.dni = dni;
         this.nombre = nombre;
         this.n_colegiado = n_colegiado;
         this.sala_consulta = sala_consulta;
         this.especialidad = especialidad;
+        this.cola = cola;
     }
 
     // Getter y setter de 'dni'
@@ -75,6 +81,14 @@ public class Medico {
     
     public void setEspecialidad(String especialidad) {
         this.especialidad = especialidad;
+    }
+
+    // Getter y setter de 'cola_pacientes'
+    public List<String> getCola(){
+        return this.cola;
+    }
+    public void setCola(List<String> cola){
+        this.cola = cola;
     }
     @Override
     public String toString() {
