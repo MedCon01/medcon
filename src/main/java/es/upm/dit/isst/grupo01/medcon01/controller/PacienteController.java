@@ -48,8 +48,6 @@ public class PacienteController {
     @Autowired
     private MedicoRepository medicoRepository;
     private MedicoController medicoController;
-    private Medico medico = new Medico();
-    private Paciente paciente;
     private Cita cita_pendiente;
     public PacienteController(){}
     public PacienteController(PacienteRepository pacienteRepository, CitaRepository citaRepository, MedicoRepository medicoRepository,
@@ -57,7 +55,6 @@ public class PacienteController {
         this.pacienteRepository = pacienteRepository;
         this.citaRepository = citaRepository;
         this.medicoRepository = medicoRepository;
-        this.medico = medico;
         this.medicoController = medicoController;
     }
     // Inicio kiosko
@@ -72,17 +69,20 @@ public class PacienteController {
     }
     // Registro con DNI
     @PostMapping("/login_DNI")
-    public String registrarPacienteDni(@RequestParam("dni") String dni){
+    public String registrarPacienteDni(@RequestParam("dni") String dni,Model model){
         // Asigno paciente buscando por DNI
-        this.paciente = pacienteRepository.findByDni(dni);
-        if (this.paciente != null){ // Se comprueba que el paciente existe en la BBDD 
+        Paciente paciente = pacienteRepository.findByDni(dni);
+        model.addAttribute("paciente",paciente);
+        if (paciente != null){ // Se comprueba que el paciente existe en la BBDD 
          // Marcar paciente como presente
-         this.paciente.setPresente(true);
+         paciente.setPresente(true);
          // Busco la cita del paciente
-         this.cita_pendiente = citaRepository.findByPacienteId(paciente.getId());
+         Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getId());
+         model.addAttribute("cita_pendiente",cita_pendiente);
          // Busco el medico de la cita 
-         this.medico = medicoRepository.findByDni(cita_pendiente.getMedicoDni());
-         // this.addPacienteCola
+         Medico medico = medicoRepository.findByDni(cita_pendiente.getMedicoDni());
+         model.addAttribute("medico",medico);
+         // this.addPacienteCola - desarrollar
          // Presento la informacion del paciente
          return ("/paciente/identificador_cita");
         } else {
