@@ -118,15 +118,19 @@ public class MedicoController {
     medico = medicoRepository.findByDni(medicoDni);
     model.addAttribute("medico", medico);
     List<Cita> citas = citaRepository.findAllByMedicoDni(medico.getDni());
+    List<Cita> citas_pendientes = new ArrayList<Cita>(); 
     List<Paciente> pacientes_pendientes = new ArrayList<Paciente>(); 
     for (Cita c : citas){
             String pacienteId = c.getPacienteId();
             Paciente paciente = pacienteRepository.findByIdpaciente(pacienteId);
             if (paciente.getPresente().equals(true)){
                 pacientes_pendientes.add(paciente);
+                citas_pendientes.add(c);
+
             }
     }
-    model.addAttribute("pacientes", pacientes_pendientes);   
+    model.addAttribute("pacientes", pacientes_pendientes); 
+    model.addAttribute("citas_pendientes", citas_pendientes);   
         return "medico/iniciomedico";
     }
 }
