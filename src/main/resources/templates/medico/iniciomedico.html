@@ -3,44 +3,54 @@
 <head>
     <meta charset="UTF-8">
     <title>Bienvenido</title>
-    <link rel="stylesheet" href="iniciomedico.css">
+    <link rel="stylesheet" type="text/css" href="../../static/css/iniciomedico.css">
 </head>
+
 <body onload="iniciarCronometro()">
-    <h1>Dr. <span th:text="${username}"></span></h1>
-    <ul>
-        <li th:each="item : ${items}" th:text="${item}"></li>
-    </ul>
-    <div class="container">
-        <div class="left-container">
-            <h1>Tiempo Total de consulta</h1>
-            <p id="timer">00:00:00</p>
-            <h1>Tiempo Medio de consulta</h1>
-            <p id="timer-medio">00:00:00</p>
-        </div>
-        <div class="right-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Apellido</th>
-                        <th>Cita</th>
-                        <th>Presente</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="paciente : ${pacientes}">
-                        <td th:text="${paciente.nombre}"></td>
-                        <td th:text="${paciente.cita}"></td>
-                        <td th:text="${paciente.presente ? 'Sí' : 'No'}"></td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="button-container">
-                <a th:href="@{/paciente}" onclick="siguientePaciente()">Siguiente</a>
-            </div>
-        </div>
+    <div id="barra">
+        <a href="#" onclick="terminarConsulta()">Cerrar Sesión</a>
     </div>
-    <a href="#" onclick="terminarConsulta()">Cerrar Sesión</a>
+            <div class="marco_izq">
+                <h2>Siguiente paciente:</h2>
+                <div class="paciente1">
+                    <p><b>Nombre: </b><span th:text="${paciente.nombre}"></span></p>
+                    <p><b>Hora cita: </b><span th:text="${cita_pendiente.hora}"></span></p>
+                </div>
+                <div class="paciente2">
+                    <p><b>Nombre: </b><span th:text="${paciente.nombre}"></span></p>
+                    <p><b>Hora cita: </b><span th:text="${cita_pendiente.hora}"></span></p>
+                </div>
+                <div class="paciente3">
+                    <p><b>Nombre: </b><span th:text="${paciente.nombre}"></span></p>
+                    <p><b>Hora cita: </b><span th:text="${cita_pendiente.hora}"></span></p>
+                </div>
+                <div class="paciente4">
+                    <p><b>Nombre: </b><span th:text="${paciente.nombre}"></span></p>
+                    <p><b>Hora cita: </b><span th:text="${cita_pendiente.hora}"></span></p>
+                </div>
+            </div>
+    
+            <div class="marco_dcha">
+            <div class="doctor">
+                <h2>Dr. <span th:text="${medico.nombre}"></span></h2>
+            </div>
+            <div class="tiempo_medio">
+                <h3>Tiempo Medio de consulta</h3>
+                <p id="timer-medio">00:00:00</p>
+            </div>
+            <div class="tiempo_total">
+                <h3>Tiempo Total de consulta</h3>
+                <p id="timer">00:00:00</p>
+            </div>
+            <div class="siguiente">
+                <button th:href="@{/paciente}" onclick="siguientePaciente()">Siguiente</button>
+                </div>
+            </div>
+
+    
+ 
+
+
     <script>        
         var segundos = 0;
         var minutos = 0;
