@@ -9,12 +9,12 @@ body{
 }
 #barra{
     width: 100%; 
-    height: 50px; 
+    height: 5vh; 
     background-color:  #295c93; 
     position: fixed; 
     top: 0; 
     left: 0; 
-    margin-bottom: 10px;
+    margin-bottom: 1vh;
 }
 
 #barra p{
@@ -22,7 +22,7 @@ body{
     background-color:  #295c93; 
     display: block;
     margin-left: 2%;
-    margin-top: 0.75%;
+    margin-top: 0.75vh;
     font-size: 150%;
     text-decoration: none;
     font-family: 'abel', sans-serif;
@@ -33,7 +33,7 @@ body{
     background-color: #ecf5ff;
     width: 60%; /* Ancho del recuadro */
     height: 60%; /* Altura del recuadro */
-    position: fixed; /* Fijar la posición del recuadro */
+    position: fixed; /* Fijar la posiciÃ³n del recuadro */
     top: 50%; /* Colocar el recuadro en el centro verticalmente */
     left: 50%; /* Colocar el recuadro en el centro horizontalmente */
     transform: translate(-50%, -50%); 
@@ -43,35 +43,47 @@ body{
 #marco img {
     display: block;
     margin: 0 auto;
-    width: 20%; /* Ancho de la imagen */
-    margin-bottom: 20px; /* Espaciado inferior de la imagen */
+    width: 23%; /* Ancho de la imagen */
+    margin-bottom: 2vh; /* Espaciado inferior de la imagen */
+    justify-content: center;
    
   }
 
-#marco p{
+#marco h2{
     text-align: center; /* Centrar el texto dentro del recuadro */
     color: #295c93; /* Color del texto */
-    font-size: 25px; 
-    margin-top: 0; /* Eliminar margen superior del título */
-    margin-bottom: 20px;
+    font-size: 2vw; 
+    margin-top: 0; /* Eliminar margen superior del tÃ­tulo */
+    margin-bottom: 1vh;
     font-family: 'abel', sans-serif;
 }
-#botones_contenedor {
-	display: flex; /* Utilizamos flexbox para colocar los botones en una fila */
+#marco p{
+    text-align: center; /* Centrar el texto dentro del recuadro */
+    color: red; /* Color del texto */
+    font-size: 1vw; 
+    margin-top: 0; /* Eliminar margen superior del tÃ­tulo */
+    margin-bottom: 1vh;
+    font-family: 'abel', sans-serif;
+}
+#marco #botones_contenedor {
+	display: flex;
+    justify-content: center;
+    text-align: center;
+    
 }
 
 #botones_contenedor button {
-	display: inline-block; 
-	margin-right: 10px; 
-    width: 100px; 
-    height: 80px;
+	display: inline-block;  
+    width: 90%; 
+    height:80%;
     border-radius: 10px;
-    margin-bottom: 10px; /* Espaciado inferior de los inputs */
+    margin-bottom: 2vh; /* Espaciado inferior de los inputs */
     display: block;
-    margin: auto auto;
+    margin: 0 auto;
     background-color: #ff9148;
     border-color: #ff9148;
-    font-size: 20px;
+    font-size: 2vw;
     font-family: 'abel', sans-serif;
-    margin-top: 50px;
+    margin-top: 5vh;
+    
 }

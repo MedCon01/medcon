@@ -4,6 +4,7 @@
 <head>
 	<title>Error</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/error_cita.css}">
+	<!--<link rel="stylesheet" type="text/css" href="../../static/css/error_cita.css">-->
 	<script>
 		function mostrarHoraActual() {
 		var fecha = new Date();
@@ -25,8 +26,10 @@
 		<p id="reloj">00:00</p>
 	</div>
 	<div id="marco">
-		<p> DNI o Número de tarjeta incorrecto </p> 
-    	<p> Por favor vuelva a introducirlo </p> 
+			<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
+			<!--<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">-->
+			<h2> Seleccione una opción </h2> 
+			<p> DNI o Número de tarjeta incorrecto </p> 
 			<div id="botones_contenedor">
 				<form method="get" action="/login_DNI">
 					<button type="submit" id="boton_dni">Introducir DNI</button>

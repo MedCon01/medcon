@@ -4,7 +4,8 @@
 <head>
 	<meta charset="utf-8">
 	<title>Identificador cita</title>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/identificador_cita.css}">
+	<!--<link rel="stylesheet" type="text/css" th:href="@{/css/identificador_cita.css}">-->
+	<link rel="stylesheet" type="text/css" href="../../static/css/identificador_cita.css">
 </head>
 <body>
 	<div id="barra">
@@ -13,7 +14,8 @@
 	</div>
 	<div id="marco">
 		<div id="datos_paciente">
-		<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
+		<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">
+		<!--<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">-->
 		<div id="datos">
 			<h3>Nombre:<span th:text="${paciente.nombre}"></span> </h3>
 			<h3>DNI: <span th:text="${paciente.dni}"></span></h3> 
@@ -21,7 +23,7 @@
 		</div>
 		</div>
 		<div id="info_cita">
-			<h1>Su Identificador es <u><span th:text="${cita_pendiente}"></span></u></h1>
+			<h1>Su Identificador es <u><span th:text="${paciente.id}"></span></u></h1>
 			<h1>Acuda a la sala de espera <u>01</u></h1>
 			<button id="imprimir" onclick="window.location.href = 'inicio_kiosko';">Imprimir</button>
 		</div>
