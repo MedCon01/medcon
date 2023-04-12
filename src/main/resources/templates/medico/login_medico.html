@@ -3,7 +3,9 @@
 <head>
 	<title>Inicio de sesión</title>
 	<meta charset="utf-8">
-	<link rel="stylesheet" type="text/css" th:href="@{/css/login_medico.css}" />
+	<!--<link rel="stylesheet" type="text/css" th:href="@{/css/login_medico.css}" />-->
+	<link rel="stylesheet" type="text/css" href="../../static/css/login_medico.css" />
+
 </head>
 <body>
 	<form method="post">
@@ -12,7 +14,8 @@
             <!--<p id="reloj">00:00:00</p>-->
         </div>
 		<div id="marco">
-			<img src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
+			<!--<img src="@{/images/logo_Medcon.png}" alt="logo_Medcon">-->
+			<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">
 			<h2>Por favor inicie sesión</h2>
 			<form action="/login" method="post">
 				<input type="text" value="Usuario" id="Usuario" placeholder="Usuario" onfocus="this.value=''"><br>
