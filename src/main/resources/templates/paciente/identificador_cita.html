@@ -13,14 +13,15 @@
 	</div>
 	<div id="marco">
 		<div id="datos_paciente">
-		<img src="../../static/css/logo_Medcon.png" alt="logo_Medcon">
+		<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
 		<div id="datos">
-			<h3>Nombre: Raúl Cervantes Nuñez </h3>
-			<h3>Hora cita: 11:45</h3>
+			<h3>Nombre:<span th:text="${paciente.nombre}"></span> </h3>
+			<h3>DNI: <span th:text="${paciente.dni}"></span></h3> 
+			<h3>Hora cita: <span th:text="${cita.hora}"></h3>
 		</div>
 		</div>
 		<div id="info_cita">
-			<h1>Su Identificador es <u>RCN123</u></h1>
+			<h1>Su Identificador es <u><span th:text="${paciente.id}"></span></u></h1>
 			<h1>Acuda a la sala de espera <u>01</u></h1>
 			<button id="imprimir" onclick="window.location.href = 'inicio_kiosko';">Imprimir</button>
 		</div>
