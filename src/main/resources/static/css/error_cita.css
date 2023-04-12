@@ -51,7 +51,7 @@ body{
 #marco p{
     text-align: center; /* Centrar el texto dentro del recuadro */
     color: #295c93; /* Color del texto */
-    font-size: 30px; 
+    font-size: 25px; 
     margin-top: 0; /* Eliminar margen superior del título */
     margin-bottom: 20px;
     font-family: 'abel', sans-serif;
@@ -63,7 +63,7 @@ body{
 #botones_contenedor button {
 	display: inline-block; 
 	margin-right: 10px; 
-    width: 25%; 
+    width: 100px; 
     height: 80px;
     border-radius: 10px;
     margin-bottom: 10px; /* Espaciado inferior de los inputs */
