@@ -79,7 +79,7 @@ body{
     border-radius: 10px;
     border: 1px solid #92abc8;
 }
-#marco input[type="text"]#Usuario, #marco input[type="text"]#Contraseña{
+#marco input[type="text"]#usuario, #marco input[type="text"]#password{
     width: 70%; 
     height: 10%;
     border-radius: 10px;

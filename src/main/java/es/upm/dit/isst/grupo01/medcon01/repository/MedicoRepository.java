@@ -5,5 +5,6 @@ import es.upm.dit.isst.grupo01.medcon01.model.Medico;
 
 public interface MedicoRepository extends CrudRepository<Medico,String>{
    Medico findByDni(String dni);
+   Medico findByNcolegiado(String ncolegiado);
 }
 

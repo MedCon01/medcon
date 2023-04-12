@@ -19,10 +19,10 @@ public class Medico {
     @Id
     private String dni;
     private String nombre;
-    private String n_colegiado;
-    private int sala_consulta;
+    private String ncolegiado;
+    private int consulta;
     private String especialidad;
-    // private String password;
+    private String password;
     
     @Transient 
     // Cola de los identificadores de los pacientes en la lista 
@@ -30,11 +30,11 @@ public class Medico {
     // Constructor vacío
     public Medico() {}
     
-    public Medico(String dni, String nombre, String n_colegiado, int sala_consulta, String especialidad, List<String> cola) {
+    public Medico(String dni, String nombre, String ncolegiado, int consulta, String especialidad, List<String> cola) {
         this.dni = dni;
         this.nombre = nombre;
-        this.n_colegiado = n_colegiado;
-        this.sala_consulta = sala_consulta;
+        this.ncolegiado = ncolegiado;
+        this.consulta = consulta;
         this.especialidad = especialidad;
         this.cola = cola;
     }
@@ -57,22 +57,22 @@ public class Medico {
         this.nombre = nombre;
     }
     
-    // Getter y setter de 'n_colegiado'
+    // Getter y setter de 'ncolegiado'
     public String getNColegiado() {
-        return n_colegiado;
+        return ncolegiado;
     }
     
-    public void setNColegiado(String n_colegiado) {
-        this.n_colegiado = n_colegiado;
+    public void setNColegiado(String ncolegiado) {
+        this.ncolegiado = ncolegiado;
     }
     
-    // Getter y setter de 'sala_consulta'
-    public int getSala_consulta() {
-        return sala_consulta;
+    // Getter y setter de 'consulta'
+    public int getConsulta() {
+        return consulta;
     }
     
-    public void setSala_consulta(int sala_consulta) {
-        this.sala_consulta = sala_consulta;
+    public void setConsulta(int consulta) {
+        this.consulta = consulta;
     }
     
     // Getter y setter de 'especialidad'
@@ -91,13 +91,21 @@ public class Medico {
     public void setCola(List<String> cola){
         this.cola = cola;
     }
+
+    // Getter y setter de 'password'
+    public String getPassword(){
+        return this.password;
+    }
+    public void setPassword(String password){
+        this.password = password;
+    }
     @Override
     public String toString() {
         return "Medico{" +
                 "dni='" + dni + '\'' +
                 ", nombre='" + nombre + '\'' +
-                ", n_colegiado='" + n_colegiado + '\'' +
-                ", sala_consulta=" + sala_consulta +
+                ", ncolegiado='" + ncolegiado + '\'' +
+                ", consulta=" + consulta +
                 ", especialidad='" + especialidad + '\'' +
                 '}';
     }

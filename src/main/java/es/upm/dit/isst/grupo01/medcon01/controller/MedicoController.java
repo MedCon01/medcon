@@ -9,6 +9,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.Temporal;
+import java.util.regex.*;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -46,21 +47,46 @@ public class MedicoController {
     private CitaRepository citaRepository;
     @Autowired
     private PacienteRepository pacienteRepository;
+    Medico medico;
     
     // Constructor vacío
     public MedicoController(){}
 
     // Constructor normal
-    public MedicoController(MedicoRepository medicoRepository, CitaRepository citaRepository, PacienteRepository pacienteRepository){
+    public MedicoController(MedicoRepository medicoRepository, CitaRepository citaRepository, PacienteRepository pacienteRepository, Medico medico){
         this.medicoRepository = medicoRepository;
         this.citaRepository = citaRepository;
         this.pacienteRepository = pacienteRepository;
+        this.medico=medico;
     }
 
     // Login_medico
     @GetMapping("/login_medico")
     public String showLoginPage(){
         return "medico/login_medico";
+    }
+    @PostMapping("/login_medico")
+    public String processLoginForm(@RequestParam("usuario") String usuario, @RequestParam("password") String password,Model model){
+        if (usuario.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
+            // Validar DNI del medico
+            this.medico = medicoRepository.findByDni(usuario);
+            if (medico.getPassword() == password){
+                model.addAttribute("medico", medico);
+                return "medico/iniciomedico";
+            } else{
+                return "medico/loginmedicoerror";
+            }
+        } else if (usuario.matches("\\d{12}")){
+            this.medico = medicoRepository.findByNcolegiado(usuario);
+            if (medico.getPassword() == password){
+                model.addAttribute("medico", medico);
+                return "medico/iniciomedico";
+            } else {
+                return "medico/loginmedicoerror";
+            }
+        } else {
+            return "medico/loginmedicoerror";
+        }
     }
 
     // Iniciomedico
