@@ -3,6 +3,22 @@
 <html>
 <head>
 	<title>Error</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/error_cita.css}">
+	<script>
+		function mostrarHoraActual() {
+		var fecha = new Date();
+		var horas = fecha.getHours();
+		var minutos = fecha.getMinutes();
+		var tiempo = horas + ":" + minutos;
+		document.getElementById("reloj").innerText = tiempo;
+	}
+
+	window.onload = function() {
+		mostrarHoraActual(); // Mostrar la hora actual al cargar la página
+		setInterval(mostrarHoraActual, 1000); // Actualizar la hora cada segundo
+	};
+
+</script>
 </head>
 <body>
 	<p> Dni o Nº de tarjeta incorrecto </p> 
