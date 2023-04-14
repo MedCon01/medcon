@@ -38,7 +38,7 @@ body{
     top: 50%; /* Colocar el recuadro en el centro verticalmente */
     left: 50%; /* Colocar el recuadro en el centro horizontalmente */
     transform: translate(-50%, -50%); 
-    border-radius: 10px;
+    border-radius: 1em;
 
 }
 #marco img {
@@ -60,7 +60,7 @@ body{
 
 #marco input[type="submit"] {
     width: 20%; 
-    border-radius: 10px;
+    border-radius: 1em;
     margin-bottom: 1vh; /* Espaciado inferior de los inputs */
     display: block;
     margin: auto auto;
@@ -76,14 +76,14 @@ body{
     margin-bottom: 0.5vh; /* Espaciado inferior de los inputs */
     display: block;
     margin: auto auto;
-    border-radius: 10px;
+    border-radius: 1em;
     border: 0.1em solid #92abc8;
 }
 #marco input[type="text"]#Usuario, #marco input[type="password"]#Contraseña{
     width: 70%; 
     height: 8%;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    border-radius: 1em;
+    margin-bottom: 1em;
     display: block;
     margin: auto auto;
     background-color: #92abc8;

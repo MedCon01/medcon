@@ -37,7 +37,7 @@ body{
     top: 50%; /* Colocar el recuadro en el centro verticalmente */
     left: 50%; /* Colocar el recuadro en el centro horizontalmente */
     transform: translate(-50%, -50%); 
-    border-radius: 10px;
+    border-radius: 1em;
 
 }
 #marco img {
@@ -76,7 +76,7 @@ body{
 	display: inline-block;  
     width: 90%; 
     height:80%;
-    border-radius: 10px;
+    border-radius: 1em;
     margin-bottom: 2vh; /* Espaciado inferior de los inputs */
     display: block;
     margin: 0 auto;

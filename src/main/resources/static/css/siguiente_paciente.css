@@ -1,0 +1,126 @@
+@font-face {
+    font-family: 'Abel';
+    src: url('./fonts/Abel.ttf') format('truetype');
+}
+
+body{
+    background-color: #92abc8;
+    font-family: 'abel', sans-serif;
+}
+
+#barra{
+    width: 100%; 
+    height: 7%; 
+    background-color:  #295c93; 
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    margin-bottom: 1vh;
+}
+
+#barra a{
+    color: #ffff;
+    background-color:  #295c93; 
+    display: block;
+    margin-left: 2%;
+    margin-top: 2vh;
+    font-size: 150%;
+    text-decoration: none;
+    font-family: 'abel', sans-serif;
+}
+
+.info_paciente {
+    float: left;
+    width: 35%;
+    padding: 20px;
+    background-color: #ecf5ff;
+    margin-left: 3%; 
+    margin-top: 5%;
+    border-radius: 10px;
+}
+
+.foto img{
+    width: 30%;
+    display: block;
+    margin-top: 2vh; /* ajusta la distancia desde la parte superior del marco */
+    margin-bottom: 6%; /* ajusta la distancia desde la parte inferior del marco */
+    margin: 0 auto;
+}
+
+.logo img{
+    width: 20%;
+    display: block;
+    margin-top: 2vh; /* ajusta la distancia desde la parte superior del marco */
+    margin-bottom: 1vh; /* ajusta la distancia desde la parte inferior del marco */
+    margin: 0 auto;
+}
+
+.nombre, .nacimiento{
+    margin-top: 2%;
+    border: 0.1em solid #92abc8;
+    border-radius: 10px;
+    background-color: #92abc8;
+    padding-left: 10%;
+    padding-right: 10%;
+    margin-top: 3%;
+    text-align: center;
+}
+.nacimiento{
+    margin-bottom: 5%;
+    font-family: 'abel', sans-serif;
+}
+
+.nombre, .nacimiento h2{
+    color: #fff;
+}
+
+.marco_dcha {
+    float: right;
+    width: 50%;
+    background-color: #92abc8;
+    padding: 20px;
+    margin-right: 3%;
+    margin-top: 5%;
+    border-radius: 1em;
+}
+
+/* Estilo para los botones */
+#historial, #receta, #pruebas, #gestion_citas, #suspender_consulta, #finalizar {
+    width: 40%; /* Ajusta el ancho a tu preferencia */
+    margin-left: 5%;
+    height: 12vh; /* Ajusta el alto a tu preferencia */
+    display: inline-block; /* Mostrar como elementos en línea */
+    float: left; /* Flotar a la izquierda */
+    border-radius: 1em;
+    background-color: #295c93;
+    border-color: #295c93;
+    font-family: 'abel', sans-serif;
+    font-size: 1.5em;
+    color: #fff;
+    margin-top: 5%;
+  }
+
+#finalizar{
+    background-color:#ff9148;
+    border-color: #ff9148;
+}
+
+#suspender_consulta{
+    background-color:#ecf5ff;
+    color: #295c93;
+    border-color: #ecf5ff;
+}
+
+.tiempo {
+    margin-top: 55%;
+    background-color: #92abc8; /* Color de fondo del recuadro */
+    border: #ecf5ff dashed 0.2em;
+    text-align: center; /* Centrar el texto horizontalmente */
+    padding: 1em; /* Espaciado interno del recuadro */
+    border-radius: 1em;
+    font-size: 1.8em;
+    margin-left: 32%;
+    width: 25%;
+    color: #ecf5ff;
+  }
+
