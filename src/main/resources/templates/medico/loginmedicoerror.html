@@ -9,7 +9,7 @@
 <body>
 	<form method="post">
         <div id="barra">
-            <a href="#" onclick="goBack()">Volver</a>
+            <a href="#" onclick="window.location.href = 'login_medico'">Volver</a>
             <!--<p id="reloj">00:00:00</p>-->
         </div>
 		<div id="marco">
@@ -19,7 +19,7 @@
 			<h3 style="color: red; font-size: small; text-align: center;">Error de usuario o contraseña</h3>
 			<form action="/login" method="post">
 				<input type="text" value="Usuario" id="Usuario" name ="usuario" placeholder="Usuario" onfocus="this.value=''"><br>
-				<input type="text" value="Contraseña" id="Contraseña" name ="password" placeholder="Contraseña" onfocus="this.value=''"><br>
+				<input type="password" value="Contraseña" id="Contraseña" name ="password" placeholder="Contraseña" onfocus="this.value=''"><br>
                 <div class="boton-container">
                     <input type="submit" value="Iniciar Sesión" id="Confirmar">
                 </div>

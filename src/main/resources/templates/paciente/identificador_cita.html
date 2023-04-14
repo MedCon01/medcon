@@ -9,7 +9,7 @@
 </head>
 <body>
 	<div id="barra">
-		<a href="#" onclick="goBack()">Volver</a>
+		<a href="#" onclick="window.location.href = 'inicio_kiosko'">Volver</a>
 	</div>
 	<div id="marco">
 		<div id="datos_paciente">
@@ -25,7 +25,7 @@
 			<h1>Su Identificador es <u><span th:text="${paciente.idpaciente}"></span></u></h1>
 			<h1>Acuda a la sala de espera <u>01</u></h1>
 		</div>
-		<button id="imprimir" onclick="window.location.href = 'inicio_kiosko';">Imprimir</button>
+		<button id="imprimir" onclick="window.location.href = 'inicio_kiosko'">Imprimir</button>
 	</div>
    
 </body>

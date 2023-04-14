@@ -54,7 +54,7 @@ body{
     color: #295c93; /* Color del texto */
     font-size: 1vw; 
     margin-top: 0; /* Eliminar margen superior del título */
-    margin-bottom: 2vh;
+    margin-bottom: 1vh;
     font-family: 'abel', sans-serif;
 }
 
@@ -66,20 +66,20 @@ body{
     margin: auto auto;
     background-color: #ff9148;
     border-color: #ff9148;
-    font-size: 1.5rem;
+    font-size: 1.1rem;
     font-family: 'abel', sans-serif;
     padding: 1.5vh;
 }
 #marco input[type="text"]{
     width: 60%; /* Ancho completo de los inputs */
     height: 0.5%;
-    margin-bottom: 1vh; /* Espaciado inferior de los inputs */
+    margin-bottom: 0.5vh; /* Espaciado inferior de los inputs */
     display: block;
     margin: auto auto;
     border-radius: 10px;
     border: 0.1em solid #92abc8;
 }
-#marco input[type="text"]#Usuario, #marco input[type="text"]#Contraseña{
+#marco input[type="text"]#Usuario, #marco input[type="password"]#Contraseña{
     width: 70%; 
     height: 8%;
     border-radius: 10px;
