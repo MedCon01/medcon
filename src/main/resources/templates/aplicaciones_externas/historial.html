@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+  <title>Historial Médico</title>
+  <style>
+        /* Estilo del contenedor principal que simula la hoja de papel */
+    .paper {
+      background-color: #fff;
+      width: 25%; /* Cambiado a unidad relativa */
+      max-width: 100%;
+      padding: 4%; /* Cambiado a unidad relativa */
+      margin: 0 auto;
+      border: 1px solid #ccc;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      font-family: Arial, sans-serif;
+      margin-top: 3%;
+    }
+    
+    /* Estilo de los títulos */
+    h1, h2 {
+      margin: 0;
+      padding: 0;
+    }
+    
+    h1 {
+      font-size: 2rem; /* Cambiado a unidad relativa */
+      font-weight: bold;
+      margin-bottom: 1.5rem; /* Cambiado a unidad relativa */
+    }
+    
+    h2 {
+      font-size: 1.5rem; /* Cambiado a unidad relativa */
+      font-weight: bold;
+      margin-top: 0.5rem; /* Cambiado a unidad relativa */
+      margin-bottom: 0.25rem; /* Cambiado a unidad relativa */
+    }
+    
+    /* Estilo de los párrafos */
+    p {
+      margin: 0;
+      padding: 0;
+      margin-bottom: 0.625rem; /* Cambiado a unidad relativa */
+    }
+    
+    /* Estilo de la lista de historial médico */
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style-type: none;
+    }
+    
+    li {
+      margin-bottom: 0.3125rem; /* Cambiado a unidad relativa */
+    }
+    
+    /* Estilo de los enlaces */
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+    
+    a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="paper">
+    <h1>Historial Médico</h1>
+    <h2>Información del Paciente</h2>
+    <p>Nombre: Juan Pérez</p>
+    <p>Fecha de nacimento: 16/07/1992</p>
+    <p>Género: Masculino</p>
+    <h2>Historial de Enfermedades</h2>
+    <ul>
+      <li>Diabetes tipo 2 (2015-2018)</li>
+      <li>Presión arterial alta (2017-presente)</li>
+      <li>Colesterol alto (2016-presente)</li>
+      <li>Asma (2005-2010)</li>
+    </ul>
+    <h2>Notas del Médico</h2>
+    <p>El paciente requiere seguir una dieta balanceada y hacer ejercicio regularmente para controlar la diabetes y la presión arterial alta.</p>
+    <p>Recetar medicamentos para el colesterol alto y monitorear los niveles de colesterol en los próximos meses.</p>
+    <h2>Contacto del Médico</h2>
+    <p>Dr. Ana Rodríguez</p>
+    <p>Teléfono: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
+    <p>Email: <a href="mailto:anarodriguez@example.com">anarodriguez@example.com</a></p>
+    <br>
+    <button id="volver" onclick="window.location.href = 'medico/siguiente_paciente'">Volver</button>
+  </div>
+</body>
+</html>
+
+
+

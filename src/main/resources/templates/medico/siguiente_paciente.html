@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Siguiente paciente</title>
-    <link rel="stylesheet" type="text/css" href="../../static/css/siguiente_paciente.css">
-    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/siguiente_paciente.css}" />-->
+    <!--<link rel="stylesheet" type="text/css" href="../../static/css/siguiente_paciente.css">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/siguiente_paciente.css}" />
 
 </head>
 <body onload="iniciarCronometro()">
@@ -13,8 +13,8 @@
 
     <div class="info_paciente">
         <div class="foto">
-        <!--<img th:src="@{/images/avatar.png}" alt="logo_Medcon">-->
-        <img src="../../static/images/avatar.png" alt="logo_Medcon">
+        <img th:src="@{/images/avatar.png}" alt="logo_Medcon">
+        <!--<img src="../../static/images/avatar.png" alt="logo_Medcon">-->
         </div>
         <div class="nombre">
             <h2>Antonio García Iglesias</h2>
@@ -23,16 +23,16 @@
             <h2>13/09/1984</h2>
         </div>
         <div class="logo">
-        <!--<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">-->
-        <img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">
+        <img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
+        <!--<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">-->
         </div>
     </div>
 
     <div class="marco_dcha">
-        <button id="historial" onclick="window.location.href = 'historial'">Historial médico</button>
-        <button id="receta" onclick="window.location.href = 'receta_electronica'">Receta electrónica</button>
-        <button id="pruebas" onclick="window.location.href = 'pruebas_medicas'">Pruebas médicas</button>
-        <button id="gestion_citas" onclick="window.location.href = 'gestion_citas'">Gestión de citas</button>
+        <button id="historial" onclick="window.location.href = 'aplicaciones_externas/historial.html'">Historial médico</button>
+        <button id="receta" onclick="window.location.href = 'aplicaciones_externas/receta'">Receta electrónica</button>
+        <button id="pruebas" onclick="window.location.href = 'aplicaciones_externas/pruebas_medicas'">Pruebas médicas</button>
+        <button id="gestion_citas" onclick="window.location.href = 'aplicaciones_externas/gestion_citas'">Gestión de citas</button>
         <button id="suspender_consulta" onclick="window.location.href = 'iniciomedico'">Suspender consulta en curso</button>
         <button id="finalizar" onclick="window.location.href = 'iniciomedico'">Finalizar consulta</button>
         <div class="tiempo">

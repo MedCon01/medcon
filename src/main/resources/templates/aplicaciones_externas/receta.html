@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Receta Electrónica</title>
+  <style>
+    /* Estilos del formulario */
+    form {
+      width: 80vw; /* Cambiado a unidad relativa (viewport width) */
+      max-width: 600px;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+      margin-top: 3%;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem; /* Cambiado a unidad relativa (rem) */
+    }
+
+    input[type="text"], textarea {
+      width: 100%;
+      padding: 0.5rem; /* Cambiado a unidad relativa (rem) */
+      margin-bottom: 1rem; /* Cambiado a unidad relativa (rem) */
+    }
+
+    textarea {
+      height: 150px;
+    }
+
+    input[type="submit"] {
+      background-color: #0066cc;
+      color: #fff;
+      padding: 0.5rem 1rem; /* Cambiado a unidad relativa (rem) */
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #004080;
+    }
+
+    #volver {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3%;
+    }
+
+    #volver button {
+      margin-right: 0.1rem;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <h1>Receta Electrónica</h1>
+    <label for="nombrePaciente">Nombre del Paciente:</label>
+    <input type="text" id="nombrePaciente" name="nombrePaciente" required>
+    <label for="edadPaciente">Edad del Paciente:</label>
+    <input type="text" id="edadPaciente" name="edadPaciente" required>
+    <label for="medicamento">Medicamento:</label>
+    <input type="text" id="medicamento" name="medicamento" required>
+    <label for="dosificacion">Dosificación:</label>
+    <textarea id="dosificacion" name="dosificacion" required></textarea>
+    <label for="indicaciones">Indicaciones:</label>
+    <textarea id="indicaciones" name="indicaciones" required></textarea>
+    <input type="submit" value="Enviar Receta">
+    <div id="volver">
+      <button onclick="window.location.href = 'medico/siguiente_paciente'">Volver</button>
+    </div>
+  </form>
+</body>
+</html>

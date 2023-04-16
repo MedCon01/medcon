@@ -2,8 +2,8 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Sala de espera</title>
-    <link rel="stylesheet" type="text/css" href="../../static/css/pantalla.css">
-    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/pantalla.css}" />-->
+    <!--<link rel="stylesheet" type="text/css" href="../../static/css/pantalla.css">-->
+    <link rel="stylesheet" type="text/css" th:href="@{/css/pantalla.css}" />
     <script>
 		function mostrarHoraActual() {
 		var fecha = new Date();
@@ -26,30 +26,30 @@
                 <h2>Sala de espera 01</h2>
                 <div class="paciente1">
                     <p>
-                        RCN123<span th:text="${pacientes[0].nombre}"></span>
-                        <span style="float:right;">11:45 <span th:text="${citas_pendientes[0].hora}"></span></span>
+                        RCN123<span th:text="${paciente.idpaciente}"></span>
+                        <span style="float:right;">11:45 <span th:text="${cita_pendiente.hora}"></span></span>
                     </p>
                 </div>
                 <div class="paciente2">
                     <p>
-                        MRR375<span th:text="${pacientes[0].nombre}"></span>
-                        <span style="float:right;">11:45 <span th:text="${citas_pendientes[0].hora}"></span></span>
+                        MRR375<span th:text="${paciente.idpaciente}"></span>
+                        <span style="float:right;">11:45 <span th:text="${citas_pendientes.hora}"></span></span>
                     </p>
                 </div>
                 <div class="paciente3">
                     <p>
-                        CGH156<span th:text="${pacientes[0].nombre}"></span>
-                        <span style="float:right;">12:15 <span th:text="${citas_pendientes[0].hora}"></span></span>
+                        CGH156<span th:text="${paciente.idpaciente}"></span>
+                        <span style="float:right;">12:15 <span th:text="${citas_pendientes.hora}"></span></span>
                     </p>
                 </div>
                 <div class="paciente4">
                     <p>
-                        ALB792<span th:text="${pacientes[0].nombre}"></span>
-                        <span style="float:right;">12:15 <span th:text="${citas_pendientes[0].hora}"></span></span>
+                        ALB792<span th:text="${paciente.idpaciente}"></span>
+                        <span style="float:right;">12:15 <span th:text="${citas_pendientes.hora}"></span></span>
                     </p>
                 </div>
-                <!--<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">-->
-                <img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">
+                <img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
+                <!--<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">-->
             </div>
 
             <div class="marco_dcha">
@@ -60,10 +60,10 @@
                     <h2>Consulta 2</h2>
                 </div>
                 <div class="identificador1">
-                    <h3>AGI683 <!--paciente[0].idpaciente--></h3>
+                    <h3>AGI683 <span th:text="${paciente.idpaciente}"></span></h3>
                 </div>
                 <div class="identificador2">
-                    <h3>HRU776 <!--paciente[1].idpaciente--></h3>
+                    <h3>HRU776 <span th:text="${paciente.idpaciente}"></span></h3>
                 </div>
                 <div class="consulta3">
                     <h2>Consulta 3</h2>
@@ -72,10 +72,10 @@
                     <h2>Consulta 4</h2>
                 </div>
                 <div class="identificador3">
-                    <h3>FKL033 <!--paciente[0].idpaciente--></h3>
+                    <h3>FKL033 <span th:text="${paciente.idpaciente}"></span></h3>
                 </div>
                 <div class="identificador4">
-                    <h3>PMS478 <!--paciente[1].idpaciente--></h3>
+                    <h3>PMS478 <span th:text="${paciente.idpaciente}"></span></h3>
                 </div>
             </div>
       
