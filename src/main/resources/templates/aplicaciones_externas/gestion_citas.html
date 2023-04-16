@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Solicitud de Citas Médicas</title>
+  <style>
+    /* Estilos del formulario */
+    form {
+      width: 80vw; /* Cambiado a unidad relativa (viewport width) */
+      max-width: 50vh;
+      margin: 0 auto;
+      font-family: Arial, sans-serif;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 0.5rem; /* Cambiado a unidad relativa (rem) */
+    }
+
+    input[type="text"], input[type="date"], textarea {
+      width: 100%;
+      padding: 0.5rem; /* Cambiado a unidad relativa (rem) */
+      margin-bottom: 1rem; /* Cambiado a unidad relativa (rem) */
+    }
+
+    textarea {
+      height: 10vh;
+    }
+
+    input[type="submit"] {
+      background-color: #0066cc;
+      color: #fff;
+      padding: 0.5rem 1rem; /* Cambiado a unidad relativa (rem) */
+      border: none;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #004080;
+    }
+
+    h1{
+    margin-top: 10%;
+    }
+
+    #volver {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 3%;
+    }
+
+    #volver button {
+      margin-right: 0.1rem;
+    }
+  </style>
+</head>
+<body>
+  <form>
+    <h1>Solicitud de Citas Médicas</h1>
+    <label for="nombrePaciente">Nombre del Paciente:</label>
+    <input type="text" id="nombrePaciente" name="nombrePaciente" required>
+    <label for="fechaCita">Fecha de la Cita:</label>
+    <input type="date" id="fechaCita" name="fechaCita" required>
+    <label for="motivoCita">Motivo de la Cita:</label>
+    <textarea id="motivoCita" name="motivoCita" required></textarea>
+    <input type="submit" value="Solicitar Cita">
+    <div id="volver">
+      <button onclick="window.location.href = 'medico/siguiente_paciente'">Volver</button>
+    </div>
+  </form>
+</body>
+</html>
