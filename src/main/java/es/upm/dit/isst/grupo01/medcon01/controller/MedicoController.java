@@ -139,8 +139,39 @@ public class MedicoController {
         return "medico/iniciomedico";
     }
     //siguiente paciente 
-        @GetMapping("/siguiente_paciente")
+    @GetMapping("/siguiente_paciente")
     public String showPacientePage(){
         return "medico/siguiente_paciente";
     }
+
+    @GetMapping("/historial")
+    public String showhistorial(){
+        return "aplicaciones_externas/historial";
+    }
+
+    @GetMapping("/receta")
+    public String showreceta(){
+        return "aplicaciones_externas/receta";
+    }
+
+    @GetMapping("/pruebas_medicas")
+    public String showpruebasMedicas(){
+        return "aplicaciones_externas/pruebas_medicas";
+    }
+
+    @GetMapping("/gestion_citas")
+    public String showgestion_citas(){
+        return "aplicaciones_externas/gestion_citas";
+    }
+
+    @GetMapping("/suspender_consulta")
+    public String showsuspenderConsulta(){
+        return "medico/iniciomedico";
+    }
+
+    @GetMapping("/finalizar_consulta")
+    public String showsfinalizarConsulta(){
+        return "medico/iniciomedico";
+    }
+    
 }
