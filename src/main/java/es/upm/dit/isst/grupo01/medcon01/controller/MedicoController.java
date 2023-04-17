@@ -66,10 +66,7 @@ public class MedicoController {
         return "medico/login_medico";
     }
 
-    @GetMapping("/siguiente_paciente")
-    public String showsiguiente_paciente(){
-        return "medico/siguiente_paciente";
-    }
+
     @PostMapping("/login_medico")
     public String processLoginForm(@RequestParam("usuario") String usuario, @RequestParam("password") String password,Model model){
         if (usuario.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
