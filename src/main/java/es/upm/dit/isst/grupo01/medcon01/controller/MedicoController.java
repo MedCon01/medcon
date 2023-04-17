@@ -138,4 +138,9 @@ public class MedicoController {
     model.addAttribute("citas_pendientes", citas_pendientes);   
         return "medico/iniciomedico";
     }
+    //siguiente paciente 
+        @GetMapping("/siguiente_paciente")
+    public String showPacientePage(){
+        return "medico/siguiente_paciente";
+    }
 }
