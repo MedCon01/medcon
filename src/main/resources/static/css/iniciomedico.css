@@ -62,36 +62,19 @@ body{
     font-family: 'abel', sans-serif;
 }
 
-.paciente1{
+.siguientepaciente{
     margin-top: 2%;
     border: 0.1em solid #ff9148;
     border-radius: 1em;
     background-color: #ff9148;
     padding-left: 2%;
 }
-.paciente2{
+.infopaciente{
     margin-top: 3%;
     border: 0.1em solid #295c93;
     border-radius: 1em;
     padding-left: 2%;
 }
-
-.paciente3{
-    margin-top: 3%;
-    border: 0.1em solid #295c93;
-    border-radius: 1em;
-    padding-left: 2%;
-}
-
-.paciente4{
-    margin-top: 3%;
-    border: 0.1em dashed #295c93;
-    border-radius: 1em;
-    padding-left: 2%;
-}
-
-
-
 
 .doctor{
     background-color: #295c93;
