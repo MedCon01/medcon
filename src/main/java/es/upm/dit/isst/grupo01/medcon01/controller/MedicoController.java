@@ -65,6 +65,8 @@ public class MedicoController {
     public String showLoginPage(){
         return "medico/login_medico";
     }
+
+
     @PostMapping("/login_medico")
     public String processLoginForm(@RequestParam("usuario") String usuario, @RequestParam("password") String password,Model model){
         if (usuario.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
@@ -133,4 +135,40 @@ public class MedicoController {
     model.addAttribute("citas_pendientes", citas_pendientes);   
         return "medico/iniciomedico";
     }
+    //siguiente paciente 
+    @GetMapping("/siguiente_paciente")
+    public String showPacientePage(){
+        return "medico/siguiente_paciente";
+    }
+
+    @GetMapping("/historial")
+    public String showhistorial(){
+        return "aplicaciones_externas/historial";
+    }
+
+    @GetMapping("/receta")
+    public String showreceta(){
+        return "aplicaciones_externas/receta";
+    }
+
+    @GetMapping("/pruebas_medicas")
+    public String showpruebasMedicas(){
+        return "aplicaciones_externas/pruebas_medicas";
+    }
+
+    @GetMapping("/gestion_citas")
+    public String showgestion_citas(){
+        return "aplicaciones_externas/gestion_citas";
+    }
+
+    @GetMapping("/suspender_consulta")
+    public String showsuspenderConsulta(){
+        return "medico/iniciomedico";
+    }
+
+    @GetMapping("/finalizar_consulta")
+    public String showsfinalizarConsulta(){
+        return "medico/iniciomedico";
+    }
+    
 }
