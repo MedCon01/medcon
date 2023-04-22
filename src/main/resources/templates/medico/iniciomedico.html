@@ -7,38 +7,24 @@
     <link rel="stylesheet" type="text/css" th:href="@{/css/iniciomedico.css}" />
 </head>
 
-<body onload="iniciarCronometro()">
+<tbody onload="iniciarCronometro()">
     <div id="barra">
         <a href="#" onclick="terminarConsulta()">Cerrar Sesión</a>
     </div>
     <div class="marco_izq">
-        <h2>Siguiente paciente:</h2>
-        <div th:if="${#arrays.isEmpty(pacientes)}">
-            <p>No hay pacientes en la lista.</p>
+        <div th:each="paciente : ${pacientes}" th:class="${paciente == pacientes[0]} ? 'siguientepaciente' : 'infopaciente'">
+            <table>
+                <tr>
+                    <td><b>Nombre:</b></td>
+                    <td th:text="${paciente.nombre}"></td>
+                </tr>
+                <tr th:each="cita : ${citas_pendientes}" th:if="${cita.pacienteId == paciente.Idpaciente}">
+                    <td><b>Hora cita:</b></td>
+                    <td th:text="${cita.hora}"></td>
+                </tr>
+            </table>
         </div>
-        <div th:if="${not #arrays.isEmpty(pacientes)}" th:with="index=${#arrays.indexOf(pacientes, pacientes[0])}">
-            <div th:each="paciente, pacienteIndex : ${pacientes}">
-              <div class="siguientepaciente" th:if="${pacienteIndex == index}">
-                <!-- Contenedor del siguiente paciente -->
-                  <p><b>Nombre: </b><span th:text="${paciente.nombre}"></span></p>
-                  <div th:each="cita: ${citas_pendientes}">
-                    <div th:if="${cita.pacienteId == paciente.idpaciente}">
-                      <p><b>Hora cita: </b><span th:text="${cita.hora}"></span></p>
-                    </div>
-                  </div>
-                </div>
-              <div class="infopaciente" th:if="${pacienteIndex != index}">
-                <!-- Contenedor de los pacientes restantes -->
-                  <p><b>Nombre: </b><span th:text="${paciente.nombre}"></span></p>
-                  <div th:each="cita: ${citas_pendientes}">
-                    <div th:if="${cita.pacienteId == paciente.idpaciente}">
-                      <p><b>Hora cita: </b><span th:text="${cita.hora}"></span></p>
-                    </div>
-                  </div>
-                </div>
-            </div>
-          </div>  
-        </div>
+    </div>
             <div class="marco_dcha">
             <div class="doctor">
                 <h2>Dr. <span th:text="${medico.nombre}"></span></h2>
@@ -57,10 +43,6 @@
             <img th:src="@{/images/logo_Medcon_v2.png}" alt="logo_Medcon">
             <!--<img src="../../static/images/logo_Medcon_v2.png" alt="logo_Medcon">-->
             </div>
-
-    
- 
-
 
     <script>        
         var segundos = 0;
@@ -126,5 +108,5 @@
             window.location.href = "/login_medico";
         }
     </script>
-</body>
+</tbody>
 </html>
