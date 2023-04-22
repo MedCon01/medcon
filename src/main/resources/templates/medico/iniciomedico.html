@@ -37,9 +37,11 @@
                 <h4><b>Tiempo Total de consulta</b></h4>
                 <p id="timer">00:00:00</p>
             </div><br>
-            <div class="siguiente">
-                <button th:href="@{/iniciomedico}" onclick="siguientePaciente()">Siguiente</button>
-                </div>
+            <form method="get" action="/siguiente_paciente">
+                <input type="hidden" name="idpaciente" th:value="${pacientes[0].Idpaciente}" />
+                <button type="submit" id="siguiente" value="${pacientes[0].Idpaciente}">
+                    <span>Siguiente</span></button>
+            </form>
             <img th:src="@{/images/logo_Medcon_v2.png}" alt="logo_Medcon">
             <!--<img src="../../static/images/logo_Medcon_v2.png" alt="logo_Medcon">-->
             </div>

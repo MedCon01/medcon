@@ -135,10 +135,21 @@ public class MedicoController {
     model.addAttribute("citas_pendientes", citas_pendientes);   
         return "medico/iniciomedico";
     }
-    //siguiente paciente 
+    //llamada a siguiente paciente 
     @GetMapping("/siguiente_paciente")
-    public String showPacientePage(){
-        return "medico/siguiente_paciente";
+    public String showPacientePage(@RequestParam("idpaciente") String idpaciente, Model model){
+        Paciente pacientellamado =  pacienteRepository.findByIdpaciente(idpaciente);
+        model.addAttribute("pacientellamado",pacientellamado);
+        return "redirect:/paciente/" + pacientellamado.getIdpaciente();
+    }
+    //paciente llamado
+    @GetMapping("/paciente/{paciente}")
+    public String showConsultaEnCursoPage(Model model, @PathVariable(value = "paciente") String idpaciente){
+        Paciente pacientellamado = pacienteRepository.findByIdpaciente(idpaciente);
+        pacientellamado.setPresente(false);
+        pacienteRepository.save(pacientellamado);
+        model.addAttribute("pacientellamado",pacientellamado);
+        return "medico/paciente"; 
     }
 
     @GetMapping("/historial")
