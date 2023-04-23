@@ -15,5 +15,32 @@ import javax.persistence.GenerationType;
 
 public class Cola {
     private int salaespera;
-    public List<String> pendientes;
+    public List<Cita> pendientes;
+
+    public Cola(){}
+
+    public Cola(int salaespera, List<Cita> pendientes){
+        this.salaespera = salaespera;
+        this.pendientes = pendientes;
+    }
+
+    // Getter y setter salaespera
+    public int getSalaEspera() {
+        return salaespera;
+    }
+    
+    public void setSalaEspera(int salaespera) {
+        this.salaespera = salaespera;
+    }
+
+    // Getter y setter pendientes
+
+    public List<Cita> getPendientes() {
+        return pendientes;
+    }
+    
+    public void setPendientes(List<Cita> pendientes) {
+        this.pendientes = pendientes; 
+    }
+
 }

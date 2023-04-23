@@ -7,5 +7,6 @@ public interface CitaRepository extends CrudRepository<Cita,Integer> {
     Cita findByPacienteId(String pacienteId);
     Cita findByMedicoDni(String medicoDni);
     List<Cita> findAllByMedicoDni(String medicoDni);
+    Cita findByHora(int hora);
 
 }

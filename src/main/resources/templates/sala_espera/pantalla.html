@@ -26,28 +26,30 @@
                 <h2>Sala de espera 01</h2>
                 <div class="paciente1">
                     <p>
-                        RCN123<span th:text="${paciente.idpaciente}"></span>
-                        <span style="float:right;">11:45 <span th:text="${cita_pendiente.hora}"></span></span>
+                        <h3 th:text="${paciente.idpaciente}"></h3>
+                        <h3 style="float:right;"> <h3 th:text="${cita_pendiente.hora}"></h3></h3>
                     </p>
                 </div>
+                <!--
                 <div class="paciente2">
                     <p>
-                        MRR375<span th:text="${paciente.idpaciente}"></span>
+                        <span th:text="${paciente.idpaciente}"></span>
                         <span style="float:right;">11:45 <span th:text="${citas_pendientes.hora}"></span></span>
                     </p>
                 </div>
                 <div class="paciente3">
                     <p>
-                        CGH156<span th:text="${paciente.idpaciente}"></span>
+                        <span th:text="${paciente.idpaciente}"></span>
                         <span style="float:right;">12:15 <span th:text="${citas_pendientes.hora}"></span></span>
                     </p>
                 </div>
                 <div class="paciente4">
                     <p>
-                        ALB792<span th:text="${paciente.idpaciente}"></span>
+                        <span th:text="${paciente.idpaciente}"></span>
                         <span style="float:right;">12:15 <span th:text="${citas_pendientes.hora}"></span></span>
                     </p>
                 </div>
+            -->
                 <img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
                 <!--<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">-->
             </div>
