@@ -15,5 +15,5 @@ import javax.persistence.GenerationType;
 
 public class Cola {
     private int salaespera;
-    public List<String> cola;
+    public List<String> pendientes;
 }
