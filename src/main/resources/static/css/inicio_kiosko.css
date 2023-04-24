@@ -67,7 +67,7 @@ body{
 #botones_contenedor button {
 	display: inline-block;  
     width: 90%; 
-    height:80%;
+    height:90%;
     border-radius: 1em;
     margin-bottom: 2vh; /* Espaciado inferior de los inputs */
     display: block;
