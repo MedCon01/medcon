@@ -34,11 +34,11 @@
             </div>
             <div class="tiempo_medio">
                 <h4><b>Tiempo Medio de consulta</b></h4>
-                <p id="timer-medio">00:00:00</p>
+                <p id="timer-medio"><span th:text="${tiempomedio}"></span></p>
             </div>
             <div class="tiempo_total">
-                <h4><b>Tiempo Total de consulta</b></h4>
-                <p id="timer">00:00:00</p>
+                <h4>Tiempo Total de consulta</b></h4>
+                <p id="timer"><span th:text="${tiempototal}"></span> </p>
             </div><br>
             <div th:unless="${#arrays.isEmpty(pacientes)}">
             <form method="get" action="/siguiente_paciente">
