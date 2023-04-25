@@ -1,6 +1,5 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
-import java.util.Collections;
 import java.util.Comparator;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +27,10 @@ public class ColaController {
     private PacienteRepository pacienteRepository;
 
 //muestra la pantalla de la sala de espera
-@PostMapping("/pantalla")
-public String showPantallaEspera(Model model, @RequestParam("idpaciente") String idpaciente){
+/*
+ * 
+ * @PostMapping("/pantalla")
+ public String showPantallaEspera(Model model, @RequestParam("idpaciente") String idpaciente){
     Paciente paciente = pacienteRepository.findByIdpaciente(idpaciente);
     Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getIdpaciente());
     if (paciente.getPresente().equals(true)){
@@ -61,5 +62,8 @@ public String showPantallaEspera(Model model, @RequestParam("idpaciente") String
     model.addAttribute("paciente", paciente); 
     return"sala_espera/pantalla";
 }
+ * 
+ */
+ 
 
 }

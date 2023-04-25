@@ -54,11 +54,11 @@ ResponseEntity<Cita> delete(@PathVariable int id){
     citaRepository.deleteById(id);
     return ResponseEntity.ok().body(null);
 }
-@GetMapping("/citas/paciente/{id}") // lee las citas de ese paciente  
+@GetMapping("/citas/paciente/{pacienteId}") // lee las citas de ese paciente  
 List<Cita> readPaciente(@PathVariable String pacienteId){
     return(List<Cita>) citaRepository.findByPacienteId(pacienteId);
 }
-@GetMapping("/citas/medico/{id}") // lee las citas con ese medico 
+@GetMapping("/citas/medico/{medicoDni}") // lee las citas con ese medico 
 List<Cita> readMedico(@PathVariable String medicoDni){
     return(List<Cita>) citaRepository.findByMedicoDni(medicoDni);
 } 

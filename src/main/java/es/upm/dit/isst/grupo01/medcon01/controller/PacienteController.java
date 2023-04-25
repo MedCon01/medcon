@@ -1,11 +1,31 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
+
 
 import es.upm.dit.isst.grupo01.medcon01.model.Cita;
 import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
@@ -14,15 +34,12 @@ import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
 @Controller
 public class PacienteController {
+    public final String GESTORCITAS_STRING = "http://localhost:8080/citas/";
     @Autowired
     private PacienteRepository pacienteRepository;
-    @Autowired
-    private CitaRepository citaRepository;
+    private RestTemplate restTemplate = new RestTemplate();
     public PacienteController(){}
-    public PacienteController(PacienteRepository pacienteRepository, CitaRepository citaRepository){
-        this.pacienteRepository = pacienteRepository;
-        this.citaRepository = citaRepository;
-    }
+
     // Inicio kiosko
     @GetMapping("inicio_kiosko")
     public String showInicioKiosko(){
@@ -44,8 +61,11 @@ public class PacienteController {
          paciente.setPresente(true);
          pacienteRepository.save(paciente);
          // Busco la cita del paciente
-         Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getIdpaciente());
-         model.addAttribute("cita_pendiente",cita_pendiente);
+        List<Cita> citas = null;
+        try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING+ "paciente/" + paciente.getIdpaciente(), Cita[].class));
+        } catch (HttpClientErrorException.NotFound ex) {}
+
+         model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente
          return ("/paciente/identificador_cita");
         } else {
@@ -69,8 +89,10 @@ public class PacienteController {
          paciente.setPresente(true);
          pacienteRepository.save(paciente);
          // Busco la cita del paciente
-         Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getIdpaciente());
-         model.addAttribute("cita_pendiente",cita_pendiente);
+         List<Cita> citas = null;
+        try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING+ "paciente/" + paciente.getIdpaciente(), Cita[].class));
+        } catch (HttpClientErrorException.NotFound ex) {}
+         model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente
          return ("/paciente/identificador_cita");
         } else {
