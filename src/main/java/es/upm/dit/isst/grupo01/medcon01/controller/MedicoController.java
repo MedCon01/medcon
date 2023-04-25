@@ -2,6 +2,7 @@ package es.upm.dit.isst.grupo01.medcon01.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,6 +29,12 @@ public class MedicoController {
     private PacienteRepository pacienteRepository;
     Medico medico;
     Paciente pacientellamado;
+    ArrayList<Long> tiempos = new ArrayList<Long>();
+    long tiempoinicio;
+    long tiempofinal;
+    long tiempototal;
+    long tiempomedio;
+
     
     // Constructor vacío
     public MedicoController(){}
@@ -119,6 +126,7 @@ public class MedicoController {
     public String showPacientePage(@RequestParam("idpaciente") String idpaciente, Model model){
         Paciente pacientellamado =  pacienteRepository.findByIdpaciente(idpaciente);
         model.addAttribute("pacientellamado",pacientellamado);
+        tiempoinicio = System.currentTimeMillis();
         return "redirect:/paciente/" + pacientellamado.getIdpaciente();
     }
     // Consulta en curso
@@ -157,9 +165,18 @@ public class MedicoController {
     }
 
     @GetMapping("/finalizar_consulta")
-    public String showsfinalizarConsulta(){
+    public String showsfinalizarConsulta(Model model){
         pacientellamado.setPresente(false);
         pacienteRepository.save(pacientellamado);
+        tiempofinal=System.currentTimeMillis();
+        long tiempoconsulta = tiempofinal - tiempoinicio;
+        tiempos.add(tiempoconsulta);
+        for (int i = 0; i < tiempos.size(); i++) {
+            tiempototal += tiempos.get(i);
+            tiempomedio = tiempototal / tiempos.size();
+        }
+        model.addAttribute("tiempoTotal", tiempototal);
+        model.addAttribute("tiempoMedio", tiempomedio);
         return "redirect:/iniciomedico/" + medico.getDni();
     }
     
