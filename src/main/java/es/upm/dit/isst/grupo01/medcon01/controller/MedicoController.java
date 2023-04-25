@@ -3,6 +3,7 @@ package es.upm.dit.isst.grupo01.medcon01.controller;
 import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 
@@ -131,6 +132,7 @@ public class MedicoController {
                 citas_pendientes.add(c);
             }
     }
+    pacientes_pendientes.sort(Comparator.comparing(c -> citaRepository.findByPacienteId(c.getIdpaciente()).getHora()));
     model.addAttribute("tiempototal", tiempototal);
     model.addAttribute("tiempomedio", tiempomedio);
     model.addAttribute("pacientes", pacientes_pendientes); 
