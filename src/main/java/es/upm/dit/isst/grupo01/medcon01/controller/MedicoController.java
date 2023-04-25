@@ -42,6 +42,12 @@ public class MedicoController {
     Medico medico;
     Paciente pacientellamado;
     private RestTemplate restTemplate = new RestTemplate();
+
+    ArrayList<Long> tiempos = new ArrayList<Long>();
+    long tiempoinicio;
+    long tiempofinal;
+    long tiempototal;
+    long tiempomedio;
     
     // Constructor vacío
     public MedicoController(){}
@@ -123,9 +129,10 @@ public class MedicoController {
             if (paciente.getPresente().equals(true)){
                 pacientes_pendientes.add(paciente);
                 citas_pendientes.add(c);
-
             }
     }
+    model.addAttribute("tiempototal", tiempototal);
+    model.addAttribute("tiempomedio", tiempomedio);
     model.addAttribute("pacientes", pacientes_pendientes); 
     model.addAttribute("citas_pendientes", citas_pendientes);   
         return "medico/iniciomedico";
@@ -135,6 +142,7 @@ public class MedicoController {
     public String showPacientePage(@RequestParam("idpaciente") String idpaciente, Model model){
         Paciente pacientellamado =  pacienteRepository.findByIdpaciente(idpaciente);
         model.addAttribute("pacientellamado",pacientellamado);
+        tiempoinicio = System.currentTimeMillis();
         return "redirect:/paciente/" + pacientellamado.getIdpaciente();
     }
     // Consulta en curso
@@ -173,9 +181,19 @@ public class MedicoController {
     }
 
     @GetMapping("/finalizar_consulta")
-    public String showsfinalizarConsulta(){
+    public String showsfinalizarConsulta(Model model){
         pacientellamado.setPresente(false);
         pacienteRepository.save(pacientellamado);
+        tiempofinal=System.currentTimeMillis();
+        long tiempoconsulta = tiempofinal - tiempoinicio;
+        tiempos.add(tiempoconsulta);
+        for (int i = 0; i < tiempos.size(); i++) {
+            tiempototal += tiempos.get(i);
+            tiempomedio = tiempototal / tiempos.size();
+        }
+        
+        model.addAttribute("tiempoTotal", tiempototal);
+        model.addAttribute("tiempoMedio", tiempomedio);
         return "redirect:/iniciomedico/" + medico.getDni();
     }
     
