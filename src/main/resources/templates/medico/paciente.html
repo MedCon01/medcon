@@ -49,7 +49,11 @@
         <button id="pruebas" onclick="window.location.href = '/pruebas_medicas'">Pruebas médicas</button>
         <button id="gestion_citas" onclick="window.location.href = '/gestion_citas'">Gestión de citas</button>
         <button id="suspender_consulta" onclick="window.location.href = '/suspender_consulta'">Suspender consulta en curso</button>
-        <button id="finalizar" onclick="window.location.href = '/finalizar_consulta'">Finalizar consulta</button>
+        <form method="get" action="/finalizar_consulta">
+            <button type="submit" id="finalizar">
+                Finalizar
+            </button>
+        </form>
         <div class="tiempo">
             <span id="timer">00:00:00</span>
         </div>

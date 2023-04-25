@@ -19,6 +19,7 @@ import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
 @Controller
 public class MedicoController {
+    public final String GESTORCITAS_STRING = "http://localhost:8083/citas";
     @Autowired
     private MedicoRepository medicoRepository;
     @Autowired
@@ -26,6 +27,7 @@ public class MedicoController {
     @Autowired
     private PacienteRepository pacienteRepository;
     Medico medico;
+    Paciente pacientellamado;
     
     // Constructor vacío
     public MedicoController(){}
@@ -33,7 +35,6 @@ public class MedicoController {
     // Constructor normal
     public MedicoController(MedicoRepository medicoRepository, CitaRepository citaRepository, PacienteRepository pacienteRepository, Medico medico){
         this.medicoRepository = medicoRepository;
-        this.citaRepository = citaRepository;
         this.pacienteRepository = pacienteRepository;
         this.medico=medico;
     }
@@ -123,7 +124,7 @@ public class MedicoController {
     // Consulta en curso
     @GetMapping("/paciente/{paciente}")
     public String showConsultaEnCursoPage(Model model, @PathVariable(value = "paciente") String idpaciente){
-        Paciente pacientellamado = pacienteRepository.findByIdpaciente(idpaciente);
+        pacientellamado = pacienteRepository.findByIdpaciente(idpaciente);
         pacientellamado.setPresente(false);
         pacienteRepository.save(pacientellamado);
         model.addAttribute("pacientellamado",pacientellamado);
@@ -157,7 +158,9 @@ public class MedicoController {
 
     @GetMapping("/finalizar_consulta")
     public String showsfinalizarConsulta(){
-        return "medico/iniciomedico";
+        pacientellamado.setPresente(false);
+        pacienteRepository.save(pacientellamado);
+        return "redirect:/iniciomedico/" + medico.getDni();
     }
     
 }
