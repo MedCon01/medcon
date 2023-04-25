@@ -132,7 +132,7 @@ public class MedicoController {
                 citas_pendientes.add(c);
             }
     }
-    pacientes_pendientes.sort(Comparator.comparing(c -> citaRepository.findByPacienteId(c.getIdpaciente()).getHora()));
+    citas_pendientes.sort(Comparator.comparing(c -> ((Cita) c).getHora()));
     model.addAttribute("tiempototal", tiempototal);
     model.addAttribute("tiempomedio", tiempomedio);
     model.addAttribute("pacientes", pacientes_pendientes); 

@@ -12,16 +12,16 @@
         <a href="#" onclick="terminarConsulta()">Cerrar Sesión</a>
     </div>
     <div class="marco_izq">
-        <div th:if="${#arrays.isEmpty(pacientes)}">
+        <div th:if="${#arrays.isEmpty(citas_pendientes)}">
             No hay consultas pendientes
         </div>
-        <div th:unless="${#arrays.isEmpty(pacientes)}" th:each="paciente : ${pacientes}" th:class="${paciente == pacientes[0]} ? 'siguientepaciente' : 'infopaciente'">
+        <div th:unless="${#arrays.isEmpty(citas_pendientes)}" th:each="cita: ${citas_pendientes}" th:class="${cita == citas_pendientes[0]} ? 'siguientepaciente' : 'infopaciente'">
             <table>
-                <tr>
+                <trtr th:each="paciente : ${pacientes}" th:if="${paciente.Idpaciente == cita.pacienteId}">
                     <td><b>Nombre:</b></td>
                     <td th:text="${paciente.nombre}"></td>
                 </tr>
-                <tr th:each="cita : ${citas_pendientes}" th:if="${cita.pacienteId == paciente.Idpaciente}">
+                <tr>
                     <td><b>Hora cita:</b></td>
                     <td th:text="${cita.hora}"></td>
                 </tr>
