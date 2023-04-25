@@ -12,7 +12,10 @@
         <a href="#" onclick="terminarConsulta()">Cerrar Sesión</a>
     </div>
     <div class="marco_izq">
-        <div th:each="paciente : ${pacientes}" th:class="${paciente == pacientes[0]} ? 'siguientepaciente' : 'infopaciente'">
+        <div th:if="${#arrays.isEmpty(pacientes)}">
+            No hay consultas pendientes
+        </div>
+        <div th:unless="${#arrays.isEmpty(pacientes)}" th:each="paciente : ${pacientes}" th:class="${paciente == pacientes[0]} ? 'siguientepaciente' : 'infopaciente'">
             <table>
                 <tr>
                     <td><b>Nombre:</b></td>
@@ -37,11 +40,13 @@
                 <h4><b>Tiempo Total de consulta</b></h4>
                 <p id="timer">00:00:00</p>
             </div><br>
+            <div th:unless="${#arrays.isEmpty(pacientes)}">
             <form method="get" action="/siguiente_paciente">
                 <input type="hidden" name="idpaciente" th:value="${pacientes[0].Idpaciente}" />
                 <button type="submit" id="siguiente" value="${pacientes[0].Idpaciente}">
                     <span>Siguiente</span></button>
             </form>
+            </div>
             <img th:src="@{/images/logo_Medcon_v2.png}" alt="logo_Medcon">
             <!--<img src="../../static/images/logo_Medcon_v2.png" alt="logo_Medcon">-->
             </div>
