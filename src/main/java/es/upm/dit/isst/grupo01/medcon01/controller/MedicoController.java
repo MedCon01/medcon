@@ -105,6 +105,8 @@ public class MedicoController {
     public String getIniciomedico(Model model, @PathVariable(value = "medico") String medicoDni) {
     medico = medicoRepository.findByDni(medicoDni);
     model.addAttribute("medico", medico);
+    model.addAttribute("tiempototal", tiempototal);
+    model.addAttribute("tiempomedio", tiempomedio);
     List<Cita> citas = citaRepository.findAllByMedicoDni(medico.getDni());
     List<Cita> citas_pendientes = new ArrayList<Cita>(); 
     List<Paciente> pacientes_pendientes = new ArrayList<Paciente>(); 
@@ -175,6 +177,7 @@ public class MedicoController {
             tiempototal += tiempos.get(i);
             tiempomedio = tiempototal / tiempos.size();
         }
+        
         model.addAttribute("tiempoTotal", tiempototal);
         model.addAttribute("tiempoMedio", tiempomedio);
         return "redirect:/iniciomedico/" + medico.getDni();
