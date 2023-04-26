@@ -23,11 +23,11 @@
         <p id="reloj">00:00:00</p>
     </div>
             <div class="marco_izq">
-                <h2>Sala de espera 01</h2>
+                <h2>Sala de espera <span th:text = "${salaespera}"></span></h2>
                 <div class="paciente1">
                     <p>
-                        <h3 th:text="${paciente.idpaciente}"></h3>
-                        <h3 style="float:right;"> <h3 th:text="${cita_pendiente.hora}"></h3></h3>
+                        <h3 th:text="${colacitas[0].pacienteId}"></h3>
+                        <h3 style="float:right; "th:text="${colacitas[0].hora}"></h3>
                     </p>
                 </div>
                 <!--
@@ -56,28 +56,28 @@
 
             <div class="marco_dcha">
                 <div class="consulta1">
-                    <h2>Consulta 1</h2>
+                    <h2></h2>
                 </div>
                 <div class="consulta2">
-                    <h2>Consulta 2</h2>
+                    <h2></h2>
                 </div>
                 <div class="identificador1">
-                    <h3>AGI683 <span th:text="${paciente.idpaciente}"></span></h3>
+                    <h3><span th:text="${colacitas[0].pacienteId}"></span></h3>
                 </div>
                 <div class="identificador2">
-                    <h3>HRU776 <span th:text="${paciente.idpaciente}"></span></h3>
+                    <h3><span th:text="${colacitas[0].pacienteId}"></span></h3>
                 </div>
                 <div class="consulta3">
-                    <h2>Consulta 3</h2>
+                    <h2></h2>
                 </div>
                 <div class="consulta4">
-                    <h2>Consulta 4</h2>
+                    <h2></h2>
                 </div>
                 <div class="identificador3">
-                    <h3>FKL033 <span th:text="${paciente.idpaciente}"></span></h3>
+                    <h3><span th:text="${colacitas[0].pacienteId}"></span></h3>
                 </div>
                 <div class="identificador4">
-                    <h3>PMS478 <span th:text="${paciente.idpaciente}"></span></h3>
+                    <h3><span th:text="${colacitas[0].pacienteId}"></span></h3>
                 </div>
             </div>
       

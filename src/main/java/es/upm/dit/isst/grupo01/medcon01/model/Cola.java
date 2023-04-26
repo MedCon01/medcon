@@ -2,6 +2,7 @@ package es.upm.dit.isst.grupo01.medcon01.model;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -15,7 +16,7 @@ import javax.persistence.GenerationType;
 
 public class Cola {
     private int salaespera;
-    public List<Cita> pendientes;
+    private List<Cita> pendientes = new ArrayList<Cita>();
 
     public Cola(){}
 
@@ -36,7 +37,7 @@ public class Cola {
     // Getter y setter pendientes
 
     public List<Cita> getPendientes() {
-        return pendientes;
+        return this.pendientes;
     }
     
     public void setPendientes(List<Cita> pendientes) {

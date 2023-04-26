@@ -1,69 +1,69 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
+import java.security.Principal;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Comparator;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.client.HttpClientErrorException;
+import org.springframework.web.client.RestTemplate;
+import org.springframework.web.multipart.MultipartFile;
 
 import es.upm.dit.isst.grupo01.medcon01.model.Cita;
 import es.upm.dit.isst.grupo01.medcon01.model.Cola;
 import es.upm.dit.isst.grupo01.medcon01.model.Medico;
 import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
-import es.upm.dit.isst.grupo01.medcon01.repository.CitaRepository;
 import es.upm.dit.isst.grupo01.medcon01.repository.MedicoRepository;
 import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
 @Controller
 public class ColaController {
-    private Cola cola;
+    public final String GESTORCITAS_STRING = "http://localhost:8080/citas/";
+    private Cola cola = new Cola(1,new ArrayList<Cita>());
     @Autowired
-    private CitaRepository citaRepository;
+    private MedicoRepository medicoRepository;
     @Autowired
     private PacienteRepository pacienteRepository;
+    
+    public ColaController(){}
+   
+    private RestTemplate restTemplate = new RestTemplate();
 
-//muestra la pantalla de la sala de espera
-/*
- * 
- * @PostMapping("/pantalla")
- public String showPantallaEspera(Model model, @RequestParam("idpaciente") String idpaciente){
-    Paciente paciente = pacienteRepository.findByIdpaciente(idpaciente);
-    Cita cita_pendiente = citaRepository.findByPacienteId(paciente.getIdpaciente());
-    if (paciente.getPresente().equals(true)){
-        if (cita_pendiente.getHora().isBefore(paciente.getHora_llegada()) || cita_pendiente.getHora().plusMinutes(15).isBefore(paciente.getHora_llegada()) ){
-            cola.pendientes.add(cita_pendiente);
-        } else {
-            int posicion = -1;
-            for (int i = 0; i < cola.pendientes.size(); i++) {
-                Cita c = cola.pendientes.get(i);
-                int comp = c.getHora().compareTo(cita_pendiente.getHora());
-                // Si la hora de la cita actual es mayor que la hora de cita_pendiente
-                if (comp > 0) {
-                    // Guardar la posición de la cita actual
-                    posicion = i;
-                    break;
-                }
+    @GetMapping("/pantalla")
+    public String showPantallaEspera(Model model){
+        List<Cita> citas = null;
+        try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING, Cita[].class));
+        } catch (HttpClientErrorException.NotFound ex) {}
+        List<Cita> citaspresentes = cola.getPendientes();
+        for (Cita c : citas){
+            Paciente paciente = pacienteRepository.findByIdpaciente(c.getPacienteId());
+            if (paciente.getPresente().equals(true)){
+                citaspresentes.add(c);
             }
-                // Si no se encontró ninguna cita con hora mayor que la hora de cita_pendiente
-                // se inserta cita_pendiente al final de la lista
-            if (posicion == -1) {
-                cola.pendientes.add(cita_pendiente);
-            } else {
-                // Insertar cita_pendiente en la posición correspondiente
-                cola.pendientes.add(posicion, cita_pendiente);
-            }  
         }
+        cola.setPendientes(citaspresentes);
+        model.addAttribute("salaespera", cola.getSalaEspera());
+        model.addAttribute("colacitas", cola.getPendientes());
+        return "sala_espera/pantalla";
     }
-    model.addAttribute("cita_pendiente", cita_pendiente); 
-    model.addAttribute("paciente", paciente); 
-    return"sala_espera/pantalla";
-}
- * 
- */
- 
-
 }
