@@ -32,13 +32,14 @@
             <div class="doctor">
                 <h2>Dr. <span th:text="${medico.nombre}"></span></h2>
             </div>
-            <div class="tiempo_medio">
+            <div id="reloj" class="tiempo_medio">
                 <h4><b>Tiempo Medio de consulta</b></h4>
-                <p id="timer-medio"><span th:text="${tiempomedio}"></span></p>
+                <p id="timer-medio" th:text="${tiempomedio}"></p>
             </div>
             <div class="tiempo_total">
                 <h4>Tiempo Total de consulta</b></h4>
-                <p id="timer"><span th:text="${tiempototal}"></span> </p>
+                <p id="timer" th:text="${tiempototal}"></p>
+                    <!--<span th:text="${tiempototal}"></span> </p>-->
             </div><br>
             <div th:unless="${#arrays.isEmpty(pacientes)}">
             <form method="get" action="/siguiente_paciente">

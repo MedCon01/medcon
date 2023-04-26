@@ -47,8 +47,10 @@ public class MedicoController {
     ArrayList<Long> tiempos = new ArrayList<Long>();
     long tiempoinicio;
     long tiempofinal;
-    long tiempototal;
-    long tiempomedio;
+    long tiempototal_ms;
+    long tiempomedio_ms;
+    String tiempo_medio;
+    String tiempo_total;
     
     // Constructor vacío
     public MedicoController(){}
@@ -133,8 +135,8 @@ public class MedicoController {
             }
     }
     citas_pendientes.sort(Comparator.comparing(c -> ((Cita) c).getHora()));
-    model.addAttribute("tiempototal", tiempototal);
-    model.addAttribute("tiempomedio", tiempomedio);
+    model.addAttribute("tiempototal", tiempo_total);
+    model.addAttribute("tiempomedio", tiempo_medio);
     model.addAttribute("pacientes", pacientes_pendientes); 
     model.addAttribute("citas_pendientes", citas_pendientes);   
         return "medico/iniciomedico";
@@ -190,12 +192,46 @@ public class MedicoController {
         long tiempoconsulta = tiempofinal - tiempoinicio;
         tiempos.add(tiempoconsulta);
         for (int i = 0; i < tiempos.size(); i++) {
-            tiempototal += tiempos.get(i);
-            tiempomedio = tiempototal / tiempos.size();
+            tiempototal_ms += tiempos.get(i);
+            tiempomedio_ms = tiempototal_ms / tiempos.size();
         }
-        
-        model.addAttribute("tiempoTotal", tiempototal);
-        model.addAttribute("tiempoMedio", tiempomedio);
+
+        int segundos_totales = (int) (tiempototal_ms / 1000);
+        int minutos_totales = segundos_totales / 60;
+        int horas_totales = minutos_totales / 60;
+        int segundos_medios = (int) (tiempomedio_ms / 1000);
+        int minutos_medios = segundos_medios / 60;
+        int horas_medios = minutos_medios / 60;
+    
+        int segundos_restantes_totales = segundos_totales % 60;
+        int minutos_restantes_totales = minutos_totales % 60;
+        int horas_restantes_totales = horas_totales;
+    
+        int segundos_restantes_medios = segundos_medios % 60;
+        int minutos_restantes_medios = minutos_medios % 60;
+        int horas_restantes_medios = horas_medios;
+    
+        if (segundos_restantes_totales == 60) {
+            segundos_restantes_totales = 0;
+            minutos_restantes_totales++;
+        }
+        if (minutos_restantes_totales == 60) {
+            minutos_restantes_totales = 0;
+            horas_restantes_totales++;
+        }
+    
+        if (segundos_restantes_medios == 60) {
+            segundos_restantes_medios = 0;
+            minutos_restantes_medios++;
+        }
+        if (minutos_restantes_medios == 60) {
+            minutos_restantes_medios = 0;
+            horas_restantes_medios++;
+        }
+    
+        tiempo_medio = String.format("%02d:%02d:%02d", horas_restantes_medios, minutos_restantes_medios, segundos_restantes_medios);
+        tiempo_total = String.format("%02d:%02d:%02d", horas_restantes_totales, minutos_restantes_totales, segundos_restantes_totales);
+    
         return "redirect:/iniciomedico/" + medico.getDni();
     }
     
