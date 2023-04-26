@@ -24,13 +24,13 @@
     </div>
             <div class="marco_izq">
                 <h2>Sala de espera <span th:text = "${salaespera}"></span></h2>
+                <div th:unless="${#arrays.isEmpty(colacitas)}">
                 <div class="paciente1">
                     <p>
                         <h3 th:text="${colacitas[0].pacienteId}"></h3>
                         <h3 style="float:right; "th:text="${colacitas[0].hora}"></h3>
                     </p>
                 </div>
-                <!--
                 <div class="paciente2">
                     <p>
                         <span th:text="${paciente.idpaciente}"></span>
