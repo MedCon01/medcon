@@ -49,17 +49,17 @@ body{
     font-size: 2.5em;
 }
 
-[class^="paciente"] {
-    margin-top: 2%;
+.paciente {
+    margin-top: 6%;
     border: 0.1em solid #92abc8;
     border-radius: 1em;
     background-color: #92abc8;
     padding-left: 10%;
     padding-right: 10%;
-    margin-top: 6%;
+       
 }
 
-[class^="paciente"] p {
+.paciente p {
     color: #ffff;
     font-size: 2em;
 }

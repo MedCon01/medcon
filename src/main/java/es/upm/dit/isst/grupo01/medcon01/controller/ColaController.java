@@ -54,13 +54,14 @@ public class ColaController {
         List<Cita> citas = null;
         try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING, Cita[].class));
         } catch (HttpClientErrorException.NotFound ex) {}
-        List<Cita> citaspresentes = cola.getPendientes();
+        List<Cita> citaspresentes = new ArrayList<>();
         for (Cita c : citas){
             Paciente paciente = pacienteRepository.findByIdpaciente(c.getPacienteId());
             if (paciente.getPresente().equals(true)){
                 citaspresentes.add(c);
             }
         }
+        citaspresentes.sort(Comparator.comparing(c -> ((Cita) c).getHora()));
         cola.setPendientes(citaspresentes);
         model.addAttribute("salaespera", cola.getSalaEspera());
         model.addAttribute("colacitas", cola.getPendientes());
