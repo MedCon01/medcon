@@ -18,6 +18,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -43,7 +44,6 @@ public class MedicoController {
     Medico medico;
     Paciente pacientellamado;
     private RestTemplate restTemplate = new RestTemplate();
-
     ArrayList<Long> tiempos = new ArrayList<Long>();
     long tiempoinicio;
     long tiempofinal;
@@ -51,6 +51,7 @@ public class MedicoController {
     long tiempomedio_ms;
     String tiempo_medio;
     String tiempo_total;
+
     
     // Constructor vacío
     public MedicoController(){}
@@ -138,7 +139,7 @@ public class MedicoController {
     model.addAttribute("tiempototal", tiempo_total);
     model.addAttribute("tiempomedio", tiempo_medio);
     model.addAttribute("pacientes", pacientes_pendientes); 
-    model.addAttribute("citas_pendientes", citas_pendientes);   
+    model.addAttribute("citas_pendientes", citas_pendientes);  
         return "medico/iniciomedico";
     }
     //llamada a siguiente paciente 
@@ -180,8 +181,36 @@ public class MedicoController {
     }
 
     @GetMapping("/suspender_consulta")
-    public String showsuspenderConsulta(){
-        return "medico/iniciomedico";
+    public String showsuspenderConsulta(Model model){
+       pacientellamado.setPresente(true);
+       pacienteRepository.save(pacientellamado);
+    List<Cita> citas = null;
+    try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING+ "medico/" + medico.getDni(), Cita[].class));
+    } catch (HttpClientErrorException.NotFound ex) {}
+    List<Cita> citas_pendientes = new ArrayList<Cita>(); 
+    List<Paciente> pacientes_pendientes = new ArrayList<Paciente>(); 
+    boolean pacienteConsulta = false; 
+    Cita citaPacienteLlamado = null;
+    for (Cita c : citas){
+             String pacienteId = c.getPacienteId();
+             Paciente paciente = pacienteRepository.findByIdpaciente(pacienteId);   
+            if(paciente.getIdpaciente().equals(pacientellamado.getIdpaciente())){
+                pacienteConsulta = true;
+                citaPacienteLlamado = c;
+            } else if(paciente.getPresente().equals(true)) {
+              pacientes_pendientes.add(paciente);
+              citas_pendientes.add(c);
+            }
+    }
+    if (pacienteConsulta==true){
+        pacientes_pendientes.add(1, pacientellamado);
+        citas_pendientes.add(1, citaPacienteLlamado);
+    }
+    // Actualizar el modelo con la lista de pacientes pendientes modificada
+    model.addAttribute("pacientes", pacientes_pendientes);
+    model.addAttribute("citas_pendientes", citas_pendientes);
+
+       return "redirect:/iniciomedico/" + medico.getDni();
     }
 
     @GetMapping("/finalizar_consulta")

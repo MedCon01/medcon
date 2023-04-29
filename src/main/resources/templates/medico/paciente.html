@@ -48,7 +48,14 @@
         <button id="receta" onclick="window.location.href = '/receta'">Receta electrónica</button>
         <button id="pruebas" onclick="window.location.href = '/pruebas_medicas'">Pruebas médicas</button>
         <button id="gestion_citas" onclick="window.location.href = '/gestion_citas'">Gestión de citas</button>
-        <button id="suspender_consulta" onclick="window.location.href = '/suspender_consulta'">Suspender consulta en curso</button>
+      <!-- <button id="suspender_consulta" onclick="window.location.href = '/suspender_consulta'">Suspender consulta en curso</button> --> 
+      <form method="get" action="/suspender_consulta">
+       <!--<input type="hidden" name="medico" value="${medico.dni}">
+        <input type="hidden" name="paciente" value="${paciente.idpaciente}"> --> 
+        <button type="submit" id="suspender_consulta">
+            <span>Suspender consulta en curso </span>
+        </button>
+      </form>
         <form method="get" action="/finalizar_consulta">
             <button type="submit" id="finalizar">
                 Finalizar Consulta
