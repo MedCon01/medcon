@@ -83,126 +83,131 @@ img {
     border-radius: 1em;
 }
 
-.consulta1 {
+.ultimollamado{
     display: flex;
     flex-direction: column;
     align-items: center; /* Centrar horizontalmente */
     float: left;
     width: 45%;
+    margin-left: 7%;
+}
+
+.llamado2{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    float: right;
+    width: 45%;
+}
+
+.llamado3{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    float: left;
+    width: 45%;
+    margin-top: 3%;
+    margin-left: 7%;
+}
+
+.llamado4{
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centrar horizontalmente */
+    float: right;
+    width: 45%;
+    margin-top: 3%;
+}
+
+.consulta1{
     background-color: #ff9148;
     margin-top: 2%;
     border-radius: 1em 1em 0 0;
     color: #fff;
-    margin-left: 3%;
-    font-size: 1.5em;
+    margin-left: 2%;
+    font-size: 1.2em;
+    padding-bottom: 4%;
+    width: 80%;
+    height: 8vh;
+    text-align: center;
 }
 
-  
-.consulta2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: right;
-    width: 45%;
+.identificador1{
+    background-color: #295c93;
+    margin-left: 2%;
+    font-size: 1.2em;
+    border-radius: 0 0 1em 1em;
+    width: 80%;
+    height: 12vh;
+    text-align: center;
+}
+
+.consulta2{
     background-color: #ecf5ff;
     margin-top: 2%;
     border-radius: 1em 1em 0 0 ;
     color: #295c93;
-    margin-right: 3%;
-    font-size: 1.5em;
-}
-  
-.identificador1 {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: left;
-    width: 45%;
-    background-color: #295c93;
-    margin-bottom: 5%;
-    border-radius: 0 0 1em 1em;
-    color: #fff;
-    margin-left: 3%;
-    height: 12vh;
-    padding-top: 0.5vh;
-    font-size: 2em;
+    margin-right: 2%;
+    font-size: 1.2em;
+    padding-bottom: 4%;
+    width: 80%;
+    height: 8vh;
+    text-align: center;
 }
 
-.identificador2 {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: right;
-    width: 45%;
+.identificador2{
     background-color: #295c93;
-    margin-bottom: 5%;
+    margin-right: 2%;
+    font-size: 1.2em;
     border-radius: 0 0 1em 1em;
-    color: #fff;
-    margin-right: 3%;
+    width: 80%;
     height: 12vh;
-    padding-top: 0.5vh;
-    font-size: 2em;
-  }
+    text-align: center;
+}
 
-  .consulta3 {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: left;
-    width: 45%;
+.consulta3{
     background-color: #ecf5ff;
     margin-top: 2%;
     border-radius: 1em 1em 0 0;
     color: #295c93;
-    margin-left: 3%;
-    font-size: 1.5em;
+    margin-left: 2%;
+    font-size: 1.2em;
+    padding-bottom: 4%;
+    width: 80%;
+    height: 8vh;
+    text-align: center;
 }
 
-  
-.consulta4 {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: right;
-    width: 45%;
+.identificador3{
+    background-color: #295c93;
+    margin-left: 2%;
+    font-size: 1.2em;
+    border-radius: 0 0 1em 1em;
+    width: 80%;
+    height: 12vh;
+    text-align: center;
+}
+
+.consulta4{
     background-color: #ecf5ff;
     margin-top: 2%;
     border-radius: 1em 1em 0 0 ;
     color: #295c93;
-    margin-right: 3%;
-    font-size: 1.5em;
-}
-  
-.identificador3 {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: left;
-    width: 45%;
-    background-color: #295c93;
-    margin-bottom: 5%;
-    border-radius: 0 0 1em 1em;
-    color: #fff;
-    margin-left: 3%;
-    height: 12vh;
-    padding-top: 0.5vh;
-    font-size: 2em;
+    margin-right: 2%;
+    font-size: 1.2em;
+    padding-bottom: 4%;
+    width: 80%;
+    height: 8vh;
+    text-align: center;
 }
 
-.identificador4 {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: right;
-    width: 45%;
+.identificador4{
     background-color: #295c93;
-    margin-bottom: 5%;
+    margin-right: 2%;
+    font-size: 1.2em;
     border-radius: 0 0 1em 1em;
-    color: #fff;
-    margin-right: 3%;
+    width: 80%;
     height: 12vh;
-    padding-top: 0.5vh;
-    font-size: 2em;
-  }
-
+    text-align: center;
+}
 

@@ -40,35 +40,35 @@
         </div>
 
             <div class="marco_dcha">
-                <div class="ultimollamado">
+                <div class="ultimollamado" th:if="${#arrays.length(llamados) - 1 >= 0}">
                     <div class="consulta1">
-                        <h2>CONSULTA 2</h2>
+                        <h2>CONSULTA 1</h2>
                     </div>
-                    <div class="identificador1" th:if="${#arrays.length(llamados) - 1 >= 0}">
+                    <div class="identificador1" >
                         <h3><span th:text="${llamados[numllamados - 1].Idpaciente}"></span></h3>
                     </div>  
                 </div>
-                <div class = "llamado2">
+                <div class = "llamado2" th:if="${#arrays.length(llamados) - 2 >= 0}">
                     <div class="consulta2">
                         <h2>CONSULTA 2</h2>
                     </div>
-                    <div class="identificador2" th:if="${#arrays.length(llamados) - 2 >= 0}">
+                    <div class="identificador2" >
                         <h3><span th:text="${llamados[numllamados - 2].Idpaciente}"></span></h3>
                     </div>
                 </div>
-                <div class="llamado3">
+                <div class="llamado3"th:if="${#arrays.length(llamados) - 3 >= 0}">
                     <div class="consulta3">
-                        <h2>CONSULTA 2</h2>
+                        <h2>CONSULTA 3</h2>
                     </div>
-                    <div class="identificador3" th:if="${#arrays.length(llamados) - 3 >= 0}">
+                    <div class="identificador3" >
                         <h3><span th:text="${llamados[numllamados - 3].Idpaciente}"></span></h3>
                     </div>
                 </div>
-                <div class="llamado4">
+                <div class="llamado4" th:if="${#arrays.length(llamados) - 4 >= 0}">
                     <div class="consulta4">
-                        <h2>CONSULTA 2</h2>
+                        <h2>CONSULTA 4</h2>
                     </div>
-                    <div class="identificador4" th:if="${#arrays.length(llamados) - 4 >= 0}">
+                    <div class="identificador4" >
                         <h3><span th:text="${llamados[numllamados - 4].Idpaciente}"></span></h3>
                     </div>
                 </div>
