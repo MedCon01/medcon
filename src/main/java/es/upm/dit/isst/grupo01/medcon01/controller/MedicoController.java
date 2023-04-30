@@ -146,6 +146,8 @@ public class MedicoController {
     @GetMapping("/siguiente_paciente")
     public String showPacientePage(@RequestParam("idpaciente") String idpaciente, Model model){
         Paciente pacientellamado =  pacienteRepository.findByIdpaciente(idpaciente);
+        pacientellamado.setLlamado(true);
+        pacienteRepository.save(pacientellamado);
         model.addAttribute("pacientellamado",pacientellamado);
         tiempoinicio = System.currentTimeMillis();
         return "redirect:/paciente/" + pacientellamado.getIdpaciente();
@@ -154,8 +156,6 @@ public class MedicoController {
     @GetMapping("/paciente/{paciente}")
     public String showConsultaEnCursoPage(Model model, @PathVariable(value = "paciente") String idpaciente){
         pacientellamado = pacienteRepository.findByIdpaciente(idpaciente);
-        pacientellamado.setPresente(false);
-        pacienteRepository.save(pacientellamado);
         model.addAttribute("pacientellamado",pacientellamado);
         return "medico/paciente"; 
     }
@@ -216,6 +216,7 @@ public class MedicoController {
     @GetMapping("/finalizar_consulta")
     public String showsfinalizarConsulta(Model model){
         pacientellamado.setPresente(false);
+        pacientellamado.setLlamado(false);
         pacienteRepository.save(pacientellamado);
         tiempofinal=System.currentTimeMillis();
         long tiempoconsulta = tiempofinal - tiempoinicio;

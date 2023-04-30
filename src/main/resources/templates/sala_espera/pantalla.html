@@ -2,6 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Sala de espera</title>
+    <meta http-equiv="refresh" content="10">
     <!--<link rel="stylesheet" type="text/css" href="../../static/css/pantalla.css">-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/pantalla.css}" />
     <script>
@@ -35,60 +36,44 @@
                     </p>
                 </div>
                 
-                
-                <!--    <div class="paciente1">
-                    <p>
-                        <span th:text="${colacitas[0].pacienteId}"></span>
-                        <span style="float:right; "th:text="${colacitas[0].hora}"></span>
-                    </p>
-                </div>
-                <div class="paciente2">
-                    <p>
-                        <span th:text="${colacitas[0].pacienteId}"></span>
-                        <span style="float:right;" th:text="${colacitas[0].hora}"></span></span>
-                    </p>
-                </div>
-                <div class="paciente3">
-                    <p>
-                        <span th:text="${colacitas[0].pacienteId}"></span>
-                        <span style="float:right;" th:text="${colacitas[0].hora}"></span></span>
-                    </p>
-                </div>
-                <div class="paciente4">
-                    <p>
-                        <span th:text="${colacitas[0].pacienteId}"></span>
-                        <span style="float:right;" th:text="${colacitas[0].hora}"></span></span>
-                    </p>
-                </div>
-                <img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
-            --><!--<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">-->
             </div>
         </div>
 
             <div class="marco_dcha">
-                <div class="consulta1">
-                    <h2></h2>
+                <div class="ultimollamado">
+                    <div class="consulta1">
+                        <h2>CONSULTA 2</h2>
+                    </div>
+                    <div class="identificador1" th:if="${#arrays.length(llamados) - 1 >= 0}">
+                        <h3><span th:text="${llamados[numllamados - 1].Idpaciente}"></span></h3>
+                    </div>  
                 </div>
-                <div class="consulta2">
-                    <h2></h2>
+                <div class = "llamado2">
+                    <div class="consulta2">
+                        <h2>CONSULTA 2</h2>
+                    </div>
+                    <div class="identificador2" th:if="${#arrays.length(llamados) - 2 >= 0}">
+                        <h3><span th:text="${llamados[numllamados - 2].Idpaciente}"></span></h3>
+                    </div>
                 </div>
-                <div class="identificador1">
-                    <h3><span th:text="${colacitas[0].pacienteId}"></span></h3>
+                <div class="llamado3">
+                    <div class="consulta3">
+                        <h2>CONSULTA 2</h2>
+                    </div>
+                    <div class="identificador3" th:if="${#arrays.length(llamados) - 3 >= 0}">
+                        <h3><span th:text="${llamados[numllamados - 3].Idpaciente}"></span></h3>
+                    </div>
                 </div>
-                <div class="identificador2">
-                    <h3><span th:text="${colacitas[0].pacienteId}"></span></h3>
+                <div class="llamado4">
+                    <div class="consulta4">
+                        <h2>CONSULTA 2</h2>
+                    </div>
+                    <div class="identificador4" th:if="${#arrays.length(llamados) - 4 >= 0}">
+                        <h3><span th:text="${llamados[numllamados - 4].Idpaciente}"></span></h3>
+                    </div>
                 </div>
-                <div class="consulta3">
-                    <h2></h2>
-                </div>
-                <div class="consulta4">
-                    <h2></h2>
-                </div>
-                <div class="identificador3">
-                    <h3><span th:text="${colacitas[0].pacienteId}"></span></h3>
-                </div>
-                <div class="identificador4">
-                    <h3><span th:text="${colacitas[0].pacienteId}"></span></h3>
+                <div th:if="${#arrays.isEmpty(llamados)}">
+                    En breves el médico le llamará a su consulta
                 </div>
             </div>
       

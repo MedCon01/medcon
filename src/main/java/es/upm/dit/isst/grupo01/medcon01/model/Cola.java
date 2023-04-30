@@ -4,6 +4,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -17,8 +18,8 @@ import javax.persistence.GenerationType;
 public class Cola {
     private int salaespera;
     private List<Cita> pendientes = new ArrayList<Cita>();
-
     public Cola(){}
+    public List<Paciente> llamados = new ArrayList<Paciente>();
 
     public Cola(int salaespera, List<Cita> pendientes){
         this.salaespera = salaespera;

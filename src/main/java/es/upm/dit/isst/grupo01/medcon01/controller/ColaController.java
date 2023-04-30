@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.function.Consumer;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
@@ -51,20 +52,29 @@ public class ColaController {
 
     @GetMapping("/pantalla")
     public String showPantallaEspera(Model model){
+        // Mostrar cola de pacientes
         List<Cita> citas = null;
         try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING, Cita[].class));
         } catch (HttpClientErrorException.NotFound ex) {}
         List<Cita> citaspresentes = new ArrayList<>();
         for (Cita c : citas){
-            Paciente paciente = pacienteRepository.findByIdpaciente(c.getPacienteId());
-            if (paciente.getPresente().equals(true)){
+            Paciente p= pacienteRepository.findByIdpaciente(c.getPacienteId());
+            if (p.getPresente().equals(true)){
                 citaspresentes.add(c);
+                if (p.getLlamado().equals(true)){
+                    cola.llamados.add(p);
+                }
             }
+            
         }
         citaspresentes.sort(Comparator.comparing(c -> ((Cita) c).getHora()));
         cola.setPendientes(citaspresentes);
         model.addAttribute("salaespera", cola.getSalaEspera());
         model.addAttribute("colacitas", cola.getPendientes());
+        // Mostrar cola llamados
+        model.addAttribute("llamados", cola.llamados);
+        model.addAttribute("numllamados", (cola.llamados.size()));
         return "sala_espera/pantalla";
+        
     }
 }
