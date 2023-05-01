@@ -2,6 +2,7 @@ package es.upm.dit.isst.grupo01.medcon01.controller;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -48,6 +49,10 @@ public class MedicoController {
     long tiempomedio_ms;
     String tiempo_medio;
     String tiempo_total;
+    // lista de pacientes al dar a suspender consulta
+    List<Cita> citas_actualizadas = new ArrayList<Cita>(); 
+    List<Paciente> pacientes_actualizados = new ArrayList<Paciente>(); 
+    boolean suspenderconsulta = false;
 
     
     // Constructor vacío
@@ -137,31 +142,53 @@ public class MedicoController {
         try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + medicoDni, Medico.class);
         } catch (HttpClientErrorException.NotFound ex) {}
     model.addAttribute("medico", medico);
-    List<Cita> citas = null;
-    try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "medico/" + medico.getDni(), Cita[].class));
-    } catch (HttpClientErrorException.NotFound ex) {}
-    List<Cita> citas_pendientes = new ArrayList<Cita>(); 
-    List<Paciente> pacientes_pendientes = new ArrayList<Paciente>(); 
-    for (Cita c : citas){
-            String pacienteId = c.getPacienteId();
-            Paciente paciente = null;
-            try { paciente = restTemplate.getForObject(GESTORCITASpacientes_STRING + c.getPacienteId(), Paciente.class);
-            } catch (HttpClientErrorException.NotFound ex) {}
-            if (paciente.getPresente().equals(true)){
-                pacientes_pendientes.add(paciente);
-                citas_pendientes.add(c);
-            }
+    if (suspenderconsulta == false){
+        List<Cita> citas = null;
+        try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "medico/" + medico.getDni(), Cita[].class));
+        } catch (HttpClientErrorException.NotFound ex) {}
+        List<Cita> citas_pendientes = new ArrayList<Cita>(); 
+        List<Paciente> pacientes_pendientes = new ArrayList<Paciente>(); 
+        for (Cita c : citas){
+                String pacienteId = c.getPacienteId();
+                Paciente paciente = null;
+                try { paciente = restTemplate.getForObject(GESTORCITASpacientes_STRING + c.getPacienteId(), Paciente.class);
+                } catch (HttpClientErrorException.NotFound ex) {}
+                if (paciente.getPresente().equals(true)){
+                    pacientes_pendientes.add(paciente);
+                    citas_pendientes.add(c);
+                }
+                Comparator<Cita> citaComparator = Comparator.comparing(Cita::getHora);
+                citas_pendientes.sort(citaComparator);
+        }
+        model.addAttribute("pacientes", pacientes_pendientes); 
+        model.addAttribute("citas_pendientes", citas_pendientes);  
     }
-    citas_pendientes.sort(Comparator.comparing(c -> ((Cita) c).getHora()));
+    // aqui solo se metera si se ha pulsado el boton de suspender consulta
+    if (suspenderconsulta == true){
+        model.addAttribute("pacientes", pacientes_actualizados); 
+        model.addAttribute("citas_pendientes", citas_actualizadas); 
+        suspenderconsulta = false; 
+    }
+    //MIRAR ESTO ? no se si es necesario cambie el html de siguiente_paciente
+    /*  Comparator<Paciente> pacienteComparator = Comparator.comparing((Paciente p) -> {
+        // obtener la cita del paciente: 
+        Cita cita = null;
+        try {cita = restTemplate.getForObject(GESTORCITAScitas_STRING + p.getIdpaciente(), Cita.class);
+        }  catch (HttpClientErrorException.NotFound ex) {}
+        return  cita.getHora();     
+
+    }); 
+    pacientes_pendientes.sort(pacienteComparator);  */
+   
     model.addAttribute("tiempototal", tiempo_total);
     model.addAttribute("tiempomedio", tiempo_medio);
-    model.addAttribute("pacientes", pacientes_pendientes); 
-    model.addAttribute("citas_pendientes", citas_pendientes);  
+
         return "medico/iniciomedico";
     }
     //llamada a siguiente paciente 
     @GetMapping("/siguiente_paciente")
     public String showPacientePage(@RequestParam("idpaciente") String idpaciente, Model model){
+        suspenderconsulta = false;
         //Buscar paciente en API citas
         try { pacientellamado = restTemplate.getForObject(GESTORCITASpacientes_STRING + idpaciente, Paciente.class);
         } catch (HttpClientErrorException.NotFound ex) {}
@@ -206,13 +233,14 @@ public class MedicoController {
     @GetMapping("/suspender_consulta")
     public String showsuspenderConsulta(Model model){
        pacientellamado.setPresente(true);
+       suspenderconsulta = true;
+       pacientes_actualizados.clear();
+       citas_actualizadas.clear();
        try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
        } catch(Exception e) {}
     List<Cita> citas = null;
     try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "medico/" + medico.getDni(), Cita[].class));
     } catch (HttpClientErrorException.NotFound ex) {}
-    List<Cita> citas_pendientes = new ArrayList<Cita>(); 
-    List<Paciente> pacientes_pendientes = new ArrayList<Paciente>(); 
     boolean pacienteConsulta = false; 
     Cita citaPacienteLlamado = null;
     for (Cita c : citas){
@@ -224,18 +252,21 @@ public class MedicoController {
                 pacienteConsulta = true;
                 citaPacienteLlamado = c;
             } else if(paciente.getPresente().equals(true)) {
-              pacientes_pendientes.add(paciente);
-              citas_pendientes.add(c);
+              pacientes_actualizados.add(paciente);
+              citas_actualizadas.add(c);
+              Comparator<Cita> citaComparator = Comparator.comparing(Cita::getHora);
+              citas_actualizadas.sort(citaComparator);
             }
     }
     if (pacienteConsulta==true){
-        pacientes_pendientes.add(1, pacientellamado);
-        citas_pendientes.add(1, citaPacienteLlamado);
+        if (pacientes_actualizados.isEmpty()) {
+            pacientes_actualizados.add(pacientellamado);
+            citas_actualizadas.add(citaPacienteLlamado);
+        } else {
+            pacientes_actualizados.add(1, pacientellamado);
+            citas_actualizadas.add(1, citaPacienteLlamado);
+        }
     }
-    // Actualizar el modelo con la lista de pacientes pendientes modificada
-    model.addAttribute("pacientes", pacientes_pendientes);
-    model.addAttribute("citas_pendientes", citas_pendientes);
-
        return "redirect:/iniciomedico/" + medico.getDni();
     }
 

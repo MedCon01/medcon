@@ -41,10 +41,10 @@
                 <p id="timer" th:text="${tiempototal}"></p>
                     <!--<span th:text="${tiempototal}"></span> </p>-->
             </div><br>
-            <div th:unless="${#arrays.isEmpty(pacientes)}">
+            <div th:unless="${#arrays.isEmpty(citas_pendientes)}">
             <form method="get" action="/siguiente_paciente">
-                <input type="hidden" name="idpaciente" th:value="${pacientes[0].Idpaciente}" />
-                <button type="submit" id="siguiente" value="${pacientes[0].Idpaciente}">
+                <input type="hidden" name="idpaciente" th:value="${citas_pendientes[0].pacienteId}" />
+                <button type="submit" id="siguiente" value="${citas_pendientes[0].pacienteId}">
                     <span>Siguiente</span></button>
             </form>
             </div>
