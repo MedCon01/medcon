@@ -29,14 +29,13 @@ import org.springframework.web.multipart.MultipartFile;
 
 import es.upm.dit.isst.grupo01.medcon01.model.Cita;
 import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
-import es.upm.dit.isst.grupo01.medcon01.repository.CitaRepository;
-import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
 @Controller
 public class PacienteController {
-    public final String GESTORCITAS_STRING = "http://localhost:8080/citas/";
-    @Autowired
-    private PacienteRepository pacienteRepository;
+    public final String GESTORCITAScitas_STRING = "http://localhost:8083/citas/";
+    public final String GESTORCITASmedicos_STRING = "http://localhost:8083/medicos/";
+    public final String GESTORCITASpacientes_STRING = "http://localhost:8083/pacientes/";
+    Paciente paciente;
     private RestTemplate restTemplate = new RestTemplate();
     public PacienteController(){}
 
@@ -54,15 +53,23 @@ public class PacienteController {
     @PostMapping("/login_DNI")
     public String registrarPacienteDni(@RequestParam("dni") String dni,Model model){
         // Asigno paciente buscando por DNI
-        Paciente paciente = pacienteRepository.findByDni(dni);
-        model.addAttribute("paciente",paciente);
+        List<Paciente> pacientes = null;
+        try { pacientes =  Arrays.asList(restTemplate.getForEntity(GESTORCITASpacientes_STRING,Paciente[].class).getBody());
+        } catch (HttpClientErrorException.NotFound ex) {}
+        for (Paciente p : pacientes){
+            if (p.getDni().equals(dni)){
+                paciente = p;
+            }
+        }
         if (paciente != null){ // Se comprueba que el paciente existe en la BBDD 
          // Marcar paciente como presente y actualizar BBDD
+        model.addAttribute("paciente",paciente);
          paciente.setPresente(true);
-         pacienteRepository.save(paciente);
+         try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, paciente, Paciente.class);
+         } catch(Exception e) {}
          // Busco la cita del paciente
         List<Cita> citas = null;
-        try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING+ "paciente/" + paciente.getIdpaciente(), Cita[].class));
+        try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "paciente/" + paciente.getIdpaciente(), Cita[].class));
         } catch (HttpClientErrorException.NotFound ex) {}
 
          model.addAttribute("cita_pendiente",citas.get(0));
@@ -82,16 +89,24 @@ public class PacienteController {
     @PostMapping("/login_tarjeta")
     public String registrarPacienteTarjeta(@RequestParam("ntarjeta") String ntarjeta,Model model){
         // Asigno paciente buscando por ntarjeta
-        Paciente paciente = pacienteRepository.findByNtarjeta(ntarjeta);
-        model.addAttribute("paciente",paciente);
+        List<Paciente> pacientes = null;
+        try { pacientes =  Arrays.asList(restTemplate.getForEntity(GESTORCITASpacientes_STRING,Paciente[].class).getBody());
+        } catch (HttpClientErrorException.NotFound ex) {}
+        for (Paciente p : pacientes){
+            if (p.getNtarjeta().equals(ntarjeta)){
+                paciente = p;
+            }
+        }
         if (paciente != null){ // Se comprueba que el paciente existe en la BBDD 
          // Marcar paciente como presente y actualizar BBDD
          paciente.setPresente(true);
-         pacienteRepository.save(paciente);
+         try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, paciente, Paciente.class);
+         } catch(Exception e) {}
          // Busco la cita del paciente
          List<Cita> citas = null;
-        try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING+ "paciente/" + paciente.getIdpaciente(), Cita[].class));
+        try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "paciente/" + paciente.getIdpaciente(), Cita[].class));
         } catch (HttpClientErrorException.NotFound ex) {}
+        model.addAttribute("paciente",paciente);
          model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente
          return ("/paciente/identificador_cita");

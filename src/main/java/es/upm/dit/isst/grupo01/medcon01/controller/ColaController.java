@@ -34,18 +34,13 @@ import es.upm.dit.isst.grupo01.medcon01.model.Cita;
 import es.upm.dit.isst.grupo01.medcon01.model.Cola;
 import es.upm.dit.isst.grupo01.medcon01.model.Medico;
 import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
-import es.upm.dit.isst.grupo01.medcon01.repository.MedicoRepository;
-import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
 @Controller
 public class ColaController {
-    public final String GESTORCITAS_STRING = "http://localhost:8080/citas/";
+    public final String GESTORCITAScitas_STRING = "http://localhost:8083/citas/";
+    public final String GESTORCITASmedicos_STRING = "http://localhost:8083/medicos/";
+    public final String GESTORCITASpacientes_STRING = "http://localhost:8083/pacientes/";
     private Cola cola = new Cola(1,new ArrayList<Cita>());
-    @Autowired
-    private MedicoRepository medicoRepository;
-    @Autowired
-    private PacienteRepository pacienteRepository;
-    
     public ColaController(){}
    
     private RestTemplate restTemplate = new RestTemplate();
@@ -54,11 +49,11 @@ public class ColaController {
     public String showPantallaEspera(Model model){
         // Mostrar cola de pacientes
         List<Cita> citas = null;
-        try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING, Cita[].class));
+        try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING, Cita[].class));
         } catch (HttpClientErrorException.NotFound ex) {}
-        List<Cita> citaspresentes = new ArrayList<>();
+        List<Cita> citaspresentes = new ArrayList<>(); 
         for (Cita c : citas){
-            Paciente p= pacienteRepository.findByIdpaciente(c.getPacienteId());
+            Paciente p= restTemplate.getForObject(GESTORCITASpacientes_STRING + c.getPacienteId(), Paciente.class);
             if (p.getPresente().equals(true)){
                 citaspresentes.add(c);
                 if (p.getLlamado().equals(true)){

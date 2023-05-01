@@ -31,16 +31,12 @@ import org.springframework.web.multipart.MultipartFile;
 import es.upm.dit.isst.grupo01.medcon01.model.Cita;
 import es.upm.dit.isst.grupo01.medcon01.model.Medico;
 import es.upm.dit.isst.grupo01.medcon01.model.Paciente;
-import es.upm.dit.isst.grupo01.medcon01.repository.MedicoRepository;
-import es.upm.dit.isst.grupo01.medcon01.repository.PacienteRepository;
 
 @Controller
 public class MedicoController {
-    public final String GESTORCITAS_STRING = "http://localhost:8080/citas/";
-    @Autowired
-    private MedicoRepository medicoRepository;
-    @Autowired
-    private PacienteRepository pacienteRepository;
+    public final String GESTORCITAScitas_STRING = "http://localhost:8083/citas/";
+    public final String GESTORCITASmedicos_STRING = "http://localhost:8083/medicos/";
+    public final String GESTORCITASpacientes_STRING = "http://localhost:8083/pacientes/";
     Medico medico;
     Paciente pacientellamado;
     private RestTemplate restTemplate = new RestTemplate();
@@ -56,13 +52,6 @@ public class MedicoController {
     // Constructor vacío
     public MedicoController(){}
 
-    // Constructor normal
-    public MedicoController(MedicoRepository medicoRepository, PacienteRepository pacienteRepository, Medico medico){
-        this.medicoRepository = medicoRepository;
-        this.pacienteRepository = pacienteRepository;
-        this.medico=medico;
-    }
-
     // Login_medico
     @GetMapping("/login_medico")
     public String showLoginPage(){
@@ -74,7 +63,8 @@ public class MedicoController {
     public String processLoginForm(@RequestParam("usuario") String usuario, @RequestParam("password") String password,Model model){
         if (usuario.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
             // Validar DNI del medico
-            this.medico = medicoRepository.findByDni(usuario);
+            try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + usuario, Medico.class);
+            } catch (HttpClientErrorException.NotFound ex) {}
             if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
                 return "redirect:/iniciomedico/" + medico.getDni();
@@ -82,10 +72,21 @@ public class MedicoController {
                 return "medico/loginmedicoerror";
             }
         } else if (usuario.matches("\\d{12}")){
-            this.medico = medicoRepository.findByNcolegiado(usuario);
-            if (medico.getPassword().equals(password)){
-                model.addAttribute("medico", medico);
-                return "redirect:/iniciomedico/" + medico.getDni();
+            List<Medico> medicos = null;
+            try { medicos =  Arrays.asList(restTemplate.getForEntity(GESTORCITASmedicos_STRING,Medico[].class).getBody());
+            } catch (HttpClientErrorException.NotFound ex) {}
+            for (Medico m : medicos){
+                if (m.getNColegiado().equals(usuario)){
+                    medico = m;
+                }
+            }
+            if (medico != null){
+                if (medico.getPassword().equals(password)){
+                    model.addAttribute("medico", medico);
+                    return "redirect:/iniciomedico/" + medico.getDni();
+                } else {
+                    return "medico/loginmedicoerror";
+                }
             } else {
                 return "medico/loginmedicoerror";
             }
@@ -98,7 +99,8 @@ public class MedicoController {
     public String processLoginFormAgain(@RequestParam("usuario") String usuario, @RequestParam("password") String password,Model model){
         if (usuario.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
             // Validar DNI del medico
-            this.medico = medicoRepository.findByDni(usuario);
+            try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + usuario, Medico.class);
+            } catch (HttpClientErrorException.NotFound ex) {}
             if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
                 return "redirect:/iniciomedico/" + medico.getDni();
@@ -106,10 +108,21 @@ public class MedicoController {
                 return "medico/loginmedicoerror";
             }
         } else if (usuario.matches("\\d{12}")){
-            this.medico = medicoRepository.findByNcolegiado(usuario);
-            if (medico.getPassword().equals(password)){
-                model.addAttribute("medico", medico);
-                return "redirect:/iniciomedico/" + medico.getDni();
+            List<Medico> medicos = null;
+            try { medicos =  Arrays.asList(restTemplate.getForEntity(GESTORCITASmedicos_STRING,Medico[].class).getBody());
+            } catch (HttpClientErrorException.NotFound ex) {}
+            for (Medico m : medicos){
+                if (m.getNColegiado().equals(usuario)){
+                    medico = m;
+                }
+            }
+            if (medico != null){
+                if (medico.getPassword().equals(password)){
+                    model.addAttribute("medico", medico);
+                    return "redirect:/iniciomedico/" + medico.getDni();
+                } else {
+                    return "medico/loginmedicoerror";
+                }
             } else {
                 return "medico/loginmedicoerror";
             }
@@ -120,16 +133,19 @@ public class MedicoController {
     // Iniciomedico
     @GetMapping("/iniciomedico/{medico}")
     public String getIniciomedico(Model model, @PathVariable(value = "medico") String medicoDni) {
-    medico = medicoRepository.findByDni(medicoDni);
+        try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + medicoDni, Medico.class);
+        } catch (HttpClientErrorException.NotFound ex) {}
     model.addAttribute("medico", medico);
     List<Cita> citas = null;
-    try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING+ "medico/" + medico.getDni(), Cita[].class));
+    try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "medico/" + medico.getDni(), Cita[].class));
     } catch (HttpClientErrorException.NotFound ex) {}
     List<Cita> citas_pendientes = new ArrayList<Cita>(); 
     List<Paciente> pacientes_pendientes = new ArrayList<Paciente>(); 
     for (Cita c : citas){
             String pacienteId = c.getPacienteId();
-            Paciente paciente = pacienteRepository.findByIdpaciente(pacienteId);
+            Paciente paciente = null;
+            try { paciente = restTemplate.getForObject(GESTORCITASpacientes_STRING + c.getPacienteId(), Paciente.class);
+            } catch (HttpClientErrorException.NotFound ex) {}
             if (paciente.getPresente().equals(true)){
                 pacientes_pendientes.add(paciente);
                 citas_pendientes.add(c);
@@ -145,9 +161,14 @@ public class MedicoController {
     //llamada a siguiente paciente 
     @GetMapping("/siguiente_paciente")
     public String showPacientePage(@RequestParam("idpaciente") String idpaciente, Model model){
-        Paciente pacientellamado =  pacienteRepository.findByIdpaciente(idpaciente);
+        //Buscar paciente en API citas
+        try { pacientellamado = restTemplate.getForObject(GESTORCITASpacientes_STRING + idpaciente, Paciente.class);
+        } catch (HttpClientErrorException.NotFound ex) {}
+        //Llamar
         pacientellamado.setLlamado(true);
-        pacienteRepository.save(pacientellamado);
+        // Guardar paciente en API citas
+        try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
+        } catch(Exception e) {}
         model.addAttribute("pacientellamado",pacientellamado);
         tiempoinicio = System.currentTimeMillis();
         return "redirect:/paciente/" + pacientellamado.getIdpaciente();
@@ -155,7 +176,8 @@ public class MedicoController {
     // Consulta en curso
     @GetMapping("/paciente/{paciente}")
     public String showConsultaEnCursoPage(Model model, @PathVariable(value = "paciente") String idpaciente){
-        pacientellamado = pacienteRepository.findByIdpaciente(idpaciente);
+        try { pacientellamado = restTemplate.getForObject(GESTORCITASpacientes_STRING + idpaciente, Paciente.class);
+        } catch (HttpClientErrorException.NotFound ex) {}
         model.addAttribute("pacientellamado",pacientellamado);
         return "medico/paciente"; 
     }
@@ -183,9 +205,10 @@ public class MedicoController {
     @GetMapping("/suspender_consulta")
     public String showsuspenderConsulta(Model model){
        pacientellamado.setPresente(true);
-       pacienteRepository.save(pacientellamado);
+       try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
+       } catch(Exception e) {}
     List<Cita> citas = null;
-    try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAS_STRING+ "medico/" + medico.getDni(), Cita[].class));
+    try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "medico/" + medico.getDni(), Cita[].class));
     } catch (HttpClientErrorException.NotFound ex) {}
     List<Cita> citas_pendientes = new ArrayList<Cita>(); 
     List<Paciente> pacientes_pendientes = new ArrayList<Paciente>(); 
@@ -193,7 +216,9 @@ public class MedicoController {
     Cita citaPacienteLlamado = null;
     for (Cita c : citas){
              String pacienteId = c.getPacienteId();
-             Paciente paciente = pacienteRepository.findByIdpaciente(pacienteId);   
+             Paciente paciente = null;
+             try { paciente = restTemplate.getForObject(GESTORCITASpacientes_STRING + c.getPacienteId(), Paciente.class);
+             } catch (HttpClientErrorException.NotFound ex) {}   
             if(paciente.getIdpaciente().equals(pacientellamado.getIdpaciente())){
                 pacienteConsulta = true;
                 citaPacienteLlamado = c;
@@ -217,7 +242,9 @@ public class MedicoController {
     public String showsfinalizarConsulta(Model model){
         pacientellamado.setPresente(false);
         pacientellamado.setLlamado(false);
-        pacienteRepository.save(pacientellamado);
+        // Guardar paciente en API citas
+        try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
+        } catch(Exception e) {}
         tiempofinal=System.currentTimeMillis();
         long tiempoconsulta = tiempofinal - tiempoinicio;
         tiempos.add(tiempoconsulta);

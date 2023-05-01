@@ -14,9 +14,7 @@ import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List; 
 
-@Entity
 public class Medico {
-    @Id
     private String dni;
     private String nombre;
     private String ncolegiado;
@@ -24,7 +22,6 @@ public class Medico {
     private String especialidad;
     private String password;
     
-    @Transient 
     // Cola de los identificadores de los pacientes en la lista 
     private List<String> cola = new ArrayList<String>() ;
     // Constructor vacío

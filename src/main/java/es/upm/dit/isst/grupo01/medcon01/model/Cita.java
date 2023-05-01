@@ -9,19 +9,11 @@ import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 
-@Entity
-@Table (name = "Cita")
 public class Cita {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(nullable = false)
     private LocalDate fecha;
-    @Column(nullable = false)
     private LocalTime hora;
-    @Column(name = "paciente_id", nullable = false)
     private String pacienteId;
-    @Column(name = "medico_dni", nullable = false)
     private String medicoDni;
 
     // Constructor
