@@ -144,7 +144,7 @@ img {
     font-size: 4em;
     padding-top: 4%;
     color:#ecf5ff;
-    border-radius: 0 0 1em 1em;
+    border-radius: 0 0 0.5em 0.5em;
     width: 80%;
     height: 12vh;
     text-align: center;
@@ -156,7 +156,7 @@ img {
     border-radius: 1em 1em 0 0 ;
     color: #295c93;
     margin-right: 2%;
-    font-size: 1.2em;
+    font-size: 1.5em;
     padding-bottom: 4%;
     width: 80%;
     height: 8vh;
@@ -169,7 +169,7 @@ img {
     font-size: 4em;
     padding-top: 4%;
     color:#ecf5ff;
-    border-radius: 0 0 1em 1em;
+    border-radius: 0 0 0.5em 0.5em;
     width: 80%;
     height: 12vh;
     text-align: center;
@@ -181,7 +181,7 @@ img {
     border-radius: 1em 1em 0 0;
     color: #295c93;
     margin-left: 2%;
-    font-size: 1.2em;
+    font-size: 1.5em;
     padding-bottom: 4%;
     width: 80%;
     height: 8vh;
@@ -194,7 +194,7 @@ img {
     font-size: 4em;
     padding-top: 4%;
     color:#ecf5ff;
-    border-radius: 0 0 1em 1em;
+    border-radius: 0 0 0.5em 0.5em;
     width: 80%;
     height: 12vh;
     text-align: center;
@@ -206,7 +206,7 @@ img {
     border-radius: 1em 1em 0 0 ;
     color: #295c93;
     margin-right: 2%;
-    font-size: 1.2em;
+    font-size: 1.5em;
     padding-bottom: 4%;
     width: 80%;
     height: 8vh;
@@ -219,7 +219,7 @@ img {
     font-size: 4em;
     padding-top: 4%;
     color:#ecf5ff;
-    border-radius: 0 0 1em 1em;
+    border-radius: 0 0 0.5em 0.5em;
     width: 80%;
     height: 12vh;
     text-align: center;

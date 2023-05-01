@@ -51,24 +51,21 @@
                     <div class="consulta2">
                         <h2>CONSULTA 2</h2>
                     </div>
-                    <div class="identificador2" >
-                        <h3><span th:text="${llamados[numllamados - 2].Idpaciente}"></span></h3>
+                    <div class="identificador2" th:text="${llamados[numllamados - 2].Idpaciente}" >
                     </div>
                 </div>
-                <div class="llamado3"th:if="${#arrays.length(llamados) - 3 >= 0}">
+                <div class="llamado3" th:if="${#arrays.length(llamados) - 3 >= 0}">
                     <div class="consulta3">
                         <h2>CONSULTA 3</h2>
                     </div>
-                    <div class="identificador3" >
-                        <h3><span th:text="${llamados[numllamados - 3].Idpaciente}"></span></h3>
+                    <div class="identificador3" th:text="${llamados[numllamados - 3].Idpaciente}">
                     </div>
                 </div>
                 <div class="llamado4" th:if="${#arrays.length(llamados) - 4 >= 0}">
                     <div class="consulta4">
                         <h2>CONSULTA 4</h2>
                     </div>
-                    <div class="identificador4" >
-                        <h3><span th:text="${llamados[numllamados - 4].Idpaciente}"></span></h3>
+                    <div class="identificador4" th:text="${llamados[numllamados - 4].Idpaciente}">
                     </div>
                 </div>
                 <div th:if="${#arrays.isEmpty(llamados)}">
