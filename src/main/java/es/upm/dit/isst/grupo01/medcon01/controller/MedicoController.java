@@ -1,6 +1,7 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
 import java.security.Principal;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -165,7 +166,7 @@ public class MedicoController {
         try { pacientellamado = restTemplate.getForObject(GESTORCITASpacientes_STRING + idpaciente, Paciente.class);
         } catch (HttpClientErrorException.NotFound ex) {}
         //Llamar
-        pacientellamado.setLlamado(true);
+        pacientellamado.setLlamado(LocalDateTime.now());
         // Guardar paciente en API citas
         try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
         } catch(Exception e) {}
@@ -241,7 +242,7 @@ public class MedicoController {
     @GetMapping("/finalizar_consulta")
     public String showsfinalizarConsulta(Model model){
         pacientellamado.setPresente(false);
-        pacientellamado.setLlamado(false);
+        pacientellamado.setLlamado(null);
         // Guardar paciente en API citas
         try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
         } catch(Exception e) {}

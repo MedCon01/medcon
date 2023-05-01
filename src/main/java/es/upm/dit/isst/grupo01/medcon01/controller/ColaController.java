@@ -56,19 +56,21 @@ public class ColaController {
             Paciente p= restTemplate.getForObject(GESTORCITASpacientes_STRING + c.getPacienteId(), Paciente.class);
             if (p.getPresente().equals(true)){
                 citaspresentes.add(c);
-                if (p.getLlamado().equals(true)){
-                    cola.llamados.add(p);
-                }
             }
-            
         }
+        // Mostrar cola llamados
+        try { cola.llamados =  Arrays.asList(restTemplate.getForEntity(GESTORCITASpacientes_STRING, Paciente[].class).getBody());
+        } catch (HttpClientErrorException.NotFound ex) {}
+        Stream<Paciente> llamados = cola.llamados.stream()
+        .filter(p -> p.getLlamado() != null)
+        .sorted(Comparator.comparing(Paciente::getLlamado).reversed());
+        cola.llamados = llamados.collect(Collectors.toList());
         citaspresentes.sort(Comparator.comparing(c -> ((Cita) c).getHora()));
         cola.setPendientes(citaspresentes);
         model.addAttribute("salaespera", cola.getSalaEspera());
         model.addAttribute("colacitas", cola.getPendientes());
-        // Mostrar cola llamados
         model.addAttribute("llamados", cola.llamados);
-        model.addAttribute("numllamados", (cola.llamados.size()));
+        model.addAttribute("numllamados", cola.llamados.size());
         return "sala_espera/pantalla";
         
     }

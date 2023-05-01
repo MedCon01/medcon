@@ -3,6 +3,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Transient;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.stream.Stream;
 import java.util.function.Consumer;
@@ -19,7 +20,7 @@ public class Paciente {
     private Boolean presente;
     @Transient // poner siempre que se cree un atributo que no vaya a la BBDD
     private LocalTime hora_llegada;
-    private boolean llamado = false;
+    private LocalDateTime llamado;
     
     // Constructor sin argumentos
     public Paciente() {
@@ -27,7 +28,7 @@ public class Paciente {
     
     // Constructor con argumentos
     public Paciente(String idpaciente, String dni, String nombre, LocalDate fecha_nacimiento, String ntarjeta, LocalTime hora_llegada,
-                    Boolean presente, Boolean llamado) {
+                    Boolean presente, LocalDateTime llamado) {
         this.idpaciente = idpaciente;
         this.dni = dni;
         this.nombre = nombre;
@@ -93,12 +94,12 @@ public class Paciente {
     public void setPresente(boolean presente){
         this.presente = presente;
     }
-    // Getter y setter idpaciente
-    public Boolean getLlamado() {
+    // Getter y setter llamado
+    public LocalDateTime getLlamado() {
         return this.llamado;
     }
 
-    public void setLlamado(boolean llamado) {
+    public void setLlamado(LocalDateTime llamado) {
         this.llamado = llamado;
     }
     // Método toString

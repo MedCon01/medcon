@@ -7,6 +7,12 @@ body{
     background-color: #92abc8;
     font-family: 'abel', sans-serif;
 }
+h3{
+    color:#d0e6ff;
+    font-size: 300%;
+    text-decoration: none;
+    font-family: 'abel', sans-serif;
+}
 
 #barra{
     width: 100%; 
@@ -125,7 +131,7 @@ img {
     border-radius: 1em 1em 0 0;
     color: #fff;
     margin-left: 2%;
-    font-size: 1.2em;
+    font-size: 1.5em;
     padding-bottom: 4%;
     width: 80%;
     height: 8vh;
@@ -135,7 +141,9 @@ img {
 .identificador1{
     background-color: #295c93;
     margin-left: 2%;
-    font-size: 1.2em;
+    font-size: 4em;
+    padding-top: 4%;
+    color:#ecf5ff;
     border-radius: 0 0 1em 1em;
     width: 80%;
     height: 12vh;
@@ -158,7 +166,9 @@ img {
 .identificador2{
     background-color: #295c93;
     margin-right: 2%;
-    font-size: 1.2em;
+    font-size: 4em;
+    padding-top: 4%;
+    color:#ecf5ff;
     border-radius: 0 0 1em 1em;
     width: 80%;
     height: 12vh;
@@ -181,7 +191,9 @@ img {
 .identificador3{
     background-color: #295c93;
     margin-left: 2%;
-    font-size: 1.2em;
+    font-size: 4em;
+    padding-top: 4%;
+    color:#ecf5ff;
     border-radius: 0 0 1em 1em;
     width: 80%;
     height: 12vh;
@@ -204,7 +216,9 @@ img {
 .identificador4{
     background-color: #295c93;
     margin-right: 2%;
-    font-size: 1.2em;
+    font-size: 4em;
+    padding-top: 4%;
+    color:#ecf5ff;
     border-radius: 0 0 1em 1em;
     width: 80%;
     height: 12vh;

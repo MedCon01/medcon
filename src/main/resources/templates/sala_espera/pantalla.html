@@ -44,8 +44,7 @@
                     <div class="consulta1">
                         <h2>CONSULTA 1</h2>
                     </div>
-                    <div class="identificador1" >
-                        <h3><span th:text="${llamados[numllamados - 1].Idpaciente}"></span></h3>
+                    <div class="identificador1" th:text="${llamados[numllamados - 1].Idpaciente}">
                     </div>  
                 </div>
                 <div class = "llamado2" th:if="${#arrays.length(llamados) - 2 >= 0}">
@@ -73,7 +72,9 @@
                     </div>
                 </div>
                 <div th:if="${#arrays.isEmpty(llamados)}">
-                    En breves el médico le llamará a su consulta
+                    <h3>
+                        En breves el médico le llamará a su consulta
+                    </h3>
                 </div>
             </div>
       
