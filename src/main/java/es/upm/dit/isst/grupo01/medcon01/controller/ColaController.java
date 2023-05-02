@@ -1,6 +1,9 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
 import java.security.Principal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -41,6 +44,7 @@ public class ColaController {
     public final String GESTORCITASmedicos_STRING = "http://localhost:8083/medicos/";
     public final String GESTORCITASpacientes_STRING = "http://localhost:8083/pacientes/";
     private Cola cola = new Cola(1,new ArrayList<Cita>());
+    Paciente ultimollamado = new Paciente("000000","00000000o","Ultimo paciente",LocalDate.now(),"000000000000",LocalTime.now(),false,LocalDateTime.now());
     public ColaController(){}
    
     private RestTemplate restTemplate = new RestTemplate();
@@ -65,6 +69,13 @@ public class ColaController {
         .filter(p -> p.getLlamado() != null)
         .sorted(Comparator.comparing(Paciente::getLlamado).reversed());
         cola.llamados = llamados.collect(Collectors.toList());
+        // Si se ha llamado a un nuevo paciente, se reproducirá una alerta
+        Boolean nuevallamada = false;
+        if (cola.llamados.size() > 0){
+            nuevallamada = !((ultimollamado.getIdpaciente().equals(cola.llamados.get(0).getIdpaciente())));
+            ultimollamado = cola.llamados.get(0);
+        }
+        model.addAttribute("nuevallamada", nuevallamada);
         citaspresentes.sort(Comparator.comparing(c -> ((Cita) c).getHora()));
         cola.setPendientes(citaspresentes);
         model.addAttribute("salaespera", cola.getSalaEspera());
