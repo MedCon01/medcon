@@ -62,6 +62,7 @@ public class MedicoController {
     String tiempo_total4;
     String tiempo_medio5;
     String tiempo_total5;
+
     // lista de pacientes al dar a suspender consulta
     List<Cita> citas_actualizadas = new ArrayList<Cita>(); 
     List<Paciente> pacientes_actualizados = new ArrayList<Paciente>(); 
@@ -246,45 +247,24 @@ public class MedicoController {
         return "aplicaciones_externas/historial";
     }
 
-    @GetMapping ("/vueltaHistorial")
-    public String vueltaHistorial(){
-        return "redirect:/paciente/" + pacientellamado.getIdpaciente();
-
-    }
 
     @GetMapping("/receta")
     public String showreceta(){
         return "aplicaciones_externas/receta";
     }
 
-    @GetMapping ("/vueltaReceta")
-    public String vueltaReceta(){
-        return "redirect:/paciente/" + pacientellamado.getIdpaciente();
-
-    }
 
     @GetMapping("/pruebas_medicas")
     public String showpruebasMedicas(){
         return "aplicaciones_externas/pruebas_medicas";
     }
 
-    //Vuelta aplicacion externas
-    @GetMapping ("/vueltaPruebasMedicas")
-    public String vueltaPruebaMedicas(){
-        return "redirect:/paciente/" + pacientellamado.getIdpaciente();
-
-    }
 
     @GetMapping("/gestion_citas")
     public String showgestion_citas(){
         return "aplicaciones_externas/gestion_citas";
     }
 
-    @GetMapping ("/vueltaCitas")
-    public String vueltaCitas(){
-        return "redirect:/paciente/" + pacientellamado.getIdpaciente();
-
-    }
     
     @GetMapping("/suspender_consulta")
     public String showsuspenderConsulta(Model model){
