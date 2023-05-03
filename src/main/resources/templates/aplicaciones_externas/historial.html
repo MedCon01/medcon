@@ -69,9 +69,8 @@
   <div class="paper">
     <h1>Historial Médico</h1>
     <h2>Información del Paciente</h2>
-    <p>Nombre: Juan Pérez</p>
-    <p>Fecha de nacimento: 16/07/1992</p>
-    <p>Género: Masculino</p>
+    <p>Nombre: <span th:text = "${paciente.nombre}"></p>
+    <p>Fecha de nacimento: <span th:text = "${paciente.fecha_nacimiento}"></p>
     <h2>Historial de Enfermedades</h2>
     <ul>
       <li>Diabetes tipo 2 (2015-2018)</li>
@@ -83,9 +82,9 @@
     <p>El paciente requiere seguir una dieta balanceada y hacer ejercicio regularmente para controlar la diabetes y la presión arterial alta.</p>
     <p>Recetar medicamentos para el colesterol alto y monitorear los niveles de colesterol en los próximos meses.</p>
     <h2>Contacto del Médico</h2>
-    <p>Dr. Ana Rodríguez</p>
+    <p><span th:text = "${medico.nombre}"></p>
     <p>Teléfono: <a href="tel:+1234567890">+1 (234) 567-890</a></p>
-    <p>Email: <a href="mailto:anarodriguez@example.com">anarodriguez@example.com</a></p>
+    <p>Email: <a href="mailto:anarodriguez@example.com"><span th:text = "${medico.nombre}">@example.com</a></p>
     <br>
     <button id="volver" onclick="window.location.href = 'medico/siguiente_paciente'">Volver</button>
   </div>

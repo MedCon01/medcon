@@ -9,6 +9,7 @@ import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collector;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import java.util.function.Consumer;
@@ -69,6 +70,15 @@ public class ColaController {
         .filter(p -> p.getLlamado() != null)
         .sorted(Comparator.comparing(Paciente::getLlamado).reversed());
         cola.llamados = llamados.collect(Collectors.toList());
+        List<Medico> medicos = null;
+        try {
+            medicos = Arrays.asList(restTemplate.getForEntity(GESTORCITASmedicos_STRING,Medico[].class).getBody());
+        } catch (HttpClientErrorException.NotFound ex){}
+        //List<Cita> citasllamadas =citaspresentes.stream().filter(c -> c.getPacienteId().equals(cola.llamados.stream().map(Paciente :: getIdpaciente))).collect(Collectors.toList());
+        //List<Medico> medicosfiltrados = medicos.stream().filter(m -> citasllamadas.stream().map(Cita::getMedicoDni).equals(m.getDni())).collect(Collectors.toList());
+        //List<Integer> consultas = medicosfiltrados.stream().map(Medico::getConsulta).collect(Collectors.toList());
+        // List<Integer> consultas = .map(Cita :: getMedicoDni).equals(m.getDni())).map(Medico:: getConsulta).collect(Collectors.toList());
+        
         // Si se ha llamado a un nuevo paciente, se reproducirá una alerta
         Boolean nuevallamada = false;
         if (cola.llamados.size() > 0){

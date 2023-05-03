@@ -242,22 +242,30 @@ public class MedicoController {
     }
 
     @GetMapping("/historial")
-    public String showhistorial(){
+    public String showhistorial(Model model){
+        model.addAttribute("paciente",pacientellamado);
+        model.addAttribute("medico", medico);
         return "aplicaciones_externas/historial";
     }
 
     @GetMapping("/receta")
-    public String showreceta(){
+    public String showreceta(Model model){
+        model.addAttribute("paciente",pacientellamado);
+        model.addAttribute("medico", medico);
         return "aplicaciones_externas/receta";
     }
 
     @GetMapping("/pruebas_medicas")
-    public String showpruebasMedicas(){
+    public String showpruebasMedicas(Model model){
+        model.addAttribute("paciente",pacientellamado);
+        model.addAttribute("medico", medico);
         return "aplicaciones_externas/pruebas_medicas";
     }
 
     @GetMapping("/gestion_citas")
-    public String showgestion_citas(){
+    public String showgestion_citas(Model model){
+        model.addAttribute("paciente",pacientellamado);
+        model.addAttribute("medico", medico);
         return "aplicaciones_externas/gestion_citas";
     }
 
