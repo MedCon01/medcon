@@ -71,6 +71,13 @@ public class MedicoController {
     // Constructor vacío
     public MedicoController(){}
 
+    //Error 
+    @GetMapping ("/error")
+    public String showError(){
+        return "redirect:/error";
+    }
+    
+
     // Login_medico
     @GetMapping("/login_medico")
     public String showLoginPage(){
@@ -268,7 +275,7 @@ public class MedicoController {
         model.addAttribute("medico", medico);
         return "aplicaciones_externas/gestion_citas";
     }
-
+    
     @GetMapping("/suspender_consulta")
     public String showsuspenderConsulta(Model model){
        pacientellamado.setPresente(true);

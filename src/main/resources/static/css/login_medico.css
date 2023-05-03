@@ -93,3 +93,8 @@ body{
     color: #ffff;
     text-align: center;
 }
+
+#password::placeholder {
+    color: #ffffff; /* Cambia el color del placeholder a blanco */
+  }
+  

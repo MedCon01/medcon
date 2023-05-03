@@ -5,24 +5,10 @@
     <!--<link rel="stylesheet" type="text/css" href="../../static/css/siguiente_paciente.css">-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/paciente.css}" />
 
-    <script>
-		function mostrarHoraActual() {
-		var fecha = new Date();
-		var horas = fecha.getHours().toString().padStart(2, "0");
-		var minutos = fecha.getMinutes().toString().padStart(2, "0");
-		var tiempo = horas + ":" + minutos;
-		document.getElementById("reloj").innerText = tiempo;
-		}
-        window.onload = function() {
-            mostrarHoraActual(); // Mostrar la hora actual al cargar la página
-            setInterval(mostrarHoraActual, 1000); // Actualizar la hora cada segundo
-        };
-
     </script>
 </head>
 <body onload="iniciarCronometro()">
     <div id="barra">
-        <p id="reloj">00:00:00</p>
     </div>
 
     <div class="info_paciente">
@@ -75,29 +61,11 @@
         tiempoMedio.textContent = tiempoConsulta;
 
         function iniciarCronometro() {
-            // Obtener el tiempo transcurrido previamente almacenado en sessionStorage
-            var tiempoTranscurrido = sessionStorage.getItem("tiempoTranscurrido");
-            if (tiempoTranscurrido !== null) {
-                var tiempoArr = tiempoTranscurrido.split(":");
-                horas = parseInt(tiempoArr[0]);
-                minutos = parseInt(tiempoArr[1]);
-                segundos = parseInt(tiempoArr[2]);
-            }
-
-            // Obtener el tiempo transcurrido previamente almacenado en sessionStorage de la página de paciente
-            var tiempoTranscurridoPaciente = sessionStorage.getItem("tiempoTranscurridoPaciente");
-            if (tiempoTranscurridoPaciente !== null) {
-                var tiempoArrPaciente = tiempoTranscurridoPaciente.split(":");
-                var horasPaciente = parseInt(tiempoArrPaciente[0]);
-                var minutosPaciente = parseInt(tiempoArrPaciente[1]);
-                var segundosPaciente = parseInt(tiempoArrPaciente[2]);
-                
-                // Sumar el tiempo del paciente al tiempo previo del doctor
-                horas += horasPaciente;
-                minutos += minutosPaciente;
-                segundos += segundosPaciente;
-            }
-
+         if (typeof crono === 'number' && !isNaN(crono)) {
+            horas = TimeUnit.MILLISECONDS.toHours(crono);
+            minutos = TimeUnit.MILLISECONDS.toMinutes(crono) - TimeUnit.HOURS.toMinutes(horas);
+            segundos = TimeUnit.MILLISECONDS.toSeconds(crono) - TimeUnit.HOURS.toSeconds(horas) - TimeUnit.MINUTES.toSeconds(minutos);
+         }
             // Iniciar el cronómetro
             setInterval(actualizarTimer, 1000);
         }
