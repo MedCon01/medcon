@@ -47,7 +47,7 @@
     #volver {
       display: flex;
       justify-content: space-between;
-      margin-top: 3%;
+      margin-top: 0.5%;
     }
 
     #volver button {
@@ -65,9 +65,11 @@
     <label for="motivoCita">Motivo de la Cita:</label>
     <textarea id="motivoCita" name="motivoCita" required></textarea>
     <input type="submit" value="Solicitar Cita">
+    </form>
     <div id="volver">
-      <button onclick="window.location.href = 'medico/paciente'">Volver</button>
+      <form method="get" action="/vueltaCitas">
+      <button> Volver</button>
+      </form>
     </div>
-  </form>
 </body>
 </html>
