@@ -268,6 +268,7 @@ public class MedicoController {
         return "aplicaciones_externas/pruebas_medicas";
     }
 
+    //Vuelta aplicacion externas
     @GetMapping ("/vueltaPruebasMedicas")
     public String vueltaPruebaMedicas(){
         return "redirect:/paciente/" + pacientellamado.getIdpaciente();
