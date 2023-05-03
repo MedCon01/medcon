@@ -5,24 +5,10 @@
     <!--<link rel="stylesheet" type="text/css" href="../../static/css/siguiente_paciente.css">-->
     <link rel="stylesheet" type="text/css" th:href="@{/css/paciente.css}" />
 
-    <script>
-		function mostrarHoraActual() {
-		var fecha = new Date();
-		var horas = fecha.getHours().toString().padStart(2, "0");
-		var minutos = fecha.getMinutes().toString().padStart(2, "0");
-		var tiempo = horas + ":" + minutos;
-		document.getElementById("reloj").innerText = tiempo;
-		}
-        window.onload = function() {
-            mostrarHoraActual(); // Mostrar la hora actual al cargar la página
-            setInterval(mostrarHoraActual, 1000); // Actualizar la hora cada segundo
-        };
-
     </script>
 </head>
 <body onload="iniciarCronometro()">
     <div id="barra">
-        <p id="reloj">00:00:00</p>
     </div>
 
     <div class="info_paciente">
