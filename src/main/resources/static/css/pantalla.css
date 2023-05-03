@@ -1,228 +1,718 @@
-@font-face {
-    font-family: 'Abel';
-    src: url('./fonts/Abel.ttf') format('truetype');
-}
+/* Estilos para pantallas pequeñas (menores de 992px de ancho) Pantallas Pequeñas */
+@media only screen and (max-width: 991px) {
+    @font-face {
+        font-family: 'Abel';
+        src: url('./fonts/Abel.ttf') format('truetype');
+    }
+    
+    body{
+        background-color: #92abc8;
+        font-family: 'abel', sans-serif;
+    }
+    h3{
+        color:white;
+        text-align: center;
+        font-size: 5rem;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
+    #barra{
+        width: 100%; 
+        height: 7%; 
+        background-color:  #295c93; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        margin-bottom: 1vh;
+    }
+    
+    #barra p{
+        color: #ffff;
+        background-color:  #295c93; 
+        display: block;
+        margin-left: 2%;
+        margin-top: 1.7vh;
+        font-size: 1.8rem;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
 
-body{
-    background-color: #92abc8;
-    font-family: 'abel', sans-serif;
-}
-h3{
-    color:white;
-    text-align: center;
-    font-size: 300%;
-    text-decoration: none;
-    font-family: 'abel', sans-serif;
-}
+    .marco_izq {
+        float: left;
+        width: 25vw;
+        padding: 20px;
+        background-color: #ecf5ff;
+        margin-left: 3%; 
+        margin-top: 8%;
+        border-radius: 1em;
+    }
 
-#barra{
-    width: 100%; 
-    height: 7%; 
-    background-color:  #295c93; 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    margin-bottom: 1vh;
-}
+    .marco_izq h2{
+        text-align: center; /* Centrar el texto dentro del recuadro */
+        color: #295c93; /* Color del texto */
+        font-size: 2vw; 
+        margin-top: 0; /* Eliminar margen superior del título */
+        margin-bottom: 3vh;
+        font-family: 'abel', sans-serif;
+        font-size: 2.5rem;
+    }
+    
+    .paciente {
+        margin-top: 6%;
+        border: 0.1em solid #92abc8;
+        border-radius: 1em;
+        background-color: #92abc8;
+        padding-left: 10%;
+        padding-right: 10%;
+           
+    }
+    
+    .paciente p {
+        color: #ffff;
+        font-size: 1.5em;
+    }
 
-#barra p{
-    color: #ffff;
-    background-color:  #295c93; 
-    display: block;
-    margin-left: 2%;
-    margin-top: 2vh;
-    font-size: 150%;
-    text-decoration: none;
-    font-family: 'abel', sans-serif;
-}
+    img {
+        width: 10vw;
+        display: block;
+        margin: 0 auto;
+        margin-top: 1vh; 
+        margin-bottom: 0.5vh; 
+    }
+    /* Estilo para la parte derecha del marco */
+    .marco_dcha {
+        float: right;
+        width: 40vw;
+        background-color: #92abc8;
+        margin-right: 3%;
+        margin-top: 8%;
+        border-radius: 1em;    
+    }
 
-.marco_izq {
-    float: left;
-    width: 23%;
-    padding: 20px;
-    background-color: #ecf5ff;
-    margin-left: 3%; 
-    margin-top: 5%;
-    border-radius: 1em;
-}
+    .ultimollamado{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        width: 40vw;  
+    }
 
-.marco_izq h2{
-    text-align: center; /* Centrar el texto dentro del recuadro */
-    color: #295c93; /* Color del texto */
-    font-size: 2vw; 
-    margin-top: 0; /* Eliminar margen superior del título */
-    margin-bottom: 3vh;
-    font-family: 'abel', sans-serif;
-    font-size: 2.5em;
-}
+    .llamado2{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */  
+        width: 40vw;
+        margin-top: 5%;
+        height: auto;
+    }
 
-.paciente {
-    margin-top: 6%;
-    border: 0.1em solid #92abc8;
-    border-radius: 1em;
-    background-color: #92abc8;
-    padding-left: 10%;
-    padding-right: 10%;
-       
-}
+    .llamado3{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        width: 40vw;
+        margin-top: 5%;
+    }
 
-.paciente p {
-    color: #ffff;
-    font-size: 2em;
-}
+    .llamado4{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        width: 40vw;
+        margin-top: 5%;
+    }
 
-img {
-    width: 30%;
-    display: block;
-    margin: 0 auto;
-    margin-top: 2vh; /* ajusta la distancia desde la parte superior del marco */
-    margin-bottom: 1vh; /* ajusta la distancia desde la parte inferior del marco */
-}
+    .consulta1{
+        background-color: #ff9148;
+        border-radius: 1em 1em 0 0;
+        color: #fff;
+        font-size: 1rem;
+        width: 80%;
+        height: 5vh;
+        text-align: center;
+        margin-right: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-/* Estilo para la parte derecha del marco */
-.marco_dcha {
-    float: right;
-    width: 65%;
-    background-color: #92abc8;
-    padding: 20px;
-    margin-right: 3%;
-    margin-top: 5%;
-    border-radius: 1em;
-}
+    .identificador1{
+        background-color: #295c93;
+        font-size: 2em;
+        color:#ecf5ff;
+        border-radius: 0 0 0.5em 0.5em;
+        width: 80%;
+        height: 8vh;
+        text-align: center;
+        margin-right: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.ultimollamado{
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: left;
-    width: 45%;
-    margin-left: 7%;
-}
+    .consulta2{
+        background-color: #ecf5ff;
+        border-radius: 1em 1em 0 0;
+        color: #295c93;
+        font-size: 1rem;
+        width: 80%;
+        height: 5vh;
+        text-align: center;
+        margin-right: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.llamado2{
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: right;
-    width: 45%;
-}
+    .identificador2{
+        background-color: #295c93;
+        font-size: 2em;
+        color:#ecf5ff;
+        border-radius: 0 0 0.5em 0.5em;
+        width: 80%;
+        height: 8vh;
+        text-align: center;
+        margin-right: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.llamado3{
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: left;
-    width: 45%;
-    margin-top: 3%;
-    margin-left: 7%;
-}
+    .consulta3{
+        background-color: #ecf5ff;
+        border-radius: 1em 1em 0 0;
+        color: #295c93;
+        font-size: 1rem;
+        width: 80%;
+        height: 5vh;
+        text-align: center;
+        margin-right: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.llamado4{
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* Centrar horizontalmente */
-    float: right;
-    width: 45%;
-    margin-top: 3%;
-}
+    .identificador3{
+        background-color: #295c93;
+        font-size: 2em;
+        color:#ecf5ff;
+        border-radius: 0 0 0.5em 0.5em;
+        width: 80%;
+        height: 8vh;
+        text-align: center;
+        margin-right: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.consulta1{
-    background-color: #ff9148;
-    margin-top: 2%;
-    border-radius: 1em 1em 0 0;
-    color: #fff;
-    margin-left: 2%;
-    font-size: 1.5em;
-    padding-bottom: 4%;
-    width: 80%;
-    height: 8vh;
-    text-align: center;
-}
+    .consulta4{
+        background-color: #ecf5ff;
+        border-radius: 1em 1em 0 0;
+        color: #295c93;
+        font-size: 1rem;
+        width: 80%;
+        height: 5vh;
+        text-align: center;
+        margin-right: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 
-.identificador1{
-    background-color: #295c93;
-    margin-left: 2%;
-    font-size: 4em;
-    padding-top: 4%;
-    color:#ecf5ff;
-    border-radius: 0 0 0.5em 0.5em;
-    width: 80%;
-    height: 12vh;
-    text-align: center;
+    .identificador4{
+        background-color: #295c93;
+        font-size: 2em;
+        color:#ecf5ff;
+        border-radius: 0 0 0.5em 0.5em;
+        width: 80%;
+        height: 8vh;
+        text-align: center;
+        margin-right: 35%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }   
 }
+/*--------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------*/
+  /* Estilos para pantallas medianas (entre 992px y 1199px de ancho) Pantallas medianas */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @font-face {
+        font-family: 'Abel';
+        src: url('./fonts/Abel.ttf') format('truetype');
+    }
+    
+    body{
+        background-color: #92abc8;
+        font-family: 'abel', sans-serif;
+    }
+    h3{
+        color:white;
+        text-align: center;
+        font-size: 300%;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
+    
+    #barra{
+        width: 100%; 
+        height: 7%; 
+        background-color:  #295c93; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        margin-bottom: 1vh;
+    }
+    
+    #barra p{
+        color: #ffff;
+        background-color:  #295c93; 
+        display: block;
+        margin-left: 2%;
+        margin-top: 2vh;
+        font-size: 1.8rem;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
+    
+    .marco_izq {
+        float: left;
+        width: 23vw;
+        padding: 20px;
+        background-color: #ecf5ff;
+        margin-left: 3%; 
+        margin-top: 7%;
+        border-radius: 1em;
+    }
+    
+    .marco_izq h2{
+        text-align: center; /* Centrar el texto dentro del recuadro */
+        color: #295c93; /* Color del texto */
+        font-size: 2rem; 
+        margin-top: 3%; /* Eliminar margen superior del título */
+        margin-bottom: 3vh;
+        font-family: 'abel', sans-serif;
+    }
+    
+    .paciente {
+        margin-top: 6%;
+        border: 0.1em solid #92abc8;
+        border-radius: 1em;
+        background-color: #92abc8;
+        padding-left: 10%;
+        padding-right: 10%;
+           
+    }
+    
+    .paciente p {
+        color: #ffff;
+        font-size: 1.5rem;
+    }
+    
+    img {
+        width: 10vw;
+        display: block;
+        margin: 0 auto;
+        margin-top: 1vh; 
+    }
 
-.consulta2{
-    background-color: #ecf5ff;
-    margin-top: 2%;
-    border-radius: 1em 1em 0 0 ;
-    color: #295c93;
-    margin-right: 2%;
-    font-size: 1.5em;
-    padding-bottom: 4%;
-    width: 80%;
-    height: 8vh;
-    text-align: center;
+    /* Estilo para la parte derecha del marco */
+    .marco_dcha {
+        float: right;
+        width: 60vw;
+        background-color: #92abc8;
+        margin-right: 8%;
+        margin-top: 7%;
+        border-radius: 1em;
+    }
+
+    .ultimollamado{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        float: left;
+        width: 45%;
+        margin-left: 7%;
+    }
+
+    .llamado2{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        float: right;
+        width: 45%;
+    }
+
+    .llamado3{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        float: left;
+        width: 45%;
+        margin-left: 7%;
+        margin-top: 5%;
+    }
+
+    .llamado4{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        float: right;
+        width: 45%;
+        margin-top: 5%;
+    }
+
+    .consulta1{
+        background-color: #ff9148;
+        border-radius: 1em 1em 0 0;
+        color: #fff;
+        margin-left: 2%;
+        font-size: 1.3rem;
+        width: 25vw;
+        height: 8vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .identificador1{
+        background-color: #295c93;
+        margin-left: 2%;
+        font-size: 2rem;
+        color:#ecf5ff;
+        border-radius: 0 0 .7em 0.7em;
+        width: 25vw;
+        height: 10vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .consulta2{
+        background-color: #ecf5ff;
+        border-radius: 1em 1em 0 0 ;
+        color: #295c93;
+        margin-left: 4%;
+        font-size: 1.3rem; 
+        width: 25vw;
+        height: 8vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .identificador2{
+        background-color: #295c93;
+        margin-left: 4%;
+        font-size: 2rem;
+        color:#ecf5ff;
+        border-radius: 0 0 .7em 0.7em;
+        width: 25vw;
+        height: 10vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .consulta3{
+        background-color: #ecf5ff;
+        border-radius: 1em 1em 0 0;
+        color: #295c93;
+        margin-left: 2%;
+        font-size: 1.3rem;
+        width: 25vw;
+        height: 8vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .identificador3{
+        background-color: #295c93;
+        margin-left: 2%;
+        font-size: 2rem;
+        color:#ecf5ff;
+        border-radius: 0 0 .7em 0.7em;
+        width: 25vw;
+        height: 10vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .consulta4{
+        background-color: #ecf5ff; 
+        border-radius: 1em 1em 0 0 ;
+        color: #295c93;
+        margin-left: 4%;
+        font-size: 1.3rem;
+        width: 25vw;
+        height: 8vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .identificador4{
+        background-color: #295c93;
+        margin-left: 4%;
+        font-size: 2rem;
+        color:#ecf5ff;
+        border-radius: 0 0 .7em 0.7em;
+        width: 25vw;
+        height: 10vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+  }
+/*--------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------*/
+  /* Estilos para pantallas grandes (mayores de 1200px de ancho) Pantallas Grandes */
+@media only screen and (min-width: 1200px) {
+    @font-face {
+        font-family: 'Abel';
+        src: url('./fonts/Abel.ttf') format('truetype');
+    }
+    
+    body{
+        background-color: #92abc8;
+        font-family: 'abel', sans-serif;
+    }
+    h3{
+        color:white;
+        text-align: center;
+        font-size: 300%;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
+    
+    #barra{
+        width: 100%; 
+        height: 7%; 
+        background-color:  #295c93; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        margin-bottom: 1vh;
+    }
+    
+    #barra p{
+        color: #ffff;
+        background-color:  #295c93; 
+        display: block;
+        margin-left: 2%;
+        margin-top: 2vh;
+        font-size: 1.8rem;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
+    
+    .marco_izq {
+        float: left;
+        width: 23vw;
+        padding: 20px;
+        background-color: #ecf5ff;
+        margin-left: 3%; 
+        margin-top: 5%;
+        border-radius: 1em;
+    }
+    
+    .marco_izq h2{
+        text-align: center; /* Centrar el texto dentro del recuadro */
+        color: #295c93; /* Color del texto */
+        font-size: 2.5rem; 
+        margin-top: 3%; /* Eliminar margen superior del título */
+        margin-bottom: 3vh;
+        font-family: 'abel', sans-serif;
+    }
+    
+    .paciente {
+        margin-top: 6%;
+        border: 0.1em solid #92abc8;
+        border-radius: 1em;
+        background-color: #92abc8;
+        padding-left: 10%;
+        padding-right: 10%;
+           
+    }
+    
+    .paciente p {
+        color: #ffff;
+        font-size: 2rem;
+    }
+    
+    img {
+        width: 10vw;
+        display: block;
+        margin: 0 auto;
+        margin-top: 1vh; 
+    }
+
+    /* Estilo para la parte derecha del marco */
+    .marco_dcha {
+        float: right;
+        width: 60vw;
+        background-color: #92abc8;
+        margin-right: 8%;
+        margin-top: 5%;
+        border-radius: 1em;
+    }
+
+    .ultimollamado{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        float: left;
+        width: 45%;
+        margin-left: 7%;
+    }
+
+    .llamado2{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        float: right;
+        width: 45%;
+    }
+
+    .llamado3{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        float: left;
+        width: 45%;
+        margin-left: 7%;
+        margin-top: 7%;
+    }
+
+    .llamado4{
+        display: flex;
+        flex-direction: column;
+        align-items: center; /* Centrar horizontalmente */
+        float: right;
+        width: 45%;
+        margin-top: 7%;
+    }
+
+    .consulta1{
+        background-color: #ff9148;
+        border-radius: 1em 1em 0 0;
+        color: #fff;
+        margin-left: 2%;
+        font-size: 1.3rem;
+        width: 25vw;
+        height: 9vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .identificador1{
+        background-color: #295c93;
+        margin-left: 2%;
+        font-size: 2.3rem;
+        color:#ecf5ff;
+        border-radius: 0 0 .7em 0.7em;
+        width: 25vw;
+        height: 12vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .consulta2{
+        background-color: #ecf5ff;
+        border-radius: 1em 1em 0 0 ;
+        color: #295c93;
+        margin-left: 2%;
+        font-size: 1.3rem;
+        width: 25vw;
+        height: 9vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .identificador2{
+        background-color: #295c93;
+        margin-left: 2%;
+        font-size: 2.3rem;
+        color:#ecf5ff;
+        border-radius: 0 0 .7em 0.7em;
+        width: 25vw;
+        height: 12vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .consulta3{
+        background-color: #ecf5ff;
+        border-radius: 1em 1em 0 0 ;
+        color: #295c93;
+        margin-left: 2%;
+        font-size: 1.3rem;
+        width: 25vw;
+        height: 9vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .identificador3{
+        background-color: #295c93;
+        margin-left: 2%;
+        font-size: 2.3rem;
+        color:#ecf5ff;
+        border-radius: 0 0 .7em 0.7em;
+        width: 25vw;
+        height: 12vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .consulta4{
+        background-color: #ecf5ff;
+        border-radius: 1em 1em 0 0 ;
+        color: #295c93;
+        margin-left: 2%;
+        font-size: 1.3rem;
+        width: 25vw;
+        height: 9vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    .identificador4{
+        background-color: #295c93;
+        margin-left: 2%;
+        font-size: 2.3rem;
+        color:#ecf5ff;
+        border-radius: 0 0 .7em 0.7em;
+        width: 25vw;
+        height: 12vh;
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
 }
-
-.identificador2{
-    background-color: #295c93;
-    margin-left: 2%;
-    font-size: 4em;
-    padding-top: 4%;
-    color:#ecf5ff;
-    border-radius: 0 0 0.5em 0.5em;
-    width: 80%;
-    height: 12vh;
-    text-align: center;
-}
-
-.consulta3{
-    background-color: #ecf5ff;
-    margin-top: 2%;
-    border-radius: 1em 1em 0 0;
-    color: #295c93;
-    margin-left: 2%;
-    font-size: 1.5em;
-    padding-bottom: 4%;
-    width: 80%;
-    height: 8vh;
-    text-align: center;
-}
-
-.identificador3{
-    background-color: #295c93;
-    margin-left: 2%;
-    font-size: 4em;
-    padding-top: 4%;
-    color:#ecf5ff;
-    border-radius: 0 0 0.5em 0.5em;
-    width: 80%;
-    height: 12vh;
-    text-align: center;
-}
-
-.consulta4{
-    background-color: #ecf5ff;
-    margin-top: 2%;
-    border-radius: 1em 1em 0 0 ;
-    color: #295c93;
-    margin-right: 2%;
-    font-size: 1.5em;
-    padding-bottom: 4%;
-    width: 80%;
-    height: 8vh;
-    text-align: center;
-}
-
-.identificador4{
-    background-color: #295c93;
-    margin-left: 2%;
-    font-size: 4em;
-    padding-top: 4%;
-    color:#ecf5ff;
-    border-radius: 0 0 0.5em 0.5em;
-    width: 80%;
-    height: 12vh;
-    text-align: center;
-}
-
