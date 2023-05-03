@@ -5,20 +5,32 @@
 	<meta charset="utf-8">
 	<link rel="stylesheet" type="text/css" th:href="@{/css/login_medico.css}" />
 	<!--<link rel="stylesheet" type="text/css" href="../../static/css/login_medico.css" />-->
+	<script>
+		function mostrarHoraActual() {
+		var fecha = new Date();
+		var horas = fecha.getHours().toString().padStart(2, "0");
+		var minutos = fecha.getMinutes().toString().padStart(2, "0");
+		var tiempo = horas + ":" + minutos;
+		document.getElementById("reloj").innerText = tiempo;
+		}
+        window.onload = function() {
+            mostrarHoraActual(); // Mostrar la hora actual al cargar la página
+            setInterval(mostrarHoraActual, 1000); // Actualizar la hora cada segundo
+        };
 
+    </script>
 </head>
 <body>
 	<form method="post">
         <div id="barra">
-           <!-- <a href="#" onclick="window.location.href = 'login_medico'">Volver</a>-->
-            <!--<p id="reloj">00:00:00</p>-->
+            <p id="reloj">00:00:00</p>
         </div>
 		<div id="marco">
 			<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
 			<!--<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">-->
 			<h2>Por favor inicie sesión</h2>
 			<form action="/login_medico" method="post">
-				<input type="text" value="Usuario" id="usuario" name ="usuario" placeholder="Usuario" onfocus="this.value=''"><br>
+				<input type="text" id="usuario" name ="usuario" placeholder="Usuario" onfocus="this.value=''"><br>
 				<input type="password" id="password" name ="password" placeholder="Contraseña" onfocus="this.value=''"><br>
                 <div class="boton-container">
                     <input type="submit" value="Iniciar Sesión" id="Confirmar">
