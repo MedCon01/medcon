@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/css/**", "/images/**", "/audio/**","/index","/","/layouts","/error","/kiosko/**","/sala_espera/**").permitAll()
                 .antMatchers("/medico/**","/aplicaciones_externas/**").hasAnyRole("MEDICO")
                 .antMatchers("/admin").hasAnyRole("ADMIN")
-                .anyRequest().authenticated()
+                //.anyRequest().authenticated()
         .and() 
             .formLogin()
                 .loginPage("/login_medico.html").successHandler(myAuthenticationSuccessHandler()).permitAll()

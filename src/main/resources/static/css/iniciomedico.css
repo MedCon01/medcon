@@ -108,7 +108,7 @@
         border: 0.08em solid #295c93;
     }
     
-    .siguiente{
+    button{
         margin-top: 5%;
         width: 130%; 
         height: 8vh;
@@ -252,7 +252,7 @@
         border: 0.08em solid #295c93;
     }
     
-    .siguiente{
+    button{
         margin-top: 5%;
         width: 30%; 
         height: 8vh;
@@ -392,7 +392,7 @@
         border: 0.08em solid #295c93;
     }
     
-    .siguiente{
+    button{
         margin-top: 5%;
         width: 30%; 
         height: 8vh;

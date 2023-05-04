@@ -45,12 +45,12 @@ public class PacienteController {
         return "kiosko/inicio_kiosko";
     }
     // Si se selecciona DNI
-    @GetMapping("/login_DNI")
+    @GetMapping("/registroDNI")
     public String showLoginDNI() {
-        return "kiosko/login_DNI";
+        return "kiosko/registroDNI";
     }
     // Registro con DNI
-    @PostMapping("/login_DNI")
+    @PostMapping("/registroDNI")
     public String registrarPacienteDni(@RequestParam("dni") String dni,Model model){
         // Asigno paciente buscando por DNI
         List<Paciente> pacientes = null;
@@ -81,12 +81,12 @@ public class PacienteController {
     }
 
     // Si se selecciona tarjeta
-    @GetMapping("/login_tarjeta")
+    @GetMapping("/registrotarjeta")
     public String showLoginTarjeta() {
-        return "kiosko/login_tarjeta";
+        return "kiosko/registrotarjeta";
     }
     // Registro con tarjeta
-    @PostMapping("/login_tarjeta")
+    @PostMapping("/registrotarjeta")
     public String registrarPacienteTarjeta(@RequestParam("ntarjeta") String ntarjeta,Model model){
         // Asigno paciente buscando por ntarjeta
         List<Paciente> pacientes = null;
