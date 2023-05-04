@@ -1,79 +1,253 @@
-@font-face {
-    font-family: 'Abel';
-    src: url('./fonts/Abel.ttf') format('truetype');
-}
+/* Estilos para pantallas pequeñas (menores de 992px de ancho) Pantallas Pequeñas */
+@media only screen and (max-width: 991px) {
+    @font-face {
+        font-family: 'Abel';
+        src: url('./fonts/Abel.ttf') format('truetype');
+    }
 
-body{
-    background-color: #92abc8;
-    font-family: 'abel', sans-serif;
-}
-#barra{
-    width: 100%; 
-    height: 7%; 
-    background-color:  #295c93; 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    margin-bottom: 1vh;
-}
+    body{
+        background-color: #92abc8;
+        font-family: 'abel', sans-serif;
+    }
+    #barra{
+        width: 100%; 
+        height: 7%; 
+        background-color:  #295c93; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        margin-bottom: 1vh;
+    }
 
-#barra a{
-    color: #ffff;
-    background-color:  #295c93; 
-    display: block;
-    margin-left: 2%;
-    margin-top: 0.75%;
-    font-size: 150%;
-    text-decoration: none;
-    font-family: 'abel', sans-serif;
-}
+    #barra a{
+        color: #ffff;
+        background-color:  #295c93; 
+        display: block;
+        margin-left: 2%;
+        margin-top: 0.75%;
+        font-size: 150%;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
 
 
-#marco{
-    background-color: #ecf5ff;
-    width: 60%; /* Ancho del recuadro */
-    height: 60%; /* Altura del recuadro */
-    position: fixed; /* Fijar la posición del recuadro */
-    top: 50%; /* Colocar el recuadro en el centro verticalmente */
-    left: 50%; /* Colocar el recuadro en el centro horizontalmente */
-    transform: translate(-50%, -50%); 
-    border-radius: 1em;
+    #marco{
+        background-color: #ecf5ff;
+        width: 60%; /* Ancho del recuadro */
+        height: 40%; /* Altura del recuadro */
+        position: fixed; /* Fijar la posición del recuadro */
+        top: 50%; /* Colocar el recuadro en el centro verticalmente */
+        left: 50%; /* Colocar el recuadro en el centro horizontalmente */
+        transform: translate(-50%, -50%); 
+        border-radius: 1em;
 
-}
-#marco img {
-    display: block;
-    margin: 0 auto;
-    width: 23%; /* Ancho de la imagen */
-    margin-bottom: 0.5vh; /* Espaciado inferior de la imagen */
-    justify-content: center;
+    }
+    #marco img {
+        display: block;
+        margin: 0 auto;
+        width: 23%; /* Ancho de la imagen */
+        margin-bottom: 0vh; /* Espaciado inferior de la imagen */
+        justify-content: center;
+    }
+
+    #marco h2{
+        text-align: center; /* Centrar el texto dentro del recuadro */
+        color: #295c93; /* Color del texto */
+        font-size: 2.5vw; 
+        margin-top: 0; /* Eliminar margen superior del título */
+        margin-bottom: 2vh;
+        font-family: 'abel', sans-serif;
+    }
+    #marco input[type="text"]{
+        width: 70%; /* Ancho completo de los inputs */
+        height: 10%;
+        margin-bottom: 1vh; /* Espaciado inferior de los inputs */
+        display: block;
+        margin: auto auto;
+        border-radius: 1em;
+        border: 0.1em solid #92abc8;
+    }
+    #marco input[type="submit"] {
+        width: 20%; 
+        height: 15%;
+        border-radius: 1em;
+        margin-bottom: 0.51vh; /* Espaciado inferior de los inputs */
+        display: block;
+        margin: auto auto;
+        background-color: #ff9148;
+        border-color: #ff9148;
+        font-size: 0.75rem;
+        font-family: 'abel', sans-serif;
+       }
   }
 
-#marco h2{
-    text-align: center; /* Centrar el texto dentro del recuadro */
-    color: #295c93; /* Color del texto */
-    font-size: 2.5vw; 
-    margin-top: 0; /* Eliminar margen superior del título */
-    margin-bottom: 2vh;
-    font-family: 'abel', sans-serif;
-}
-#marco input[type="text"]{
-    width: 70%; /* Ancho completo de los inputs */
-    height: 10%;
-    margin-bottom: 1vh; /* Espaciado inferior de los inputs */
-    display: block;
-    margin: auto auto;
-    border-radius: 1em;
-    border: 0.1em solid #92abc8;
-}
-#marco input[type="submit"] {
-    width: 20%; 
-    height: 15%;
-    border-radius: 1em;
-    margin-bottom: 1vh; /* Espaciado inferior de los inputs */
-    display: block;
-    margin: auto auto;
-    background-color: #ff9148;
-    border-color: #ff9148;
-    font-size: 1.7rem;
-    font-family: 'abel', sans-serif;
-}
+
+/*--------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------*/
+  /* Estilos para pantallas medianas (entre 992px y 1199px de ancho) Pantallas medianas */
+  @media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @font-face {
+        font-family: 'Abel';
+        src: url('./fonts/Abel.ttf') format('truetype');
+    }
+
+    body{
+        background-color: #92abc8;
+        font-family: 'abel', sans-serif;
+    }
+    #barra{
+        width: 100%; 
+        height: 7%; 
+        background-color:  #295c93; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        margin-bottom: 1vh;
+    }
+
+    #barra a{
+        color: #ffff;
+        background-color:  #295c93; 
+        display: block;
+        margin-left: 2%;
+        margin-top: 0.75%;
+        font-size: 150%;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
+
+
+    #marco{
+        background-color: #ecf5ff;
+        width: 60%; /* Ancho del recuadro */
+        height: 60%; /* Altura del recuadro */
+        position: fixed; /* Fijar la posición del recuadro */
+        top: 50%; /* Colocar el recuadro en el centro verticalmente */
+        left: 50%; /* Colocar el recuadro en el centro horizontalmente */
+        transform: translate(-50%, -50%); 
+        border-radius: 1em;
+
+    }
+    #marco img {
+        display: block;
+        margin: 0 auto;
+        width: 23%; /* Ancho de la imagen */
+        margin-bottom: 0vh; /* Espaciado inferior de la imagen */
+        justify-content: center;
+    }
+
+    #marco h2{
+        text-align: center; /* Centrar el texto dentro del recuadro */
+        color: #295c93; /* Color del texto */
+        font-size: 2.5vw; 
+        margin-top: 0; /* Eliminar margen superior del título */
+        margin-bottom: 2vh;
+        font-family: 'abel', sans-serif;
+    }
+    #marco input[type="text"]{
+        width: 70%; /* Ancho completo de los inputs */
+        height: 10%;
+        margin-bottom: 1vh; /* Espaciado inferior de los inputs */
+        display: block;
+        margin: auto auto;
+        border-radius: 1em;
+        border: 0.1em solid #92abc8;
+    }
+    #marco input[type="submit"] {
+        width: 20%; 
+        height: 15%;
+        border-radius: 1em;
+        margin-bottom: 0.51vh; /* Espaciado inferior de los inputs */
+        display: block;
+        margin: auto auto;
+        background-color: #ff9148;
+        border-color: #ff9148;
+        font-size: 1.2rem;
+        font-family: 'abel', sans-serif;
+       }
+  }
+
+/*--------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------*/
+  /* Estilos para pantallas grandes (mayores de 1200px de ancho) Pantallas Grandes */
+  @media only screen and (min-width: 1200px) {
+    @font-face {
+        font-family: 'Abel';
+        src: url('./fonts/Abel.ttf') format('truetype');
+    }
+
+    body{
+        background-color: #92abc8;
+        font-family: 'abel', sans-serif;
+    }
+    #barra{
+        width: 100%; 
+        height: 7%; 
+        background-color:  #295c93; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        margin-bottom: 1vh;
+    }
+
+    #barra a{
+        color: #ffff;
+        background-color:  #295c93; 
+        display: block;
+        margin-left: 2%;
+        margin-top: 0.75%;
+        font-size: 150%;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
+
+
+    #marco{
+        background-color: #ecf5ff;
+        width: 60%; /* Ancho del recuadro */
+        height: 60%; /* Altura del recuadro */
+        position: fixed; /* Fijar la posición del recuadro */
+        top: 50%; /* Colocar el recuadro en el centro verticalmente */
+        left: 50%; /* Colocar el recuadro en el centro horizontalmente */
+        transform: translate(-50%, -50%); 
+        border-radius: 1em;
+
+    }
+    #marco img {
+        display: block;
+        margin: 0 auto;
+        width: 23%; /* Ancho de la imagen */
+        margin-bottom: 0vh; /* Espaciado inferior de la imagen */
+        justify-content: center;
+    }
+
+    #marco h2{
+        text-align: center; /* Centrar el texto dentro del recuadro */
+        color: #295c93; /* Color del texto */
+        font-size: 2.5vw; 
+        margin-top: 0; /* Eliminar margen superior del título */
+        margin-bottom: 2vh;
+        font-family: 'abel', sans-serif;
+    }
+    #marco input[type="text"]{
+        width: 70%; /* Ancho completo de los inputs */
+        height: 10%;
+        margin-bottom: 1vh; /* Espaciado inferior de los inputs */
+        display: block;
+        margin: auto auto;
+        border-radius: 1em;
+        border: 0.1em solid #92abc8;
+    }
+    #marco input[type="submit"] {
+        width: 20%; 
+        height: 15%;
+        border-radius: 1em;
+        margin-bottom: 1vh; /* Espaciado inferior de los inputs */
+        display: block;
+        margin: auto auto;
+        background-color: #ff9148;
+        border-color: #ff9148;
+        font-size: 1.7rem;
+        font-family: 'abel', sans-serif;
+       }
+    }
