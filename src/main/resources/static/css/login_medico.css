@@ -1,100 +1,316 @@
+/* Estilos para pantallas pequeñas (menores de 992px de ancho) Pantallas Pequeñas */
+@media only screen and (max-width: 991px) {
+    @font-face {
+        font-family: 'Abel';
+        src: url('./fonts/Abel.ttf') format('truetype');
+    }
+    
+    body{
+        background-color: #92abc8;
+        font-family: 'abel', sans-serif;
+    }
+    #barra{
+        width: 100%; 
+        height: 7%; 
+        background-color:  #295c93; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        margin-bottom: 1vh;
+    }
+    
+    #barra p{
+        color: #ffff;
+        background-color:  #295c93; 
+        display: block;
+        margin-left: 2%;
+        margin-top: 2%;
+        font-size: 150%;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
+    
+    
+    #marco{
+        background-color: #ecf5ff;
+        width: 60%; /* Ancho del recuadro */
+        height: 60%; /* Altura del recuadro */
+        position: fixed; /* Fijar la posición del recuadro */
+        top: 50%; /* Colocar el recuadro en el centro verticalmente */
+        left: 50%; /* Colocar el recuadro en el centro horizontalmente */
+        transform: translate(-50%, -50%); 
+        border-radius: 1em;
+    
+    }
+    #marco img {
+        display: block;
+        margin: 0 auto;
+        width: 35%; /* Ancho de la imagen */
+        margin-bottom: 0; /* Espaciado inferior de la imagen */
+        justify-content: center;
+      }
+    
+    #marco h2{
+        text-align: center; /* Centrar el texto dentro del recuadro */
+        color: #295c93; /* Color del texto */
+        font-size: 2vw; 
+        margin-top: 0; /* Eliminar margen superior del título */
+        margin-bottom: 2vh;
+        font-family: 'abel', sans-serif;
+    }
+    
+    #marco input[type="submit"] {
+        width: 40%; 
+        height: 6vh;
+        border-radius: 1em;
+        margin-bottom: 0.2vh; /* Espaciado inferior de los inputs */
+        display: block;
+        margin: auto auto;
+        background-color: #ff9148;
+        border-color: #ff9148;
+        font-size: 1.1rem;
+        font-family: 'abel', sans-serif;
+        padding: auto;
+    }
+    
+    #marco input[type="text"]#usuario, #marco input[type="password"]#password{
+        width: 70%; 
+        height: 10%;
+        border-radius: 1em;
+        margin-bottom: 1em;
+        display: block;
+        margin: auto auto;
+        background-color: #92abc8;
+        border: 2px solid #92abc8 ;
+        font-size: 150%;
+        font-family: 'abel', sans-serif;
+        color: #ffff;
+        text-align: center;
+    }
+    
+    #usuario::placeholder, #password::placeholder {
+        color: #fff;
+      }
 
-@font-face {
-    font-family: 'Abel';
-    src: url('./fonts/Abel.ttf') format('truetype');
+    #usuario:focus::placeholder {
+        color:#92abc8; /* establecer el color del placeholder cuando el input tiene el foco */
+        content: ''; /* establecer el valor del placeholder en blanco */
+      }
+    #password:focus::placeholder {
+        color:#92abc8; /* establecer el color del placeholder cuando el input tiene el foco */
+        content: ''; /* establecer el valor del placeholder en blanco */
+      }
 }
 
-body{
-    background-color: #92abc8;
-    font-family: 'abel', sans-serif;
-}
-#barra{
-    width: 100%; 
-    height: 7%; 
-    background-color:  #295c93; 
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    margin-bottom: 1vh;
+
+/*--------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------*/
+/* Estilos para pantallas medianas (entre 992px y 1199px de ancho) Pantallas medianas */
+@media only screen and (min-width: 992px) and (max-width: 1199px) {
+    @font-face {
+        font-family: 'Abel';
+        src: url('./fonts/Abel.ttf') format('truetype');
+    }
+    
+    body{
+        background-color: #92abc8;
+        font-family: 'abel', sans-serif;
+    }
+    #barra{
+        width: 100%; 
+        height: 7%; 
+        background-color:  #295c93; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        margin-bottom: 1vh;
+    }
+    
+    #barra p{
+        color: #ffff;
+        background-color:  #295c93; 
+        display: block;
+        margin-left: 2%;
+        margin-top: 1.5%;
+        font-size: 150%;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
+    
+    
+    #marco{
+        background-color: #ecf5ff;
+        width: 60%; /* Ancho del recuadro */
+        height: 60%; /* Altura del recuadro */
+        position: fixed; /* Fijar la posición del recuadro */
+        top: 50%; /* Colocar el recuadro en el centro verticalmente */
+        left: 50%; /* Colocar el recuadro en el centro horizontalmente */
+        transform: translate(-50%, -50%); 
+        border-radius: 1em;
+    
+    }
+    #marco img {
+        display: block;
+        margin: 0 auto;
+        width: 25%; /* Ancho de la imagen */
+        margin-bottom: 0; /* Espaciado inferior de la imagen */
+        justify-content: center;
+      }
+    
+    #marco h2{
+        text-align: center; /* Centrar el texto dentro del recuadro */
+        color: #295c93; /* Color del texto */
+        font-size: 1.5vw; 
+        margin-top: 0; /* Eliminar margen superior del título */
+        margin-bottom: 2vh;
+        font-family: 'abel', sans-serif;
+    }
+    
+    #marco input[type="submit"] {
+        width: 30%; 
+        height: 6vh;
+        border-radius: 1em;
+        margin-bottom: 0.2vh; /* Espaciado inferior de los inputs */
+        display: block;
+        margin: auto auto;
+        background-color: #ff9148;
+        border-color: #ff9148;
+        font-size: 1.3rem;
+        font-family: 'abel', sans-serif;
+    }
+    
+    #marco input[type="text"]#usuario, #marco input[type="password"]#password{
+        width: 70%; 
+        height: 10%;
+        border-radius: 1em;
+        margin-bottom: 1em;
+        display: block;
+        margin: auto auto;
+        background-color: #92abc8;
+        border: 2px solid #92abc8 ;
+        font-size: 150%;
+        font-family: 'abel', sans-serif;
+        color: #ffff;
+        text-align: center;
+    }
+    
+    #usuario::placeholder, #password::placeholder {
+        color: #fff;
+      }
+
+    #usuario:focus::placeholder {
+        color:#92abc8; /* establecer el color del placeholder cuando el input tiene el foco */
+        content: ''; /* establecer el valor del placeholder en blanco */
+      }
+    #password:focus::placeholder {
+        color:#92abc8; /* establecer el color del placeholder cuando el input tiene el foco */
+        content: ''; /* establecer el valor del placeholder en blanco */
+      }
 }
 
-#barra a{
-    color: #ffff;
-    background-color:  #295c93; 
-    display: block;
-    margin-left: 2%;
-    margin-top: 0.75%;
-    font-size: 150%;
-    text-decoration: none;
-    font-family: 'abel', sans-serif;
-}
 
+/*--------------------------------------------------------------------------------------------------------------*/
+/*--------------------------------------------------------------------------------------------------------------*/
+/* Estilos para pantallas grandes (mayores de 1200px de ancho) Pantallas Grandes */
+@media only screen and (min-width: 1200px) {
+    @font-face {
+        font-family: 'Abel';
+        src: url('./fonts/Abel.ttf') format('truetype');
+    }
+    
+    body{
+        background-color: #92abc8;
+        font-family: 'abel', sans-serif;
+    }
+    #barra{
+        width: 100%; 
+        height: 7%; 
+        background-color:  #295c93; 
+        position: fixed; 
+        top: 0; 
+        left: 0; 
+        margin-bottom: 1vh;
+    }
+    
+    #barra p{
+        color: #ffff;
+        background-color:  #295c93; 
+        display: block;
+        margin-left: 2%;
+        margin-top: 1%;
+        font-size: 150%;
+        text-decoration: none;
+        font-family: 'abel', sans-serif;
+    }
+    
+    
+    #marco{
+        background-color: #ecf5ff;
+        width: 60%; /* Ancho del recuadro */
+        height: 60%; /* Altura del recuadro */
+        position: fixed; /* Fijar la posición del recuadro */
+        top: 50%; /* Colocar el recuadro en el centro verticalmente */
+        left: 50%; /* Colocar el recuadro en el centro horizontalmente */
+        transform: translate(-50%, -50%); 
+        border-radius: 1em;
+    
+    }
+    #marco img {
+        display: block;
+        margin: 0 auto;
+        width: 20%; /* Ancho de la imagen */
+        margin-bottom: 0; /* Espaciado inferior de la imagen */
+        justify-content: center;
+      }
+    
+    #marco h2{
+        text-align: center; /* Centrar el texto dentro del recuadro */
+        color: #295c93; /* Color del texto */
+        font-size: 1vw; 
+        margin-top: 0; /* Eliminar margen superior del título */
+        margin-bottom: 2vh;
+        font-family: 'abel', sans-serif;
+    }
+    
+    #marco input[type="submit"] {
+        width: 25%; 
+        border-radius: 1em;
+        margin-bottom: 1vh; /* Espaciado inferior de los inputs */
+        display: block;
+        margin: auto auto;
+        background-color: #ff9148;
+        border-color: #ff9148;
+        font-size: 1.5rem;
+        font-family: 'abel', sans-serif;
+        padding: 2vh;
+    }
+    
+    #marco input[type="text"]#usuario, #marco input[type="password"]#password{
+        width: 70%; 
+        height: 10%;
+        border-radius: 1em;
+        margin-bottom: 1em;
+        display: block;
+        margin: auto auto;
+        background-color: #92abc8;
+        border: 2px solid #92abc8 ;
+        font-size: 150%;
+        font-family: 'abel', sans-serif;
+        color: #ffff;
+        text-align: center;
+    }
+    
+    #usuario::placeholder, #password::placeholder {
+        color: #fff;
+      }
 
-#marco{
-    background-color: #ecf5ff;
-    width: 60%; /* Ancho del recuadro */
-    height: 60%; /* Altura del recuadro */
-    position: fixed; /* Fijar la posición del recuadro */
-    top: 50%; /* Colocar el recuadro en el centro verticalmente */
-    left: 50%; /* Colocar el recuadro en el centro horizontalmente */
-    transform: translate(-50%, -50%); 
-    border-radius: 1em;
-
+    #usuario:focus::placeholder {
+        color:#92abc8; /* establecer el color del placeholder cuando el input tiene el foco */
+        content: ''; /* establecer el valor del placeholder en blanco */
+      }
+      #password:focus::placeholder {
+        color:#92abc8; /* establecer el color del placeholder cuando el input tiene el foco */
+        content: ''; /* establecer el valor del placeholder en blanco */
+      }
+      
 }
-#marco img {
-    display: block;
-    margin: 0 auto;
-    width: 20%; /* Ancho de la imagen */
-    margin-bottom: 0; /* Espaciado inferior de la imagen */
-    justify-content: center;
-  }
-
-#marco h2{
-    text-align: center; /* Centrar el texto dentro del recuadro */
-    color: #295c93; /* Color del texto */
-    font-size: 1vw; 
-    margin-top: 0; /* Eliminar margen superior del título */
-    margin-bottom: 2vh;
-    font-family: 'abel', sans-serif;
-}
-
-#marco input[type="submit"] {
-    width: 25%; 
-    border-radius: 1em;
-    margin-bottom: 1vh; /* Espaciado inferior de los inputs */
-    display: block;
-    margin: auto auto;
-    background-color: #ff9148;
-    border-color: #ff9148;
-    font-size: 1.5rem;
-    font-family: 'abel', sans-serif;
-    padding: 2vh;
-}
-#marco input[type="text"]{
-    width: 60%; /* Ancho completo de los inputs */
-    height: 0.5%;
-    margin-bottom: 1vh; /* Espaciado inferior de los inputs */
-    display: block;
-    margin: auto auto;
-    border-radius: 1em;
-    border: 1px solid #92abc8;
-}
-#marco input[type="text"]#usuario, #marco input[type="password"]#password{
-    width: 70%; 
-    height: 10%;
-    border-radius: 1em;
-    margin-bottom: 1em;
-    display: block;
-    margin: auto auto;
-    background-color: #92abc8;
-    border-color: #92abc8;
-    font-size: 150%;
-    font-family: 'abel', sans-serif;
-    color: #ffff;
-    text-align: center;
-}
-
-#password::placeholder {
-    color: #ffffff; /* Cambia el color del placeholder a blanco */
-  }
-  
