@@ -10,15 +10,13 @@
 <body>
 	<form method="post">
         <div id="barra">
-           <!-- <a href="#" onclick="window.location.href = 'login_medico'">Volver</a>-->
-            <!--<p id="reloj">00:00:00</p>-->
         </div>
 		<div id="marco">
 			<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
-			<!--<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">-->
 			<h2>Por favor inicie sesión</h2>
-			<form action="/login_medico" method="post">
-				<input type="text" value="Usuario" id="usuario" name ="usuario" placeholder="Usuario" onfocus="this.value=''"><br>
+			<h3 th:if="${param.error}" style="color: red; font-size: small; text-align: center;">Error de usuario o contraseña</h3>
+			<form th:action="@{/login_medico}" method="post">
+				<input type="text" value="Usuario" id="usuario" name ="username" placeholder="Usuario" onfocus="this.value=''"><br>
 				<input type="password" id="password" name ="password" placeholder="Contraseña" onfocus="this.value=''"><br>
                 <div class="boton-container">
                     <input type="submit" value="Iniciar Sesión" id="Confirmar">

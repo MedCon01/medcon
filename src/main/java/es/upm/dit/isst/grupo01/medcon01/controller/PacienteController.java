@@ -42,12 +42,12 @@ public class PacienteController {
     // Inicio kiosko
     @GetMapping("inicio_kiosko")
     public String showInicioKiosko(){
-        return "paciente/inicio_kiosko";
+        return "kiosko/inicio_kiosko";
     }
     // Si se selecciona DNI
     @GetMapping("/login_DNI")
     public String showLoginDNI() {
-        return "paciente/login_DNI";
+        return "kiosko/login_DNI";
     }
     // Registro con DNI
     @PostMapping("/login_DNI")
@@ -74,16 +74,16 @@ public class PacienteController {
 
          model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente
-         return ("/paciente/identificador_cita");
+         return ("/kiosko/identificador_cita");
         } else {
-            return ("/paciente/error_cita");
+            return ("/kiosko/error_cita");
         }
     }
 
     // Si se selecciona tarjeta
     @GetMapping("/login_tarjeta")
     public String showLoginTarjeta() {
-        return "paciente/login_tarjeta";
+        return "kiosko/login_tarjeta";
     }
     // Registro con tarjeta
     @PostMapping("/login_tarjeta")
@@ -109,9 +109,9 @@ public class PacienteController {
         model.addAttribute("paciente",paciente);
          model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente
-         return ("/paciente/identificador_cita");
+         return ("/kiosko/identificador_cita");
         } else {
-            return ("/paciente/error_cita");
+            return ("/kiosko/error_cita");
         }
     }
 

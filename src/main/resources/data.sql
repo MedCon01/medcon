@@ -1,0 +1,12 @@
+insert into users(username, password, enabled) values ('11111111A', 'password', true);
+insert into authorities(username, authority) values ('11111111A', 'ROLE_MEDICO');
+insert into users(username, password, enabled) values ('22222222B', 'password', true);
+insert into authorities(username, authority) values ('22222222B', 'ROLE_MEDICO');
+insert into users(username, password, enabled) values ('33333333C', 'password', true);
+insert into authorities(username, authority) values ('33333333C', 'ROLE_MEDICO');
+insert into users(username, password, enabled) values ('44444444D', 'password', true);
+insert into authorities(username, authority) values ('44444444D', 'ROLE_MEDICO');
+insert into users(username, password, enabled) values ('55555555E', 'password', true);
+insert into authorities(username, authority) values ('55555555E', 'ROLE_MEDICO');
+insert into users(username, password, enabled) values ('admin', 'admin', true);
+insert into authorities(username, authority) values ('admin', 'ROLE_ADMIN');
