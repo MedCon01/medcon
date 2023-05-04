@@ -20,7 +20,7 @@
         margin-bottom: 1%;
     }
     
-    #barra a{
+    .logout{
         color: #ffff;
         background-color:  #295c93; 
         display: block;
@@ -108,7 +108,7 @@
         border: 0.08em solid #295c93;
     }
     
-    button{
+    .siguiente{
         margin-top: 5%;
         width: 130%; 
         height: 8vh;
@@ -171,7 +171,7 @@
         margin-bottom: 1%;
     }
     
-    #barra a{
+    .logout{
         color: #ffff;
         background-color:  #295c93; 
         display: block;
@@ -252,7 +252,7 @@
         border: 0.08em solid #295c93;
     }
     
-    button{
+    .siguiente{
         margin-top: 5%;
         width: 30%; 
         height: 8vh;
@@ -392,7 +392,7 @@
         border: 0.08em solid #295c93;
     }
     
-    button{
+    .siguiente{
         margin-top: 5%;
         width: 30%; 
         height: 8vh;

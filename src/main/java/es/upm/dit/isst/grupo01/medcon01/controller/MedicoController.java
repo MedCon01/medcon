@@ -16,6 +16,7 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -80,29 +81,37 @@ public class MedicoController {
 
 
     @PostMapping("/login_medico")
-    public String processLoginForm(@RequestParam("usuario") String usuario, @RequestParam("password") String password,Model model){
-        if (usuario.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
+     // public String processLoginForm(@RequestParam("username") String username, @RequestParam("password") String password,Model model){
+    public String processLoginForm(Authentication auth,Model model){
+        String username = auth.getName();
+                // if (username.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
             // Validar DNI del medico
-            try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + usuario, Medico.class);
+            try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + username, Medico.class);
             } catch (HttpClientErrorException.NotFound ex) {}
-            if (medico.getPassword().equals(password)){
+           // if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
                 return "redirect:/iniciomedico/" + medico.getDni();
-            } else{
+            
+            /*
+             * } else{
                 model.addAttribute("error",true);
                 return "medico/login_medico";
             }
-        } else if (usuario.matches("\\d{12}")){
+             */
+         /*
+   
+        } else (username.matches("\\d{12}")){
             List<Medico> medicos = null;
             try { medicos =  Arrays.asList(restTemplate.getForEntity(GESTORCITASmedicos_STRING,Medico[].class).getBody());
             } catch (HttpClientErrorException.NotFound ex) {}
             for (Medico m : medicos){
-                if (m.getNColegiado().equals(usuario)){
+                if (m.getNColegiado().equals(username)){
                     medico = m;
                 }
             }
-            if (medico != null){
-                if (medico.getPassword().equals(password)){
+            /*
+             * if (medico != null){
+               if (medico.getPassword().equals(password)){
                     model.addAttribute("medico", medico);
                     return "redirect:/iniciomedico/" + medico.getDni();
                 } else {
@@ -113,15 +122,19 @@ public class MedicoController {
                 model.addAttribute("error",true);
                 return "medico/login_medico";
             }
-        } else {
+        
+             
+        }else {
         model.addAttribute("error",true);
         return "medico/login_medico";
         }
+        */
     }
 
     // Iniciomedico
-    @GetMapping("/iniciomedico/{medico}")
-    public String getIniciomedico(Model model, @PathVariable(value = "medico") String medicoDni) {
+    @GetMapping("/iniciomedico")
+     public String getIniciomedico(Model model, Authentication auth) {
+        String medicoDni = auth.getName();
         try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + medicoDni, Medico.class);
         } catch (HttpClientErrorException.NotFound ex) {}
         model.addAttribute("medico", medico);
@@ -152,16 +165,6 @@ public class MedicoController {
         model.addAttribute("citas_pendientes", citas_actualizadas); 
         suspenderconsulta = false; 
     }
-    //MIRAR ESTO ? no se si es necesario cambie el html de siguiente_paciente
-    /*  Comparator<Paciente> pacienteComparator = Comparator.comparing((Paciente p) -> {
-        // obtener la cita del paciente: 
-        Cita cita = null;
-        try {cita = restTemplate.getForObject(GESTORCITAScitas_STRING + p.getIdpaciente(), Cita.class);
-        }  catch (HttpClientErrorException.NotFound ex) {}
-        return  cita.getHora();     
-
-    }); 
-    pacientes_pendientes.sort(pacienteComparator);  */
    
         if (medico.getDni().equals("11111111A")){
             model.addAttribute("tiempototal", tiempo_total1);
