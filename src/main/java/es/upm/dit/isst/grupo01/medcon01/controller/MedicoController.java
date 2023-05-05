@@ -251,6 +251,7 @@ public class MedicoController {
        suspenderconsulta = true;
        pacientes_actualizados.clear();
        citas_actualizadas.clear();
+       pacientellamado.setLlamado(null);
        try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
        } catch(Exception e) {}
     List<Cita> citas = null;
