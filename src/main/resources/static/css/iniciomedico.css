@@ -20,7 +20,7 @@
         margin-bottom: 1%;
     }
     
-    #barra a{
+    .logout{
         color: #ffff;
         background-color:  #295c93; 
         display: block;
@@ -171,7 +171,7 @@
         margin-bottom: 1%;
     }
     
-    #barra a{
+    .logout{
         color: #ffff;
         background-color:  #295c93; 
         display: block;

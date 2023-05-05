@@ -10,7 +10,9 @@
 
 <body onload="iniciarCronometro()">
     <div id="barra">
-        <a href="#" onclick="terminarConsulta()">Cerrar Sesión</a>
+        <form  th:action ="@{/logout}" method="post">
+            <button class="logout" type="submit">Cerrar Sesión</button>
+        </form>
     </div>
     <div class="marco_izq">
         <div th:if="${#arrays.isEmpty(citas_pendientes)}">
@@ -51,18 +53,5 @@
             </div>
             <img th:src="@{/images/logo_Medcon_v2.png}" alt="logo_Medcon">
             </div>
-
-    <script>        
-        
-        function siguientePaciente() {
-            // Redirigir a la página de siguiente paciente
-            window.location.href = "/siguiente_paciente";
-        }
-
-        function terminarConsulta() {
-            // Redirigir a la página de paciente
-            window.location.href = "/login_medico";
-        }
-    </script>
 </tbody>
 </html>
