@@ -22,13 +22,16 @@
     
     #barra button{
         color: #ffff;
-        background-color: transparent; 
+        background-color:  transparent; 
+        border: transparent;
         font-size: 1rem;
         text-decoration: none;
         font-family: 'abel', sans-serif;
-        border: transparent;
-        
+        position: relative;
+        left:1%;
+        margin-top:1%
     }
+
     .contenedores{
         display: flex;
     }
@@ -106,7 +109,7 @@
         border: 0.08em solid #295c93;
     }
     
-    button{
+    .marco_dcha button{
         margin-top: 5%;
         width: 130%; 
         height: 8vh;
@@ -171,14 +174,14 @@
     
     #barra button{
         color: #ffff;
-        background-color: transparent; 
-        display: block;
-        margin-left: 2%;
-        margin-top: 1.1%;
+        background-color:  transparent; 
+        border: transparent;
         font-size: 1rem;
         text-decoration: none;
         font-family: 'abel', sans-serif;
-        
+        position: relative;
+        left:1%;
+        margin-top:1%
     }
     .contenedores{
         display: flex;
@@ -250,7 +253,7 @@
         border: 0.08em solid #295c93;
     }
     
-    button{
+    .marco_dcha button{
         margin-top: 5%;
         width: 30%; 
         height: 8vh;
@@ -316,8 +319,9 @@
         font-size: 1rem;
         text-decoration: none;
         font-family: 'abel', sans-serif;
-        position: absolute;
-        left: 0;
+        position: relative;
+        left:1%;
+        margin-top:1%
     }
     .contenedores{
         display: flex;
@@ -389,7 +393,7 @@
         border: 0.08em solid #295c93;
     }
     
-    button{
+    .marco_dcha button{
         margin-top: 5%;
         width: 30%; 
         height: 8vh;
