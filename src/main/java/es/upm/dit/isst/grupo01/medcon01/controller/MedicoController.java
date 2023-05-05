@@ -289,6 +289,7 @@ public class MedicoController {
     public String showsfinalizarConsulta(Model model,Authentication auth){
         pacientellamado.setPresente(false);
         pacientellamado.setLlamado(null);
+        pacientellamado.setConsultallamada(0);
         // Guardar paciente en API citas
         try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
         } catch(Exception e) {}
