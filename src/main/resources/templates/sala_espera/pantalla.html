@@ -46,28 +46,28 @@
             <div class="marco_dcha">
                <div class="ultimollamado" th:if="${numllamados > 0}">
                     <div class="consulta1">
-                        <h2>CONSULTA 1</h2>
+                        <h2>CONSULTA <span th:text="${llamados[0].consultallamada}"></span> </h2>
                     </div>
                     <div class="identificador1" th:text="${llamados[0].Idpaciente}">
                     </div>  
                 </div>
                 <div class = "llamado2" th:if="${#arrays.length(llamados) - 1 > 0}">
                     <div class="consulta2">
-                        <h2>CONSULTA 2</h2>
+                        <h2>CONSULTA <span th:text="${llamados[1].consultallamada}"></span></h2>
                     </div>
                     <div class="identificador2" th:text="${llamados[1].Idpaciente}">
                     </div>
                 </div>
                 <div class="llamado3"th:if="${#arrays.length(llamados)-2 > 0}">
                     <div class="consulta3">
-                        <h2>CONSULTA 3</h2>
+                        <h2>CONSULTA <span th:text="${llamados[2].consultallamada}"></span></h2>
                     </div>
                     <div class="identificador3" th:text="${llamados[2].Idpaciente}">
                     </div>
                 </div>
                 <div class="llamado4" th:if="${#arrays.length(llamados)-3 > 0}">
                     <div class="consulta4">
-                        <h2>CONSULTA 4</h2>
+                        <h2>CONSULTA <span th:text="${llamados[3].consultallamada}"></span></h2>
                     </div>
                     <div class="identificador4" th:text="${llamados[3].Idpaciente}">
                     </div>
