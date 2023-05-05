@@ -81,7 +81,6 @@ public class MedicoController {
 
 
     @PostMapping("/login_medico")
-     // public String processLoginForm(@RequestParam("username") String username, @RequestParam("password") String password,Model model){
     public String processLoginForm(Authentication auth,Model model){
         String username = auth.getName();
                 // if (username.matches("\\d{8}[A-HJ-NP-TV-Z]")) {

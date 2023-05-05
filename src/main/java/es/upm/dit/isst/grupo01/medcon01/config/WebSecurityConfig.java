@@ -46,6 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(HttpSecurity http) throws Exception{
         http 
+            .csrf().disable()
             .authorizeRequests() // Define quien puede acceder a los recursos
                 .antMatchers("/css/**", "/images/**", "/audio/**","/index","/","/layouts","/error","/kiosko/**","/sala_espera/**").permitAll()
                 .antMatchers("/medico/**","/aplicaciones_externas/**").hasAnyRole("MEDICO")
