@@ -276,11 +276,11 @@ public class MedicoController {
             citas_actualizadas.add(1, citaPacienteLlamado);
         }
     }
-       return "redirect:/iniciomedico/" + medico.getDni();
+       return "redirect:/iniciomedico";
     }
 
     @GetMapping("/finalizar_consulta")
-    public String showsfinalizarConsulta(Model model){
+    public String showsfinalizarConsulta(Model model,Authentication auth){
         pacientellamado.setPresente(false);
         pacientellamado.setLlamado(null);
         // Guardar paciente en API citas
@@ -372,7 +372,7 @@ public class MedicoController {
             tiempototal_ms= 00;
             tiempomedio_ms= 00;
         }
-        return "redirect:/iniciomedico/" + medico.getDni();
+        return "redirect:/iniciomedico";
     }
 
     
