@@ -45,7 +45,7 @@ public class ColaController {
     public final String GESTORCITASmedicos_STRING = "http://localhost:8083/medicos/";
     public final String GESTORCITASpacientes_STRING = "http://localhost:8083/pacientes/";
     private Cola cola = new Cola(1,new ArrayList<Cita>());
-    Paciente ultimollamado = new Paciente("000000","00000000o","Ultimo paciente",LocalDate.now(),"000000000000",LocalTime.now(),false,LocalDateTime.now());
+    Paciente ultimollamado = new Paciente("000000","00000000o","Ultimo paciente",LocalDate.now(),"000000000000",LocalTime.now(),false,LocalDateTime.now(), 0);
     public ColaController(){}
    
     private RestTemplate restTemplate = new RestTemplate();
@@ -60,7 +60,9 @@ public class ColaController {
         for (Cita c : citas){
             Paciente p= restTemplate.getForObject(GESTORCITASpacientes_STRING + c.getPacienteId(), Paciente.class);
             if (p.getPresente().equals(true)){
-                citaspresentes.add(c);
+                if(p.getLlamado() == null){
+                    citaspresentes.add(c);
+                }
             }
         }
         // Mostrar cola llamados
@@ -74,10 +76,6 @@ public class ColaController {
         try {
             medicos = Arrays.asList(restTemplate.getForEntity(GESTORCITASmedicos_STRING,Medico[].class).getBody());
         } catch (HttpClientErrorException.NotFound ex){}
-        //List<Cita> citasllamadas =citaspresentes.stream().filter(c -> c.getPacienteId().equals(cola.llamados.stream().map(Paciente :: getIdpaciente))).collect(Collectors.toList());
-        //List<Medico> medicosfiltrados = medicos.stream().filter(m -> citasllamadas.stream().map(Cita::getMedicoDni).equals(m.getDni())).collect(Collectors.toList());
-        //List<Integer> consultas = medicosfiltrados.stream().map(Medico::getConsulta).collect(Collectors.toList());
-        // List<Integer> consultas = .map(Cita :: getMedicoDni).equals(m.getDni())).map(Medico:: getConsulta).collect(Collectors.toList());
         
         // Si se ha llamado a un nuevo paciente, se reproducirá una alerta
         Boolean nuevallamada = false;
@@ -85,6 +83,9 @@ public class ColaController {
             nuevallamada = !((ultimollamado.getIdpaciente().equals(cola.llamados.get(0).getIdpaciente())));
             ultimollamado = cola.llamados.get(0);
         }
+
+        
+
         model.addAttribute("nuevallamada", nuevallamada);
         citaspresentes.sort(Comparator.comparing(c -> ((Cita) c).getHora()));
         cola.setPendientes(citaspresentes);

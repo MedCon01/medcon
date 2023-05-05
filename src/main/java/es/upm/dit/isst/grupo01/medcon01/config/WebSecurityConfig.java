@@ -51,12 +51,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
                 .antMatchers("/css/**", "/images/**", "/audio/**","/index","/","/layouts","/error","/kiosko/**","/sala_espera/**").permitAll()
                 .antMatchers("/medico/**","/aplicaciones_externas/**").hasAnyRole("MEDICO")
                 .antMatchers("/admin").hasAnyRole("ADMIN")
-                .anyRequest().authenticated()
+               // .anyRequest().authenticated()
         .and() 
             .formLogin()
                 .loginPage("/login_medico").successHandler(myAuthenticationSuccessHandler()).permitAll()
                 .loginProcessingUrl("/login_medico")
-                .failureUrl("/login_medico.html?error=true")
+              //  .failureUrl("/login_medico.html?error=true")   
+              .failureUrl("/login_medico")          
         .and()
             .logout().logoutSuccessUrl("/login_medico").permitAll()
         .and()
@@ -66,6 +67,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.inMemoryAuthentication()
             .withUser("11111111A").password("{noop}password").roles("MEDICO").and()
+            .withUser("22222222B").password("{noop}password").roles("MEDICO").and()
+            .withUser("33333333C").password("{noop}password").roles("MEDICO").and()
+            .withUser("44444444D").password("{noop}password").roles("MEDICO").and()
+            .withUser("55555555E").password("{noop}password").roles("MEDICO").and()
             .withUser("admin").password("{noop}admin").roles("ADMIN").and()
             .withUser("paciente").password("{noop}paciente").roles("PACIENTE");
     }

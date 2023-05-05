@@ -89,7 +89,7 @@ public class MedicoController {
             } catch (HttpClientErrorException.NotFound ex) {}
            // if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
-                return "redirect:/iniciomedico/" + medico.getDni();
+                return "redirect:/iniciomedico/";
             
             /*
              * } else{

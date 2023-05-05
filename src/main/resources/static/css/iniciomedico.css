@@ -20,17 +20,18 @@
         margin-bottom: 1%;
     }
     
-    .logout{
+    #barra button{
         color: #ffff;
-        background-color:  #295c93; 
-        display: block;
-        margin-left: 2%;
-        margin-top: 2%;
-        font-size: 1.6rem;
+        background-color:  transparent; 
+        border: transparent;
+        font-size: 1rem;
         text-decoration: none;
         font-family: 'abel', sans-serif;
-        
+        position: relative;
+        left:1%;
+        margin-top:1%
     }
+
     .contenedores{
         display: flex;
     }
@@ -108,7 +109,7 @@
         border: 0.08em solid #295c93;
     }
     
-    button{
+    .marco_dcha button{
         margin-top: 5%;
         width: 130%; 
         height: 8vh;
@@ -171,16 +172,16 @@
         margin-bottom: 1%;
     }
     
-    .logout{
+    #barra button{
         color: #ffff;
-        background-color:  #295c93; 
-        display: block;
-        margin-left: 2%;
-        margin-top: 1.1%;
-        font-size: 1.6rem;
+        background-color:  transparent; 
+        border: transparent;
+        font-size: 1rem;
         text-decoration: none;
         font-family: 'abel', sans-serif;
-        
+        position: relative;
+        left:1%;
+        margin-top:1%
     }
     .contenedores{
         display: flex;
@@ -252,7 +253,7 @@
         border: 0.08em solid #295c93;
     }
     
-    button{
+    .marco_dcha button{
         margin-top: 5%;
         width: 30%; 
         height: 8vh;
@@ -311,16 +312,16 @@
         margin-bottom: 1%;
     }
     
-    #barra a{
+    #barra button{
         color: #ffff;
-        background-color:  #295c93; 
-        display: block;
-        margin-left: 2%;
-        margin-top: 1.1%;
-        font-size: 1.6rem;
+        background-color:  transparent; 
+        border: transparent;
+        font-size: 1rem;
         text-decoration: none;
         font-family: 'abel', sans-serif;
-        
+        position: relative;
+        left:1%;
+        margin-top:1%
     }
     .contenedores{
         display: flex;
@@ -392,7 +393,7 @@
         border: 0.08em solid #295c93;
     }
     
-    button{
+    .marco_dcha button{
         margin-top: 5%;
         width: 30%; 
         height: 8vh;

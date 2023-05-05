@@ -13,7 +13,7 @@
     <div class="info_paciente">
         <div class="foto">
         <!-- Hay que cambiar esto para que la foto corresponda a la del paciente-->
-        <img th:src="@{/images/avatar.png}" alt="logo_Medcon">
+        <img th:src="@{'/images/pacientes/' + ${pacientellamado.idpaciente} + '.jpg'}" alt="logo_Medcon">
         <!--<img src="../../static/images/avatar.png" alt="logo_Medcon">-->
         </div>
         <div class="nombre">

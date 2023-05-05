@@ -480,13 +480,10 @@
         margin-bottom: 1vh;
     }
 
-    #barra p{
+    #barra button{
         color: #ffff;
-        background-color:  #295c93; 
+        background-color: transparent; 
         display: block;
-        margin-left: 2%;
-        margin-top: 2vh;
-        font-size: 150%;
         text-decoration: none;
         font-family: 'abel', sans-serif;
     }
@@ -507,6 +504,7 @@
         margin-top: 2vh; /* ajusta la distancia desde la parte superior del marco */
         margin-bottom: 6%; /* ajusta la distancia desde la parte inferior del marco */
         margin: 0 auto;
+        border-radius: 1rem;
     }
 
     .logo img{
