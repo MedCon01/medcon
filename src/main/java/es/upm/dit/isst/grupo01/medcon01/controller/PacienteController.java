@@ -74,6 +74,7 @@ public class PacienteController {
 
          model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente
+         paciente = null;
          return ("/kiosko/identificador_cita");
         } else {
             return ("/kiosko/error_cita");
@@ -109,6 +110,7 @@ public class PacienteController {
         model.addAttribute("paciente",paciente);
          model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente
+         paciente = null;
          return ("/kiosko/identificador_cita");
         } else {
             return ("/kiosko/error_cita");
