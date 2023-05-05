@@ -89,7 +89,7 @@ public class MedicoController {
             } catch (HttpClientErrorException.NotFound ex) {}
            // if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
-                return "redirect:/iniciomedico/" + medico.getDni();
+                return "redirect:/iniciomedico/";
             
             /*
              * } else{
@@ -276,7 +276,7 @@ public class MedicoController {
             citas_actualizadas.add(1, citaPacienteLlamado);
         }
     }
-       return "redirect:/iniciomedico/" + medico.getDni();
+       return "redirect:/iniciomedico/";
     }
 
     @GetMapping("/finalizar_consulta")
@@ -372,7 +372,7 @@ public class MedicoController {
             tiempototal_ms= 00;
             tiempomedio_ms= 00;
         }
-        return "redirect:/iniciomedico/" + medico.getDni();
+        return "redirect:/iniciomedico/";
     }
 
     
