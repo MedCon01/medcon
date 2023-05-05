@@ -133,9 +133,14 @@ public class MedicoController {
     // Iniciomedico
     @GetMapping("/iniciomedico")
      public String getIniciomedico(Model model, Authentication auth) {
+        if(auth == null){
+            return "redirect:/login_medico";
+        }
         String medicoDni = auth.getName();
         try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + medicoDni, Medico.class);
-        } catch (HttpClientErrorException.NotFound ex) {}
+        } catch (HttpClientErrorException.NotFound ex) {
+            return "redirect:/login_medico?error=true";
+        }
         model.addAttribute("medico", medico);
         if (suspenderconsulta == false){
             List<Cita> citas = null;
@@ -195,6 +200,7 @@ public class MedicoController {
         } catch (HttpClientErrorException.NotFound ex) {}
         //Llamar
         pacientellamado.setLlamado(LocalDateTime.now());
+        pacientellamado.setConsultallamada(medico.getConsulta());
         // Guardar paciente en API citas
         try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
         } catch(Exception e) {}

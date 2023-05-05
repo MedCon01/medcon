@@ -34,7 +34,7 @@
     #marco{
         background-color: #ecf5ff;
         width: 60%; /* Ancho del recuadro */
-        height: 60%; /* Altura del recuadro */
+        height: 65%; /* Altura del recuadro */
         position: fixed; /* Fijar la posición del recuadro */
         top: 50%; /* Colocar el recuadro en el centro verticalmente */
         left: 50%; /* Colocar el recuadro en el centro horizontalmente */
@@ -141,7 +141,7 @@
     #marco{
         background-color: #ecf5ff;
         width: 60%; /* Ancho del recuadro */
-        height: 60%; /* Altura del recuadro */
+        height: 65%; /* Altura del recuadro */
         position: fixed; /* Fijar la posición del recuadro */
         top: 50%; /* Colocar el recuadro en el centro verticalmente */
         left: 50%; /* Colocar el recuadro en el centro horizontalmente */
@@ -247,7 +247,7 @@
     #marco{
         background-color: #ecf5ff;
         width: 60%; /* Ancho del recuadro */
-        height: 60%; /* Altura del recuadro */
+        height: 65%; /* Altura del recuadro */
         position: fixed; /* Fijar la posición del recuadro */
         top: 50%; /* Colocar el recuadro en el centro verticalmente */
         left: 50%; /* Colocar el recuadro en el centro horizontalmente */
