@@ -20,15 +20,13 @@
         margin-bottom: 1%;
     }
     
-    .logout{
+    #barra button{
         color: #ffff;
-        background-color:  #295c93; 
-        display: block;
-        margin-left: 2%;
-        margin-top: 2%;
-        font-size: 1.6rem;
+        background-color: transparent; 
+        font-size: 1rem;
         text-decoration: none;
         font-family: 'abel', sans-serif;
+        border: transparent;
         
     }
     .contenedores{
@@ -171,13 +169,13 @@
         margin-bottom: 1%;
     }
     
-    .logout{
+    #barra button{
         color: #ffff;
-        background-color:  #295c93; 
+        background-color: transparent; 
         display: block;
         margin-left: 2%;
         margin-top: 1.1%;
-        font-size: 1.6rem;
+        font-size: 1rem;
         text-decoration: none;
         font-family: 'abel', sans-serif;
         
@@ -311,16 +309,15 @@
         margin-bottom: 1%;
     }
     
-    #barra a{
+    #barra button{
         color: #ffff;
-        background-color:  #295c93; 
-        display: block;
-        margin-left: 2%;
-        margin-top: 1.1%;
-        font-size: 1.6rem;
+        background-color:  transparent; 
+        border: transparent;
+        font-size: 1rem;
         text-decoration: none;
         font-family: 'abel', sans-serif;
-        
+        position: absolute;
+        left: 0;
     }
     .contenedores{
         display: flex;
