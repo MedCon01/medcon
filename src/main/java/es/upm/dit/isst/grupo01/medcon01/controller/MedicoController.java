@@ -244,6 +244,11 @@ public class MedicoController {
         model.addAttribute("medico", medico);
         return "aplicaciones_externas/gestion_citas";
     }
+
+    @GetMapping("/volver")
+    public String showVolver(Model model){
+        return "redirect:/paciente/" + pacientellamado.getIdpaciente();
+    }
     
     @GetMapping("/suspender_consulta")
     public String showsuspenderConsulta(Model model){
