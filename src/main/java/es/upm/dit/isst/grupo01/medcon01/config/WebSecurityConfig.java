@@ -33,9 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception{
         auth.jdbcAuthentication().dataSource(ds)
-        // Para usar data.sql y schema.sql
-         //  .usersByUsernameQuery("select username, password, enabled from users where username=?")
-         //  .authoritiesByUsernameQuery("select user, authority from authorities where username=?");
         // Para usar citas_api
            .usersByUsernameQuery("select dni, password, enabled from medico where dni=?")
            .authoritiesByUsernameQuery("select dni, role from medico where dni=?");

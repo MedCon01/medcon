@@ -136,10 +136,24 @@ public class MedicoController {
         if(auth == null){
             return "redirect:/login_medico";
         }
-        String medicoDni = auth.getName();
-        try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + medicoDni, Medico.class);
-        } catch (HttpClientErrorException.NotFound ex) {
-            return "redirect:/login_medico?error=true";
+        if (auth.getName().matches("\\d{8}[A-HJ-NP-TV-Z]")) {
+            String medicoDni = auth.getName();
+            try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + medicoDni, Medico.class);
+             } catch (HttpClientErrorException.NotFound ex) {
+                 return "redirect:/login_medico?error=true";
+             }
+        } else if (auth.getName().matches("\\d{12}")){
+            String medicoNcolegiado = auth.getName();
+            List<Medico> medicos = null;
+            try { medicos =  Arrays.asList(restTemplate.getForEntity(GESTORCITASmedicos_STRING,Medico[].class).getBody());
+            } catch (HttpClientErrorException.NotFound ex) {}
+            for (Medico m : medicos){
+                if (m.getNColegiado().equals(medicoNcolegiado)){
+                    medico = m;
+                }
+             } if (medico == null){
+             return "redirect:/login_medico?error=true";
+             }
         }
         model.addAttribute("medico", medico);
         if (suspenderconsulta == false){
@@ -248,6 +262,7 @@ public class MedicoController {
     @GetMapping("/suspender_consulta")
     public String showsuspenderConsulta(Model model){
        pacientellamado.setPresente(true);
+       pacientellamado.setLlamado(null);
        suspenderconsulta = true;
        pacientes_actualizados.clear();
        citas_actualizadas.clear();
