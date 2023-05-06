@@ -258,6 +258,11 @@ public class MedicoController {
         model.addAttribute("medico", medico);
         return "aplicaciones_externas/gestion_citas";
     }
+
+    @GetMapping("/volver")
+    public String showVolver(Model model){
+        return "redirect:/paciente/" + pacientellamado.getIdpaciente();
+    }
     
     @GetMapping("/suspender_consulta")
     public String showsuspenderConsulta(Model model){
@@ -266,6 +271,7 @@ public class MedicoController {
        suspenderconsulta = true;
        pacientes_actualizados.clear();
        citas_actualizadas.clear();
+       pacientellamado.setLlamado(null);
        try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
        } catch(Exception e) {}
     List<Cita> citas = null;
@@ -304,6 +310,7 @@ public class MedicoController {
     public String showsfinalizarConsulta(Model model,Authentication auth){
         pacientellamado.setPresente(false);
         pacientellamado.setLlamado(null);
+        pacientellamado.setConsultallamada(0);
         // Guardar paciente en API citas
         try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, pacientellamado, Paciente.class);
         } catch(Exception e) {}
