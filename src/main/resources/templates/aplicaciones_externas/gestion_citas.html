@@ -56,12 +56,13 @@
   </style>
 </head>
 <body>
-  <form>
+  <form method="post" action="/gestion_citas">
     <h1>Solicitud de Citas Médicas</h1>
     <label for="nombrePaciente">Nombre del Paciente:</label>
     <input type="text" id="nombrePaciente" name="nombrePaciente" required>
     <label for="fechaCita">Fecha de la Cita:</label>
     <input type="date" id="fechaCita" name="fechaCita" required>
+    <input type="time" id="horaCita" name="horaCita" required>
     <label for="motivoCita">Motivo de la Cita:</label>
     <textarea id="motivoCita" name="motivoCita" required></textarea>
     <input type="submit" value="Solicitar Cita">

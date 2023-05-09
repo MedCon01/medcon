@@ -55,7 +55,9 @@ public class PacienteController {
         // Asigno paciente buscando por DNI
         List<Paciente> pacientes = null;
         try { pacientes =  Arrays.asList(restTemplate.getForEntity(GESTORCITASpacientes_STRING,Paciente[].class).getBody());
-        } catch (HttpClientErrorException.NotFound ex) {}
+        } catch (HttpClientErrorException.NotFound ex) {
+            return ("/kiosko/error_cita");
+        }
         for (Paciente p : pacientes){
             if (p.getDni().equals(dni)){
                 paciente = p;
@@ -64,20 +66,21 @@ public class PacienteController {
         if (paciente != null){ // Se comprueba que el paciente existe en la BBDD 
          // Marcar paciente como presente y actualizar BBDD
         model.addAttribute("paciente",paciente);
-         paciente.setPresente(true);
-         try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, paciente, Paciente.class);
-         } catch(Exception e) {}
          // Busco la cita del paciente
         List<Cita> citas = null;
         try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "paciente/" + paciente.getIdpaciente(), Cita[].class));
-        } catch (HttpClientErrorException.NotFound ex) {}
+        } catch (HttpClientErrorException.NotFound ex) {
+            return ("/kiosko/error_cita");
+        }
         if (citas.isEmpty()){
-           // model.addAttribute("paciente",paciente);
            paciente = null;
             return ("/kiosko/sincita");
         }
          model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente
+         paciente.setPresente(true);
+         try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, paciente, Paciente.class);
+         } catch(Exception e) {}
          paciente = null;
          return ("/kiosko/identificador_cita");
         } else {
@@ -103,10 +106,6 @@ public class PacienteController {
             }
         }
         if (paciente != null){ // Se comprueba que el paciente existe en la BBDD 
-         // Marcar paciente como presente y actualizar BBDD
-         paciente.setPresente(true);
-         try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, paciente, Paciente.class);
-         } catch(Exception e) {}
          // Busco la cita del paciente
         List<Cita> citas = null;
         try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "paciente/" + paciente.getIdpaciente(), Cita[].class));
@@ -117,7 +116,11 @@ public class PacienteController {
             return ("/kiosko/sincita");
         }
         model.addAttribute("paciente",paciente);
-         model.addAttribute("cita_pendiente",citas.get(0));
+        model.addAttribute("cita_pendiente",citas.get(0));
+         // Marcar paciente como presente y actualizar BBDD
+        paciente.setPresente(true);
+        try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, paciente, Paciente.class);
+        } catch(Exception e) {}
          // Presento la informacion del paciente
          paciente = null;
          return ("/kiosko/identificador_cita");

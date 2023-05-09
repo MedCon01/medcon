@@ -1,11 +1,14 @@
 package es.upm.dit.isst.grupo01.medcon01.controller;
 
 import java.security.Principal;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -128,8 +131,10 @@ public class MedicoController {
                     try { paciente = restTemplate.getForObject(GESTORCITASpacientes_STRING + c.getPacienteId(), Paciente.class);
                     } catch (HttpClientErrorException.NotFound ex) {}
                     if (paciente.getPresente().equals(true)){
-                        pacientes_pendientes.add(paciente);
-                        citas_pendientes.add(c);
+                        if (c.getFecha().equals(LocalDate.now())){
+                            pacientes_pendientes.add(paciente);
+                            citas_pendientes.add(c);
+                        }
                     }
                     Comparator<Cita> citaComparator = Comparator.comparing(Cita::getHora);
                     citas_pendientes.sort(citaComparator);
@@ -217,6 +222,19 @@ public class MedicoController {
         model.addAttribute("paciente",pacientellamado);
         model.addAttribute("medico", medico);
         return "aplicaciones_externas/gestion_citas";
+    }
+    @PostMapping("gestion_citas")
+    public String crearcita(@RequestParam("fechaCita") String fechaCita,@RequestParam("horaCita") String horaCita){
+        Cita newCita = new Cita();
+        LocalDate fechaLocalDate = LocalDate.parse(fechaCita);
+        LocalTime horaLocalTime = LocalTime.parse(horaCita);
+        newCita.setFecha(fechaLocalDate);
+        newCita.setHora(horaLocalTime);
+        newCita.setMedicoDni(medico.getDni());
+        newCita.setPacienteId(pacientellamado.getIdpaciente());
+        try { restTemplate.postForObject(GESTORCITAScitas_STRING,newCita,Cita.class);
+        } catch (Exception e) {}
+        return "redirect:/paciente/" + pacientellamado.getIdpaciente();
     }
 
     @GetMapping("/volver")
