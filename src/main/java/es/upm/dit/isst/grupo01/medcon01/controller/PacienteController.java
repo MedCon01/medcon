@@ -55,7 +55,9 @@ public class PacienteController {
         // Asigno paciente buscando por DNI
         List<Paciente> pacientes = null;
         try { pacientes =  Arrays.asList(restTemplate.getForEntity(GESTORCITASpacientes_STRING,Paciente[].class).getBody());
-        } catch (HttpClientErrorException.NotFound ex) {}
+        } catch (HttpClientErrorException.NotFound ex) {
+            return ("/kiosko/error_cita");
+        }
         for (Paciente p : pacientes){
             if (p.getDni().equals(dni)){
                 paciente = p;
@@ -70,8 +72,9 @@ public class PacienteController {
          // Busco la cita del paciente
         List<Cita> citas = null;
         try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "paciente/" + paciente.getIdpaciente(), Cita[].class));
-        } catch (HttpClientErrorException.NotFound ex) {}
-
+        } catch (HttpClientErrorException.NotFound ex) {
+            return ("/kiosko/error_cita");
+        }
          model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente
          paciente = null;
