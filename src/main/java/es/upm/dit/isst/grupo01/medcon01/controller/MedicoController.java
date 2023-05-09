@@ -83,51 +83,11 @@ public class MedicoController {
     @PostMapping("/login_medico")
     public String processLoginForm(Authentication auth,Model model){
         String username = auth.getName();
-                // if (username.matches("\\d{8}[A-HJ-NP-TV-Z]")) {
             // Validar DNI del medico
             try { medico = restTemplate.getForObject(GESTORCITASmedicos_STRING + username, Medico.class);
             } catch (HttpClientErrorException.NotFound ex) {}
-           // if (medico.getPassword().equals(password)){
                 model.addAttribute("medico", medico);
                 return "redirect:/iniciomedico/";
-            
-            /*
-             * } else{
-                model.addAttribute("error",true);
-                return "medico/login_medico";
-            }
-             */
-         /*
-   
-        } else (username.matches("\\d{12}")){
-            List<Medico> medicos = null;
-            try { medicos =  Arrays.asList(restTemplate.getForEntity(GESTORCITASmedicos_STRING,Medico[].class).getBody());
-            } catch (HttpClientErrorException.NotFound ex) {}
-            for (Medico m : medicos){
-                if (m.getNColegiado().equals(username)){
-                    medico = m;
-                }
-            }
-            /*
-             * if (medico != null){
-               if (medico.getPassword().equals(password)){
-                    model.addAttribute("medico", medico);
-                    return "redirect:/iniciomedico/" + medico.getDni();
-                } else {
-                    model.addAttribute("error",true);
-                    return "medico/login_medico";
-                }
-            } else {
-                model.addAttribute("error",true);
-                return "medico/login_medico";
-            }
-        
-             
-        }else {
-        model.addAttribute("error",true);
-        return "medico/login_medico";
-        }
-        */
     }
 
     // Iniciomedico

@@ -52,9 +52,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter{
         http 
             .csrf().disable()
             .authorizeRequests() // Define quien puede acceder a los recursos
-                .antMatchers("/css/**", "/images/**", "/audio/**","/index","/","/layouts","/error","/kiosko/**","/sala_espera/**").permitAll()
+                .antMatchers("/css/**", "/images/**", "/audio/**","/index","/error","/").permitAll()
                 .antMatchers("/medico/**","/aplicaciones_externas/**").hasAnyRole("MEDICO")
-                .antMatchers("/admin").hasAnyRole("ADMIN")
+                .antMatchers("/kiosko/**","/sala_espera/**").hasAnyRole("ADMIN")
+                .anyRequest().authenticated()
         .and() 
             .formLogin()
                 .loginPage("/login_medico").successHandler(myAuthenticationSuccessHandler()).permitAll()
