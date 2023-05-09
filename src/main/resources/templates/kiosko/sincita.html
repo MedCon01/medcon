@@ -1,0 +1,35 @@
+<!--aqui ira la vista de la información de la cita del paciente-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="utf-8">
+	<title>Identificador cita</title>
+	<link rel="stylesheet" type="text/css" th:href="@{/css/identificador_cita.css}">
+	<!--<link rel="stylesheet" type="text/css" href="../../static/css/identificador_cita.css">-->
+</head>
+<body  onclick="window.location.href = 'inicio_kiosko'">
+	<div id="barra"> 
+		<a href="#" onclick="window.location.href = 'inicio_kiosko'">Volver</a>
+	</div>
+	<div id="marco">
+		<div id="datos_paciente">
+		<!--<img src="../../static/images/logo_Medcon.png" alt="logo_Medcon">-->
+		<img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
+		<div id="datos">
+			<h3>Nombre: <span th:text="${paciente.nombre}"></span> </h3>
+			<h3>DNI: <span th:text="${paciente.dni}"></span></h3> 
+		</div>
+		</div>
+		<div id="info_cita">
+			<h1 style="color: red; text-align: center;"> No tienes citas pendientes </h1>
+		</div>
+
+	<script>
+		// Redirigir a 'inicio_kiosko' después de 10 segundos
+		setTimeout(function() {
+			window.location.href = 'inicio_kiosko';
+		}, 10000); // 10 segundos en milisegundos
+	</script>
+   
+</body>
+</html>

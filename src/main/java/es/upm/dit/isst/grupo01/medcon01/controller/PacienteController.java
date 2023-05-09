@@ -75,6 +75,10 @@ public class PacienteController {
         } catch (HttpClientErrorException.NotFound ex) {
             return ("/kiosko/error_cita");
         }
+        if (citas.isEmpty()){
+           paciente = null;
+            return ("/kiosko/sincita");
+        }
          model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente
          paciente = null;
@@ -107,9 +111,14 @@ public class PacienteController {
          try{ restTemplate.postForObject(GESTORCITASpacientes_STRING, paciente, Paciente.class);
          } catch(Exception e) {}
          // Busco la cita del paciente
-         List<Cita> citas = null;
+        List<Cita> citas = null;
         try { citas = Arrays.asList(restTemplate.getForObject(GESTORCITAScitas_STRING+ "paciente/" + paciente.getIdpaciente(), Cita[].class));
         } catch (HttpClientErrorException.NotFound ex) {}
+        if (citas.isEmpty()){
+            model.addAttribute("paciente",paciente);
+            paciente = null;
+            return ("/kiosko/sincita");
+        }
         model.addAttribute("paciente",paciente);
          model.addAttribute("cita_pendiente",citas.get(0));
          // Presento la informacion del paciente

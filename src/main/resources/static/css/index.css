@@ -1,0 +1,44 @@
+    @font-face {
+    font-family: 'Abel';
+    src: url('./fonts/Abel.ttf') format('truetype');
+    }
+
+    body{
+        background-color: #92abc8;
+        font-family: 'abel', sans-serif;
+    }
+
+    .marco {
+        width: 90vw;
+        background-color: #ecf5ff;
+        padding: 20px;
+        margin-top: 3%;
+        border-radius: 1em;
+        margin: auto;
+        height: 50vh;
+        margin-top: 3%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    button {
+        margin: 0 0.5em;
+        border-radius: 1em;
+        background-color: #295c93;
+        border-color: #295c93;
+        font-family: 'abel', sans-serif;
+        font-size: 1.5rem;
+        color: #fff;
+        height: 10vh;
+        width: 10vw;
+      }
+    .marco img {
+        display: block;
+        margin: 0 1em;
+        width: 25%; /* Ancho de la imagen */
+        margin-bottom: 0; /* Espaciado inferior de la imagen */
+        justify-content: center;
+      }
+  
+  
+  

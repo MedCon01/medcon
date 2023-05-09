@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link rel="stylesheet" type="text/css" th:href="@{/css/index.css}" />
     <meta charset="UTF-8">
     <title>Index</title>
 </head>
 <body>
-    <h1>Bienvenido a mi aplicación</h1>
-    <p>Esta es una página de inicio.</p>
-    <a th:href="@{/login_medico}">Iniciar sesión</a>
-
-
-    
+    <div class="marco">
+        <img th:src="@{/images/logo_Medcon.png}" alt="logo_Medcon">
+        <form method="get" action="/login_medico">
+            <button type="submit" id="medico">
+                <span>Médico</span></button>
+        </form>
+        <form method="get" action="/inicio_kiosko">
+            <button type="submit" id="kiosko">
+                <span>Kiosko</span></button>
+        </form>
+        <form method="get" action="/login_medico">
+            <button type="submit" id="pantalla">
+                <span>Sala de espera</span></button>
+        </form>
+    </div>
 </body>
 </html>
